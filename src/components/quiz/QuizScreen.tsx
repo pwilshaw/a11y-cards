@@ -74,7 +74,7 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
   }, [questionIndex]);
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="w-full text-center">
       {/* Category badge */}
       {typeConfig && (
         <div className="flex justify-center mb-4">

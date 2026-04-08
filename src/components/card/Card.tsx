@@ -31,7 +31,7 @@ export function Card({ card, flipped = false, className = '' }: CardProps) {
     >
       <div className="card__translater">
         <div className="card__rotator">
-          <div style={{ transform: flipped ? 'rotateY(180deg)' : undefined }}>
+          <div className="card__inner" style={{ transform: flipped ? 'rotateY(180deg)' : undefined }}>
             <CardFront card={card} />
             <CardShine />
             <CardGlare />

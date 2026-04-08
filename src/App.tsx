@@ -19,12 +19,10 @@ function App() {
         state={state}
       />
 
-      <main className="flex-1 p-6 md:p-8">
+      <main className="flex-1 flex flex-col items-center px-4 py-10 md:py-16">
         {currentView === 'quiz' && (
-          <div>
-            <div className="flex justify-center mb-8">
-              <QuizProgress state={state} />
-            </div>
+          <div className="w-full max-w-2xl flex flex-col items-center gap-10">
+            <QuizProgress state={state} />
             <QuizScreen
               state={state}
               onCorrectAnswer={collectCard}
@@ -34,7 +32,9 @@ function App() {
         )}
 
         {currentView === 'binder' && (
-          <BinderScreen state={state} />
+          <div className="w-full max-w-5xl">
+            <BinderScreen state={state} />
+          </div>
         )}
       </main>
     </div>

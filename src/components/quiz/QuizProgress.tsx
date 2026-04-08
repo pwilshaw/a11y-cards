@@ -14,8 +14,8 @@ export function QuizProgress({ state }: QuizProgressProps) {
     <div className="flex items-center gap-6 text-sm">
       {/* Streak */}
       <div className="flex items-center gap-2">
-        <span className="text-orange-400">
-          {state.currentStreak >= 3 ? '🔥' : '⚡'}
+        <span className="text-orange-400 font-bold">
+          {state.currentStreak >= 3 ? 'x' + state.currentStreak : '#'}
         </span>
         <span className="text-white/70">
           Streak: <span className="text-white font-bold">{state.currentStreak}</span>
