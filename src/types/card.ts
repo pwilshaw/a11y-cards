@@ -34,12 +34,12 @@ export interface GameState {
 }
 
 export const CARD_TYPE_CONFIG: Record<CardType, { label: string; color: string; glow: string }> = {
-  contrast: { label: 'Contrast', color: 'hsl(270, 60%, 50%)', glow: 'hsl(270, 80%, 75%)' },
-  vision: { label: 'Vision', color: 'hsl(180, 65%, 45%)', glow: 'hsl(180, 80%, 70%)' },
-  motor: { label: 'Motor', color: 'hsl(25, 90%, 55%)', glow: 'hsl(25, 100%, 70%)' },
-  cognition: { label: 'Cognition', color: 'hsl(50, 90%, 55%)', glow: 'hsl(50, 100%, 75%)' },
-  structure: { label: 'Structure', color: 'hsl(140, 60%, 45%)', glow: 'hsl(140, 80%, 65%)' },
-  philosophy: { label: 'Philosophy', color: 'hsl(340, 70%, 55%)', glow: 'hsl(340, 90%, 75%)' },
+  contrast: { label: 'Contrast', color: '#7B3FA0', glow: '#C084FC' },      // Purple
+  vision: { label: 'Vision', color: '#0B75B7', glow: '#82D3F7' },          // Blue (Figma primary)
+  motor: { label: 'Motor', color: '#C05621', glow: '#FB923C' },            // Orange
+  cognition: { label: 'Cognition', color: '#B7940B', glow: '#FCD34D' },    // Gold
+  structure: { label: 'Structure', color: '#0F766E', glow: '#5EEAD4' },    // Teal
+  philosophy: { label: 'Philosophy', color: '#BE185D', glow: '#F472B6' },  // Pink
 };
 
 export const RARITY_CONFIG: Record<Rarity, { label: string; stars: number }> = {

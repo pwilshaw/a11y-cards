@@ -1,49 +1,37 @@
 /* ===== Card Type Colours ===== */
 
 .card[data-type="contrast"] {
-  --type-color: hsl(270, 60%, 50%);
-  --type-glow: hsl(270, 80%, 75%);
-  --type-bg: hsl(270, 40%, 20%);
-  --type-bg-light: hsl(270, 50%, 30%);
-  --card-glow: var(--type-glow);
+  --type-color: #7B3FA0;
+  --type-glow: #C084FC;
+  --card-glow: #C084FC;
 }
 
 .card[data-type="vision"] {
-  --type-color: hsl(180, 65%, 45%);
-  --type-glow: hsl(180, 80%, 70%);
-  --type-bg: hsl(180, 40%, 18%);
-  --type-bg-light: hsl(180, 50%, 28%);
-  --card-glow: var(--type-glow);
+  --type-color: #0B75B7;
+  --type-glow: #82D3F7;
+  --card-glow: #82D3F7;
 }
 
 .card[data-type="motor"] {
-  --type-color: hsl(25, 90%, 55%);
-  --type-glow: hsl(25, 100%, 70%);
-  --type-bg: hsl(25, 50%, 18%);
-  --type-bg-light: hsl(25, 60%, 28%);
-  --card-glow: var(--type-glow);
+  --type-color: #C05621;
+  --type-glow: #FB923C;
+  --card-glow: #FB923C;
 }
 
 .card[data-type="cognition"] {
-  --type-color: hsl(50, 90%, 55%);
-  --type-glow: hsl(50, 100%, 75%);
-  --type-bg: hsl(50, 40%, 16%);
-  --type-bg-light: hsl(50, 50%, 26%);
-  --card-glow: var(--type-glow);
+  --type-color: #B7940B;
+  --type-glow: #FCD34D;
+  --card-glow: #FCD34D;
 }
 
 .card[data-type="structure"] {
-  --type-color: hsl(140, 60%, 45%);
-  --type-glow: hsl(140, 80%, 65%);
-  --type-bg: hsl(140, 40%, 16%);
-  --type-bg-light: hsl(140, 50%, 26%);
-  --card-glow: var(--type-glow);
+  --type-color: #0F766E;
+  --type-glow: #5EEAD4;
+  --card-glow: #5EEAD4;
 }
 
 .card[data-type="philosophy"] {
-  --type-color: hsl(340, 70%, 55%);
-  --type-glow: hsl(340, 90%, 75%);
-  --type-bg: hsl(340, 40%, 18%);
-  --type-bg-light: hsl(340, 50%, 28%);
-  --card-glow: var(--type-glow);
+  --type-color: #BE185D;
+  --type-glow: #F472B6;
+  --card-glow: #F472B6;
 }

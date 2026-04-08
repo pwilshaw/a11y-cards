@@ -3,7 +3,7 @@
 .card {
   --card-width: 300px;
   width: var(--card-width);
-  aspect-ratio: var(--card-aspect);
+  aspect-ratio: 3 / 4;
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -45,7 +45,7 @@
 .card__back {
   position: absolute;
   inset: 0;
-  border-radius: var(--card-radius);
+  border-radius: 5.5%;
   backface-visibility: hidden;
   overflow: hidden;
 }
@@ -83,7 +83,7 @@
   content: "";
   position: absolute;
   inset: -5%;
-  border-radius: var(--card-radius);
+  border-radius: 5.5%;
   background: radial-gradient(
     ellipse at center,
     var(--card-glow) 0%,

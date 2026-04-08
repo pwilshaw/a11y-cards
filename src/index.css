@@ -2,8 +2,8 @@
 
 :root {
   /* Card dimensions */
-  --card-aspect: 0.718;
-  --card-radius: 4.55% / 3.5%;
+  --card-aspect: 3 / 4;
+  --card-radius: 5.5%;
 
   /* Card edge & back */
   --card-edge: hsl(220, 15%, 28%);

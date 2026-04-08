@@ -1,21 +1,30 @@
 export function CardBack() {
   return (
-    <div className="card__back bg-gradient-to-br from-slate-800 to-slate-900">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative">
-          {/* Decorative pattern */}
-          <div className="w-32 h-32 rounded-full border-2 border-slate-600 opacity-40" />
-          <div className="absolute inset-4 rounded-full border-2 border-slate-500 opacity-30" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-3xl font-bold text-slate-500 tracking-wider">A11Y</span>
+    <div className="card__back" style={{ background: '#F0FAFF' }}>
+      {/* Blue inner area */}
+      <div className="absolute inset-[1.4%] rounded-[20px] overflow-hidden bg-[#0B75B7]">
+        {/* Diagonal pattern */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 8px,
+              rgba(255,255,255,0.15) 8px,
+              rgba(255,255,255,0.15) 9px
+            )`,
+          }}
+        />
+
+        {/* Centre logo */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-4xl font-black text-white/20 tracking-wider">A11Y</div>
+            <div className="text-[0.5rem] font-bold uppercase tracking-[0.3em] text-white/15 mt-1">Cards</div>
           </div>
         </div>
       </div>
-      {/* Corner decorations */}
-      <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-slate-600 rounded-tl-md opacity-40" />
-      <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-slate-600 rounded-tr-md opacity-40" />
-      <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-slate-600 rounded-bl-md opacity-40" />
-      <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-slate-600 rounded-br-md opacity-40" />
     </div>
   );
 }
