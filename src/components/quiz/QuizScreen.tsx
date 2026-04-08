@@ -74,12 +74,12 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
   }, [questionIndex]);
 
   return (
-    <div className="w-full text-center">
+    <div className="w-full max-w-xl mx-auto">
       {/* Category badge */}
       {typeConfig && (
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-8">
           <span
-            className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+            className="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider"
             style={{
               background: `${typeConfig.color}20`,
               color: typeConfig.color,
@@ -92,12 +92,12 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
       )}
 
       {/* Question */}
-      <div className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10 mb-8">
-        <h2 className="text-xl md:text-2xl font-bold text-white mb-8 leading-relaxed">
+      <div className="bg-white/5 rounded-3xl p-10 md:p-14 border border-white/10 mb-10">
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-10 leading-relaxed text-center">
           {currentQuestion.question}
         </h2>
 
-        <div className="grid gap-4">
+        <div className="grid gap-5">
           {currentQuestion.answers.map((answer, i) => {
             let btnClass = 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20';
 
@@ -114,7 +114,7 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
             return (
               <button
                 key={i}
-                className={`w-full text-left px-6 py-4 rounded-xl border transition-all ${btnClass} ${
+                className={`w-full text-left px-8 py-5 rounded-2xl border transition-all ${btnClass} ${
                   phase === 'question' ? 'cursor-pointer' : 'cursor-default'
                 }`}
                 onClick={() => handleAnswer(i)}
@@ -123,7 +123,7 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
                 <span className="text-white/40 font-mono mr-4 text-sm">
                   {String.fromCharCode(65 + i)}
                 </span>
-                <span className="text-white/90">{answer}</span>
+                <span className="text-white/90 text-base">{answer}</span>
               </button>
             );
           })}
@@ -132,15 +132,15 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
 
       {/* Feedback */}
       {phase !== 'question' && phase !== 'reveal' && (
-        <div className={`rounded-xl p-6 md:p-8 mb-8 ${
+        <div className={`rounded-2xl p-8 md:p-10 mb-10 ${
           phase === 'correct'
             ? 'bg-green-500/10 border border-green-500/30'
             : 'bg-red-500/10 border border-red-500/30'
         }`}>
-          <p className="font-bold mb-1 text-white">
+          <p className="font-bold mb-2 text-white text-lg">
             {phase === 'correct' ? 'Correct!' : 'Not quite!'}
           </p>
-          <p className="text-white/70 text-sm">{currentQuestion.explanation}</p>
+          <p className="text-white/70 text-base leading-relaxed">{currentQuestion.explanation}</p>
           {phase === 'correct' && earnedCard && (
             <p className="text-sm mt-2 font-medium" style={{ color: typeConfig?.color }}>
               You earned a card! →
