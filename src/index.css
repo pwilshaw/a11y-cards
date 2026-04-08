@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  /* Card dimensions */
+  --card-aspect: 0.718;
+  --card-radius: 4.55% / 3.5%;
+
+  /* Card edge & back */
+  --card-edge: hsl(220, 15%, 28%);
+  --card-back: hsl(220, 20%, 18%);
+  --card-glow: hsl(200, 80%, 70%);
+
+  /* Dynamic pointer variables (set by JS) */
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --pointer-from-center: 0;
+  --pointer-from-left: 0.5;
+  --pointer-from-top: 0.5;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --card-scale: 1;
+  --card-opacity: 0;
+  --translate-x: 0px;
+  --translate-y: 0px;
+
+  /* Background position (computed from pointer) */
+  --background-x: 50%;
+  --background-y: 50%;
+
+  /* Spectrum colors for holo effects */
+  --red: hsl(0, 100%, 50%);
+  --orange: hsl(30, 100%, 50%);
+  --yellow: hsl(60, 100%, 50%);
+  --green: hsl(120, 100%, 50%);
+  --cyan: hsl(180, 100%, 50%);
+  --blue: hsl(240, 100%, 50%);
+  --violet: hsl(270, 100%, 50%);
+  --magenta: hsl(300, 100%, 50%);
+
+  /* Texture URLs */
+  --glitter: url("/textures/glitter.png");
+  --grain: url("/textures/glitter.png");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: hsl(220, 20%, 8%);
+  color: hsl(220, 10%, 90%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}

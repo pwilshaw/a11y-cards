@@ -1,0 +1,125 @@
+/* ===== Base Card Structure ===== */
+
+.card {
+  --card-width: 300px;
+  width: var(--card-width);
+  aspect-ratio: var(--card-aspect);
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0.01px);
+  will-change: transform;
+}
+
+.card__translater {
+  width: 100%;
+  height: 100%;
+  transform: translate(var(--translate-x), var(--translate-y)) scale(var(--card-scale));
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.card__rotator {
+  width: 100%;
+  height: 100%;
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.card__rotator > * {
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}
+
+.card.interacting .card__rotator > * {
+  transition: none;
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card__front {
+  z-index: 2;
+}
+
+.card__back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* ===== Shine & Glare Layers ===== */
+
+.card__shine,
+.card__glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card.interacting .card__shine,
+.card.interacting .card__glare {
+  opacity: 1;
+}
+
+/* ===== Glow Effect ===== */
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  border-radius: var(--card-radius);
+  background: radial-gradient(
+    ellipse at center,
+    var(--card-glow) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  z-index: -1;
+  filter: blur(20px);
+  transition: opacity 0.6s ease;
+}
+
+.card.interacting::after {
+  opacity: 0.5;
+}
+
+/* ===== Hover Scale ===== */
+
+.card:hover .card__translater {
+  --card-scale: 1.03;
+}
+
+.card.interacting:hover .card__translater {
+  --card-scale: 1.06;
+}
+
+/* ===== Reduced Motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card__rotator > *,
+  .card__translater {
+    transition: none !important;
+  }
+
+  .card__rotator > * {
+    transform: none !important;
+  }
+
+  .card__shine,
+  .card__glare {
+    display: none !important;
+  }
+}

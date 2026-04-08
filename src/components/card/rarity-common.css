@@ -1,0 +1,15 @@
+/* Common cards: no holo, just the 3D tilt */
+
+.card[data-rarity="common"] .card__shine {
+  display: none;
+}
+
+.card[data-rarity="common"] .card__glare {
+  background-image: radial-gradient(
+    circle at var(--pointer-x) var(--pointer-y),
+    rgba(255, 255, 255, 0.1) 10%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
+  opacity: var(--card-opacity);
+}
