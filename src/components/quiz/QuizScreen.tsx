@@ -74,13 +74,18 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
   }, [questionIndex]);
 
   return (
-    <div className="w-full max-w-xl mx-auto">
+    <div style={{ width: '100%', maxWidth: 540, margin: '0 auto' }}>
       {/* Category badge */}
       {typeConfig && (
-        <div className="flex justify-center mb-8">
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
           <span
-            className="px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider"
             style={{
+              padding: '10px 24px',
+              borderRadius: 999,
+              fontSize: 12,
+              fontWeight: 700,
+              textTransform: 'uppercase' as const,
+              letterSpacing: '0.1em',
               background: `${typeConfig.color}20`,
               color: typeConfig.color,
               border: `1px solid ${typeConfig.color}40`,
@@ -92,38 +97,63 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
       )}
 
       {/* Question */}
-      <div className="bg-white/5 rounded-3xl p-10 md:p-14 border border-white/10 mb-10">
-        <h2 className="text-xl md:text-2xl font-bold text-white mb-10 leading-relaxed text-center">
+      <div
+        style={{
+          background: 'rgba(255,255,255,0.05)',
+          borderRadius: 24,
+          padding: 48,
+          border: '1px solid rgba(255,255,255,0.1)',
+          marginBottom: 40,
+        }}
+      >
+        <h2 style={{ fontSize: 22, fontWeight: 700, color: 'white', marginBottom: 40, lineHeight: 1.5, textAlign: 'center' }}>
           {currentQuestion.question}
         </h2>
 
-        <div className="grid gap-5">
+        <div style={{ display: 'grid', gap: 20 }}>
           {currentQuestion.answers.map((answer, i) => {
-            let btnClass = 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20';
+            let bg = 'rgba(255,255,255,0.05)';
+            let borderColor = 'rgba(255,255,255,0.1)';
+            let textColor = 'rgba(255,255,255,0.9)';
+            let opacity = 1;
 
             if (selectedAnswer !== null) {
               if (i === currentQuestion.correctIndex) {
-                btnClass = 'bg-green-500/20 border-green-500/50 text-green-300';
+                bg = 'rgba(34,197,94,0.2)';
+                borderColor = 'rgba(34,197,94,0.5)';
+                textColor = 'rgb(134,239,172)';
               } else if (i === selectedAnswer && i !== currentQuestion.correctIndex) {
-                btnClass = 'bg-red-500/20 border-red-500/50 text-red-300';
+                bg = 'rgba(239,68,68,0.2)';
+                borderColor = 'rgba(239,68,68,0.5)';
+                textColor = 'rgb(252,165,165)';
               } else {
-                btnClass = 'bg-white/5 border-white/5 opacity-50';
+                opacity = 0.5;
               }
             }
 
             return (
               <button
                 key={i}
-                className={`w-full text-left px-8 py-5 rounded-2xl border transition-all ${btnClass} ${
-                  phase === 'question' ? 'cursor-pointer' : 'cursor-default'
-                }`}
+                style={{
+                  width: '100%',
+                  textAlign: 'left',
+                  padding: '20px 32px',
+                  borderRadius: 16,
+                  border: `1px solid ${borderColor}`,
+                  background: bg,
+                  color: textColor,
+                  opacity,
+                  cursor: phase === 'question' ? 'pointer' : 'default',
+                  transition: 'all 0.2s',
+                  fontSize: 16,
+                }}
                 onClick={() => handleAnswer(i)}
                 disabled={phase !== 'question'}
               >
-                <span className="text-white/40 font-mono mr-4 text-sm">
+                <span style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'monospace', marginRight: 16, fontSize: 14 }}>
                   {String.fromCharCode(65 + i)}
                 </span>
-                <span className="text-white/90 text-base">{answer}</span>
+                {answer}
               </button>
             );
           })}
@@ -132,23 +162,37 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
 
       {/* Feedback */}
       {phase !== 'question' && phase !== 'reveal' && (
-        <div className={`rounded-2xl p-8 md:p-10 mb-10 ${
-          phase === 'correct'
-            ? 'bg-green-500/10 border border-green-500/30'
-            : 'bg-red-500/10 border border-red-500/30'
-        }`}>
-          <p className="font-bold mb-2 text-white text-lg">
+        <div
+          style={{
+            borderRadius: 16,
+            padding: 40,
+            marginBottom: 40,
+            background: phase === 'correct' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+            border: `1px solid ${phase === 'correct' ? 'rgba(34,197,94,0.3)' : 'rgba(239,68,68,0.3)'}`,
+          }}
+        >
+          <p style={{ fontWeight: 700, marginBottom: 8, color: 'white', fontSize: 18 }}>
             {phase === 'correct' ? 'Correct!' : 'Not quite!'}
           </p>
-          <p className="text-white/70 text-base leading-relaxed">{currentQuestion.explanation}</p>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16, lineHeight: 1.6 }}>{currentQuestion.explanation}</p>
           {phase === 'correct' && earnedCard && (
-            <p className="text-sm mt-2 font-medium" style={{ color: typeConfig?.color }}>
-              You earned a card! →
+            <p style={{ fontSize: 14, marginTop: 12, fontWeight: 500, color: typeConfig?.color }}>
+              You earned a card!
             </p>
           )}
 
           <button
-            className="mt-4 px-5 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-all"
+            style={{
+              marginTop: 24,
+              padding: '12px 28px',
+              borderRadius: 12,
+              background: 'rgba(255,255,255,0.1)',
+              color: 'white',
+              fontWeight: 500,
+              cursor: 'pointer',
+              border: 'none',
+              fontSize: 16,
+            }}
             onClick={handleNext}
           >
             {phase === 'correct' && earnedCard ? 'Reveal Card!' : 'Next Question'}
