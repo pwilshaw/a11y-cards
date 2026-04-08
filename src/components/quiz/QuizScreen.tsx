@@ -92,12 +92,12 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
       )}
 
       {/* Question */}
-      <div className="bg-white/5 rounded-2xl p-8 border border-white/10 mb-6">
-        <h2 className="text-xl font-bold text-white mb-6 leading-relaxed">
+      <div className="bg-white/5 rounded-2xl p-8 md:p-10 border border-white/10 mb-8">
+        <h2 className="text-xl md:text-2xl font-bold text-white mb-8 leading-relaxed">
           {currentQuestion.question}
         </h2>
 
-        <div className="grid gap-3">
+        <div className="grid gap-4">
           {currentQuestion.answers.map((answer, i) => {
             let btnClass = 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20';
 
@@ -114,13 +114,13 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
             return (
               <button
                 key={i}
-                className={`w-full text-left px-5 py-3 rounded-xl border transition-all ${btnClass} ${
+                className={`w-full text-left px-6 py-4 rounded-xl border transition-all ${btnClass} ${
                   phase === 'question' ? 'cursor-pointer' : 'cursor-default'
                 }`}
                 onClick={() => handleAnswer(i)}
                 disabled={phase !== 'question'}
               >
-                <span className="text-white/40 font-mono mr-3 text-sm">
+                <span className="text-white/40 font-mono mr-4 text-sm">
                   {String.fromCharCode(65 + i)}
                 </span>
                 <span className="text-white/90">{answer}</span>
@@ -132,7 +132,7 @@ export function QuizScreen({ state, onCorrectAnswer, onAnswer }: QuizScreenProps
 
       {/* Feedback */}
       {phase !== 'question' && phase !== 'reveal' && (
-        <div className={`rounded-xl p-5 mb-6 ${
+        <div className={`rounded-xl p-6 md:p-8 mb-8 ${
           phase === 'correct'
             ? 'bg-green-500/10 border border-green-500/30'
             : 'bg-red-500/10 border border-red-500/30'

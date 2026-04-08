@@ -1,3 +1,4 @@
+import { useState, useCallback } from 'react';
 import type { Card as CardData } from '../../types/card';
 import { useCardInteraction } from '../../hooks/useCardInteraction';
 import { CardFront } from './CardFront';
@@ -15,23 +16,34 @@ import '../../styles/card-types.css';
 interface CardProps {
   card: CardData;
   flipped?: boolean;
+  interactive?: boolean;
   className?: string;
 }
 
-export function Card({ card, flipped = false, className = '' }: CardProps) {
+export function Card({ card, flipped: controlledFlipped, interactive = true, className = '' }: CardProps) {
   const { cardRef, handlers } = useCardInteraction();
+  const [internalFlipped, setInternalFlipped] = useState(false);
+
+  const isFlipped = controlledFlipped ?? internalFlipped;
+
+  const handleClick = useCallback(() => {
+    if (interactive) {
+      setInternalFlipped(prev => !prev);
+    }
+  }, [interactive]);
 
   return (
     <div
       ref={cardRef}
-      className={`card ${className}`}
+      className={`card ${isFlipped ? 'card--flipped' : ''} ${className}`}
       data-type={card.type}
       data-rarity={card.rarity}
+      onClick={handleClick}
       {...handlers}
     >
       <div className="card__translater">
         <div className="card__rotator">
-          <div className="card__inner" style={{ transform: flipped ? 'rotateY(180deg)' : undefined }}>
+          <div className="card__inner">
             <CardFront card={card} />
             <CardShine />
             <CardGlare />
