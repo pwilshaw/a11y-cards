@@ -1,37 +1,39 @@
 /* ===== Card Type Colours ===== */
+/* All cards share the Lime/Pink palette from Figma */
+/* Type colour used for icon tinting and glow differentiation */
 
 .card[data-type="contrast"] {
   --type-color: #7B3FA0;
   --type-glow: #C084FC;
-  --card-glow: #C084FC;
+  --card-glow: #FF4F81;
 }
 
 .card[data-type="vision"] {
-  --type-color: #0B75B7;
+  --type-color: #00AEEF;
   --type-glow: #82D3F7;
-  --card-glow: #82D3F7;
+  --card-glow: #00AEEF;
 }
 
 .card[data-type="motor"] {
-  --type-color: #C05621;
+  --type-color: #F78E05;
   --type-glow: #FB923C;
-  --card-glow: #FB923C;
+  --card-glow: #F78E05;
 }
 
 .card[data-type="cognition"] {
-  --type-color: #B7940B;
+  --type-color: #F78E05;
   --type-glow: #FCD34D;
   --card-glow: #FCD34D;
 }
 
 .card[data-type="structure"] {
-  --type-color: #0F766E;
+  --type-color: #00AEEF;
   --type-glow: #5EEAD4;
-  --card-glow: #5EEAD4;
+  --card-glow: #00AEEF;
 }
 
 .card[data-type="philosophy"] {
-  --type-color: #BE185D;
+  --type-color: #FF4F81;
   --type-glow: #F472B6;
-  --card-glow: #F472B6;
+  --card-glow: #FF4F81;
 }

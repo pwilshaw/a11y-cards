@@ -47,7 +47,7 @@ export function Card({ card, flipped: controlledFlipped, interactive = true, cla
             <CardFront card={card} />
             <CardShine />
             <CardGlare />
-            <CardBack />
+            <CardBack card={card} />
           </div>
         </div>
       </div>

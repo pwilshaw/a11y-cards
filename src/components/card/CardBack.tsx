@@ -1,53 +1,95 @@
-export function CardBack() {
+import type { Card as CardData } from '../../types/card';
+import { CARD_TYPE_CONFIG, RARITY_CONFIG } from '../../types/card';
+import { cards } from '../../data/cards';
+
+export function CardBack({ card }: { card: CardData }) {
+  const typeConfig = CARD_TYPE_CONFIG[card.type];
+  const rarityConfig = RARITY_CONFIG[card.rarity];
+  const cardIndex = cards.findIndex(c => c.id === card.id) + 1;
+  const totalCards = cards.length;
+
   return (
     <div
       className="card__back"
-      style={{
-        background: '#FF4F81',
-        boxShadow: '0px 4px 40px rgba(0,0,0,0.1)',
-      }}
+      style={{ background: '#FF4F81' }}
     >
-      {/* Lime green inner area matching Figma */}
+      {/* Lime inner area */}
       <div
-        className="absolute inset-[1.4%] rounded-[20px] overflow-hidden flex items-center justify-center"
-        style={{ background: '#F2FF6C' }}
+        className="absolute inset-[1.4%] rounded-[16px] overflow-hidden flex flex-col"
+        style={{ background: '#F2FF6C', padding: '10% 8%' }}
       >
-        {/* Repeating character pattern */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 25% 25%, #FF4F81 2px, transparent 2px),
-              radial-gradient(circle at 75% 25%, #00AEEF 2px, transparent 2px),
-              radial-gradient(circle at 50% 50%, #F78E05 3px, transparent 3px),
-              radial-gradient(circle at 25% 75%, #00AEEF 2px, transparent 2px),
-              radial-gradient(circle at 75% 75%, #FF4F81 2px, transparent 2px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* Centre branding */}
-        <div className="relative text-center z-10">
-          <div
-            className="text-5xl font-black tracking-tight"
-            style={{ color: '#222222' }}
-          >
-            A11Y
+        {/* Top row: Class + Category */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6%' }}>
+          <div>
+            <span style={{ fontSize: '0.55rem', color: '#00AEEF', fontWeight: 700 }}>Class</span>
           </div>
-          <div
-            className="text-sm font-bold uppercase tracking-[0.35em] mt-1"
-            style={{ color: '#FF4F81' }}
-          >
-            Cards
+          <div>
+            <span style={{ fontSize: '0.55rem', color: '#222222', fontWeight: 700 }}>
+              {typeConfig.label}
+            </span>
           </div>
         </div>
 
-        {/* Corner dots */}
-        <div className="absolute top-4 left-4 w-3 h-3 rounded-full" style={{ background: '#FF4F81' }} />
-        <div className="absolute top-4 right-4 w-3 h-3 rounded-full" style={{ background: '#00AEEF' }} />
-        <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full" style={{ background: '#00AEEF' }} />
-        <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full" style={{ background: '#FF4F81' }} />
+        {/* Title */}
+        <h3
+          style={{
+            fontFamily: "'Inter', system-ui, sans-serif",
+            fontWeight: 900,
+            fontSize: 'clamp(1rem, 5vw, 1.3rem)',
+            lineHeight: 1.2,
+            color: '#222222',
+            marginBottom: '5%',
+          }}
+        >
+          {card.title}
+        </h3>
+
+        {/* Subtitle — bold, larger */}
+        {card.subtitle && (
+          <p
+            style={{
+              fontFamily: "'Inter', system-ui, sans-serif",
+              fontWeight: 900,
+              fontSize: 'clamp(0.85rem, 4vw, 1.1rem)',
+              lineHeight: 1.2,
+              color: '#222222',
+              marginBottom: '6%',
+            }}
+          >
+            {card.subtitle}
+          </p>
+        )}
+
+        {/* Description */}
+        <p
+          style={{
+            fontSize: 'clamp(0.55rem, 2.5vw, 0.7rem)',
+            lineHeight: 1.5,
+            color: '#222222',
+            flex: 1,
+          }}
+        >
+          {card.description}
+        </p>
+
+        {/* Bottom row: card number + rarity */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: '5%' }}>
+          <div>
+            <span style={{ fontSize: '0.55rem', fontWeight: 700, color: '#222222' }}>
+              {cardIndex} of {totalCards}
+            </span>
+            <br />
+            <span style={{ fontSize: '0.55rem', fontWeight: 700, color: '#FF4F81' }}>
+              {rarityConfig.label}
+            </span>
+          </div>
+          <div>
+            {/* Star icon */}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#F78E05" stroke="#222222" strokeWidth="1">
+              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   );
