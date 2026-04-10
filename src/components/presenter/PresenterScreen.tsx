@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { CARD_TYPE_CONFIG, RARITY_CONFIG } from '../../types/card';
 import { buildDeck } from '../../data/presentationDeck';
-import type { Slide } from '../../data/presentationDeck';
 import { Card } from '../card/Card';
 
 function TitleCard({ title, color }: { title: string; color: string }) {
