@@ -43,7 +43,7 @@ export function CardBack({ card }: { card: CardData }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          fontSize: 12,
+          fontSize: 'clamp(0.7rem, 3cqi, 1.5rem)',
           lineHeight: 1,
           padding: '4% 0',
         }}
@@ -57,7 +57,7 @@ export function CardBack({ card }: { card: CardData }) {
         style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 900,
-          fontSize: 'clamp(1rem, 5cqi, 1.35rem)',
+          fontSize: 'clamp(1rem, 5cqi, 2.7rem)',
           lineHeight: 1.2,
           color: '#1D0E24',
           margin: '2% 0 6%',
@@ -72,7 +72,7 @@ export function CardBack({ card }: { card: CardData }) {
           style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 900,
-            fontSize: 'clamp(1.1rem, 6cqi, 1.6rem)',
+            fontSize: 'clamp(1.1rem, 6cqi, 3.2rem)',
             lineHeight: 1.15,
             color: '#1D0E24',
             margin: '0 0 8%',
@@ -87,7 +87,7 @@ export function CardBack({ card }: { card: CardData }) {
         style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 400,
-          fontSize: 'clamp(0.7rem, 3.5cqi, 0.95rem)',
+          fontSize: 'clamp(0.7rem, 3.5cqi, 1.9rem)',
           lineHeight: 1.45,
           color: '#1D0E24',
           flex: 1,
@@ -105,7 +105,7 @@ export function CardBack({ card }: { card: CardData }) {
           marginTop: '4%',
         }}
       >
-        <div style={{ fontSize: 12, lineHeight: 1.5 }}>
+        <div style={{ fontSize: 'clamp(0.7rem, 3cqi, 1.5rem)', lineHeight: 1.5 }}>
           <div style={{ fontWeight: 400, color: '#1D0E24' }}>
             {cardIndex} of {totalCards}
           </div>
