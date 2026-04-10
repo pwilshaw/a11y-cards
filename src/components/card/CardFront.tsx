@@ -6,96 +6,54 @@ export function CardFront({ card }: { card: CardData }) {
   const typeConfig = CARD_TYPE_CONFIG[card.type];
 
   return (
-    <div
-      className="card__front"
-      style={{ background: '#FF4F81' }}
-    >
-      {/* Lime inner area */}
-      <div
-        className="absolute inset-[1.4%] rounded-[16px] overflow-hidden flex flex-col"
-        style={{ background: '#F2FF6C' }}
+    <div className="card__front" style={{ padding: '11% 11% 8%', display: 'flex', flexDirection: 'column' }}>
+      {/* Title — top left, bold dark text matching Figma */}
+      <h3
+        style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontWeight: 900,
+          fontSize: 'clamp(1.1rem, 5.2cqi, 1.5rem)',
+          lineHeight: 1.2,
+          color: '#1D0E24',
+          margin: 0,
+        }}
       >
-        {/* Title */}
-        <div style={{ padding: '15% 10% 0' }}>
-          <h3
-            style={{
-              fontFamily: "'Inter', system-ui, sans-serif",
-              fontWeight: 900,
-              fontSize: 'clamp(1.2rem, 6vw, 1.6rem)',
-              lineHeight: 1.15,
-              color: '#222222',
-            }}
-          >
-            {card.title}
-          </h3>
-        </div>
+        {card.title}
+      </h3>
 
-        {/* Illustration area — type icon centred */}
-        <div className="flex-1 flex items-center justify-center" style={{ padding: '5% 10%' }}>
-          <div
-            style={{
-              width: '55%',
-              aspectRatio: '1',
-              borderRadius: '50%',
-              background: 'rgba(0,0,0,0.05)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <span style={{ color: typeConfig.color, opacity: 0.6 }}>
-              <TypeIcon type={card.type} size={64} />
-            </span>
-          </div>
+      {/* Illustration area — type icon as placeholder for kawaii art */}
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingTop: '5%',
+        }}
+      >
+        <div
+          style={{
+            width: '50%',
+            aspectRatio: '1',
+            borderRadius: '50%',
+            background: 'rgba(0,0,0,0.04)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <span style={{ color: typeConfig.color, opacity: 0.5 }}>
+            <TypeIcon type={card.type} size={56} />
+          </span>
         </div>
-
-        {/* Decorative elements */}
-        <div
-          className="absolute"
-          style={{
-            top: '12%',
-            right: '8%',
-            width: 8,
-            height: 8,
-            borderRadius: '50%',
-            background: '#F78E05',
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            top: '35%',
-            left: '6%',
-            width: 6,
-            height: 6,
-            background: '#F78E05',
-            transform: 'rotate(45deg)',
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            bottom: '20%',
-            right: '10%',
-            width: 10,
-            height: 10,
-            background: '#00AEEF',
-            borderRadius: '2px',
-            transform: 'rotate(20deg)',
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            top: '50%',
-            right: '15%',
-            width: 5,
-            height: 5,
-            borderRadius: '50%',
-            background: '#FF4F81',
-          }}
-        />
       </div>
+
+      {/* Scattered decorative elements matching Figma style */}
+      <div style={{ position: 'absolute', top: '15%', right: '12%', width: 8, height: 8, borderRadius: '50%', background: '#F78E05' }} />
+      <div style={{ position: 'absolute', top: '25%', right: '25%', width: 5, height: 5, borderRadius: '50%', background: '#FF4F81' }} />
+      <div style={{ position: 'absolute', bottom: '25%', left: '8%', width: 14, height: 8, borderRadius: 4, background: '#00AEEF', transform: 'rotate(-30deg)' }} />
+      <div style={{ position: 'absolute', bottom: '15%', right: '12%', width: 14, height: 8, borderRadius: 4, background: '#00AEEF', transform: 'rotate(20deg)' }} />
+      <div style={{ position: 'absolute', top: '45%', left: '10%', width: 10, height: 10, background: '#F78E05', transform: 'rotate(45deg)' }} />
     </div>
   );
 }

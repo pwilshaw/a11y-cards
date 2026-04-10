@@ -13,7 +13,7 @@ export function BinderSlot({ card, collected, onSelect }: BinderSlotProps) {
 
   if (!collected) {
     return (
-      <div className="aspect-[3/4] rounded-xl bg-white/5 border border-white/5 flex flex-col items-center justify-center gap-2 opacity-40">
+      <div className="aspect-[240/336] rounded-xl bg-white/5 border border-white/5 flex flex-col items-center justify-center gap-2 opacity-40">
         <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
           <span className="text-white/30 text-lg">?</span>
         </div>
@@ -29,7 +29,7 @@ export function BinderSlot({ card, collected, onSelect }: BinderSlotProps) {
 
   return (
     <button
-      className="aspect-[3/4] rounded-xl border overflow-hidden relative group cursor-pointer transition-all hover:scale-105 hover:z-10"
+      className="aspect-[240/336] rounded-xl border overflow-hidden relative group cursor-pointer transition-all hover:scale-105 hover:z-10"
       style={{
         background: `var(--type-bg, ${typeConfig.color}20)`,
         borderColor: `${typeConfig.color}30`,
