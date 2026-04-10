@@ -43,8 +43,8 @@ export function CardFront({ card }: { card: CardData }) {
             alt=""
             draggable={false}
             style={{
-              width: '110%',
-              height: '110%',
+              width: '130%',
+              height: '130%',
               objectFit: 'contain',
               position: 'relative',
               zIndex: 1,

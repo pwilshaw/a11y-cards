@@ -188,6 +188,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
                   alignItems: 'center',
                   gap: 14,
                 }}
+                aria-label={`Answer ${labels[i]}: ${answer}`}
                 onClick={() => handleAnswer(i)}
                 disabled={phase !== 'question'}
               >
@@ -219,6 +220,8 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
       {/* Feedback */}
       {phase !== 'question' && phase !== 'reveal' && (
         <div
+          role="status"
+          aria-live="polite"
           style={{
             borderRadius: 16,
             padding: '28px 32px',

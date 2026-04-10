@@ -46,7 +46,8 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
         borderWidth: 2,
       }}
       onDoubleClick={() => onDoubleClick(card)}
-      title="Double-click to inspect"
+      onKeyDown={(e) => { if (e.key === 'Enter') onDoubleClick(card); }}
+      aria-label={`${card.title} — ${typeConfig.label}, ${rarityConfig.label}. Press Enter to inspect.`}
       data-type={card.type}
     >
       {/* Illustration thumbnail — centered in middle of card */}

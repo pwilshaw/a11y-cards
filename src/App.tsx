@@ -29,6 +29,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <a href="#main-content" className="sr-only">Skip to main content</a>
       <Header
         currentView={currentView}
         onViewChange={setCurrentView}
@@ -40,7 +41,7 @@ function App() {
         }}
       />
 
-      <main className="flex-1 flex flex-col items-center px-4 py-10 md:py-16">
+      <main id="main-content" className="flex-1 flex flex-col items-center px-4 py-10 md:py-16">
         {currentView === 'quiz' && (
           <div className="w-full max-w-2xl flex flex-col items-center gap-10">
             <QuizProgress state={state} />

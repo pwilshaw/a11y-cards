@@ -15,7 +15,7 @@ export function ModeSelect({ onSelect }: ModeSelectProps) {
         >
           A11Y Cards
         </h1>
-        <p className="text-white/40 text-lg">Learn accessibility. Collect them all.</p>
+        <p className="text-white/60 text-lg">Learn accessibility. Collect them all.</p>
       </div>
 
       {/* Mode cards */}
@@ -23,11 +23,12 @@ export function ModeSelect({ onSelect }: ModeSelectProps) {
         {/* Normal Mode */}
         <button
           className="flex-1 group relative rounded-2xl border border-white/10 bg-white/[0.03] p-10 text-left transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] hover:scale-[1.02] active:scale-[0.98]"
+          aria-label="Normal mode: four answer choices per question"
           onClick={() => onSelect('normal')}
         >
           <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="relative">
-            <div className="text-5xl font-black text-white/20 mb-6" style={{ fontFamily: "'Outfit', sans-serif" }}>4</div>
+            <div className="text-5xl font-black text-white/40 mb-6" style={{ fontFamily: "'Outfit', sans-serif" }}>4</div>
             <h2 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>Normal</h2>
             <p className="text-sm text-white/50 leading-relaxed mb-8">
               Four choices per question. Perfect for learning the fundamentals of accessibility.
@@ -45,11 +46,12 @@ export function ModeSelect({ onSelect }: ModeSelectProps) {
         {/* Accessibility Pro */}
         <button
           className="flex-1 group relative rounded-2xl border border-white/10 bg-white/[0.03] p-10 text-left transition-all duration-300 hover:border-pink-500/30 hover:bg-white/[0.06] hover:scale-[1.02] active:scale-[0.98]"
+          aria-label="Accessibility Pro mode: two trickier answer choices per question"
           onClick={() => onSelect('pro')}
         >
           <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
           <div className="relative">
-            <div className="text-5xl font-black text-white/20 mb-6" style={{ fontFamily: "'Outfit', sans-serif" }}>2</div>
+            <div className="text-5xl font-black text-white/40 mb-6" style={{ fontFamily: "'Outfit', sans-serif" }}>2</div>
             <h2 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: "'Outfit', sans-serif" }}>
               Accessibility Pro
             </h2>

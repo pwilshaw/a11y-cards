@@ -23,7 +23,7 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
   ];
 
   return (
-    <header className="relative border-b border-white/[0.06]">
+    <header className="relative border-b border-white/[0.06]" role="banner">
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
       <div className="relative flex items-center justify-between px-6 py-5">
@@ -37,27 +37,28 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
           </h1>
           <button
             onClick={onModeChange}
+            aria-label={`Current mode: ${mode === 'pro' ? 'Accessibility Pro' : 'Normal'}. Click to change.`}
             className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md transition-colors cursor-pointer"
             style={{
               background: mode === 'pro' ? 'rgba(190,24,93,0.15)' : 'rgba(255,255,255,0.06)',
-              color: mode === 'pro' ? '#F472B6' : 'rgba(255,255,255,0.35)',
-              border: `1px solid ${mode === 'pro' ? 'rgba(190,24,93,0.25)' : 'rgba(255,255,255,0.08)'}`,
+              color: mode === 'pro' ? '#F472B6' : 'rgba(255,255,255,0.5)',
+              border: `1px solid ${mode === 'pro' ? 'rgba(190,24,93,0.25)' : 'rgba(255,255,255,0.1)'}`,
             }}
-            title="Change mode"
           >
             {mode === 'pro' ? 'Pro' : 'Normal'}
           </button>
         </div>
 
         {/* Center: Nav tabs */}
-        <nav className="flex gap-1 bg-white/[0.04] rounded-xl p-1.5 border border-white/[0.06]">
+        <nav aria-label="Main navigation" className="flex gap-1 bg-white/[0.04] rounded-xl p-1.5 border border-white/[0.06]">
           {tabs.map(tab => (
             <button
               key={tab.key}
+              aria-current={currentView === tab.key ? 'page' : undefined}
               className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 currentView === tab.key
                   ? 'bg-white/10 text-white shadow-sm'
-                  : 'text-white/40 hover:text-white/70'
+                  : 'text-white/50 hover:text-white/70'
               }`}
               onClick={() => onViewChange(tab.key)}
             >
@@ -67,8 +68,8 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
         </nav>
 
         {/* Right: Collection count + progress */}
-        <div className="flex items-center gap-3">
-          <div className="w-20 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+        <div className="flex items-center gap-3" aria-label={`${collected} of ${total} cards collected`}>
+          <div className="w-20 h-1.5 rounded-full bg-white/[0.06] overflow-hidden" role="progressbar" aria-valuenow={percentage} aria-valuemin={0} aria-valuemax={100}>
             <div
               className="h-full rounded-full transition-all duration-700 ease-out"
               style={{
@@ -77,7 +78,7 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
               }}
             />
           </div>
-          <span className="text-xs font-mono text-white/30 tabular-nums">
+          <span className="text-xs font-mono text-white/50 tabular-nums">
             {collected}/{total}
           </span>
         </div>

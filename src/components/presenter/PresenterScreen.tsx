@@ -145,7 +145,7 @@ export function PresenterScreen() {
         </span>
 
         <div className="flex items-center gap-3">
-          <span className="text-xs text-white/30 font-mono tabular-nums">
+          <span className="text-xs text-white/50 font-mono tabular-nums">
             {index + 1} / {deck.length}
           </span>
           <div className="w-32 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
@@ -177,6 +177,7 @@ export function PresenterScreen() {
         <button
           onClick={goPrev}
           disabled={isFirst}
+          aria-label="Previous slide"
           className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0"
           style={{
             background: isFirst ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.05)',
@@ -214,6 +215,7 @@ export function PresenterScreen() {
         <button
           onClick={goNext}
           disabled={isLast}
+          aria-label="Next slide"
           className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0"
           style={{
             background: isLast ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.05)',
@@ -244,11 +246,11 @@ export function PresenterScreen() {
           </button>
         )}
 
-        <p className="text-[11px] text-white/20">
-          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/30 font-mono text-[10px]">&larr;</kbd>{' '}
-          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/30 font-mono text-[10px]">&rarr;</kbd>{' '}
+        <p className="text-[11px] text-white/40">
+          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-[10px]">&larr;</kbd>{' '}
+          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-[10px]">&rarr;</kbd>{' '}
           navigate{' · '}
-          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/30 font-mono text-[10px]">F</kbd>{' '}
+          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-[10px]">F</kbd>{' '}
           flip
         </p>
       </div>
