@@ -42,10 +42,10 @@ function TitleCard({ title, color }: { title: string; color: string }) {
           style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 900,
-            fontSize: 'clamp(1.5rem, 8vw, 2.8rem)',
+            fontSize: 'clamp(1.2rem, 6vw, 2.4rem)',
             lineHeight: 1.1,
             color: 'white',
-            wordBreak: 'break-word',
+            whiteSpace: 'nowrap',
           }}
         >
           <span style={{ opacity: 0.5, fontWeight: 700 }}>#</span>
