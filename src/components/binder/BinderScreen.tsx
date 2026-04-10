@@ -29,18 +29,16 @@ export function BinderScreen({ state }: BinderScreenProps) {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Header */}
-      <div className="flex items-end justify-between mb-8">
-        <div>
-          <h2
-            className="text-2xl font-black text-white mb-1"
-            style={{ fontFamily: "'Outfit', sans-serif" }}
-          >
-            Collection
-          </h2>
-          <p className="text-sm text-white/35">
-            {collected} of {total} cards ({pct}%)
-          </p>
-        </div>
+      <div className="mb-8">
+        <h2
+          className="text-2xl font-black text-white mb-2"
+          style={{ fontFamily: "'Outfit', sans-serif" }}
+        >
+          Collection
+        </h2>
+        <p className="text-sm text-white/35">
+          {collected} of {total} cards ({pct}%)
+        </p>
       </div>
 
       {/* Filters */}
@@ -52,7 +50,7 @@ export function BinderScreen({ state }: BinderScreenProps) {
       />
 
       {/* Card grid */}
-      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2.5">
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3 mt-8">
         {filteredCards.map(card => (
           <BinderSlot
             key={card.id}

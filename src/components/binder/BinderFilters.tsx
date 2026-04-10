@@ -18,9 +18,9 @@ export function BinderFilters({
   const rarities: (Rarity | 'all')[] = ['all', ...Object.keys(RARITY_CONFIG) as Rarity[]];
 
   return (
-    <div className="flex flex-col gap-3 mb-8">
+    <div className="flex flex-col gap-4">
       {/* Type filters */}
-      <div className="flex gap-1.5 flex-wrap">
+      <div className="flex gap-2 flex-wrap">
         {types.map(type => {
           const isActive = selectedType === type;
           const config = type !== 'all' ? CARD_TYPE_CONFIG[type] : null;
@@ -28,17 +28,17 @@ export function BinderFilters({
           return (
             <button
               key={type}
-              className="px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
+              className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
               style={{
                 background: isActive
                   ? config ? `${config.color}20` : 'rgba(255,255,255,0.1)'
-                  : 'rgba(255,255,255,0.02)',
+                  : 'rgba(255,255,255,0.03)',
                 color: isActive
                   ? config ? config.glow : 'white'
-                  : 'rgba(255,255,255,0.35)',
+                  : 'rgba(255,255,255,0.4)',
                 border: `1px solid ${isActive
                   ? config ? `${config.color}30` : 'rgba(255,255,255,0.15)'
-                  : 'rgba(255,255,255,0.05)'}`,
+                  : 'rgba(255,255,255,0.06)'}`,
               }}
               onClick={() => onTypeChange(type)}
             >
@@ -49,17 +49,17 @@ export function BinderFilters({
       </div>
 
       {/* Rarity filters */}
-      <div className="flex gap-1.5 flex-wrap">
+      <div className="flex gap-2 flex-wrap">
         {rarities.map(rarity => {
           const isActive = selectedRarity === rarity;
           return (
             <button
               key={rarity}
-              className="px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
+              className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
               style={{
-                background: isActive ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.02)',
-                color: isActive ? 'white' : 'rgba(255,255,255,0.35)',
-                border: `1px solid ${isActive ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)'}`,
+                background: isActive ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.03)',
+                color: isActive ? 'white' : 'rgba(255,255,255,0.4)',
+                border: `1px solid ${isActive ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)'}`,
               }}
               onClick={() => onRarityChange(rarity)}
             >

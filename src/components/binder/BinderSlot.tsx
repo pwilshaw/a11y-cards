@@ -14,7 +14,7 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
   if (!collected) {
     return (
       <div
-        className="aspect-[240/336] rounded-xl border flex flex-col items-center justify-center gap-1.5"
+        className="aspect-[240/336] rounded-xl border flex flex-col items-center justify-center gap-2 p-3"
         style={{
           background: 'rgba(255,255,255,0.015)',
           borderColor: 'rgba(255,255,255,0.04)',
@@ -22,7 +22,7 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
         }}
       >
         <div
-          className="w-7 h-7 rounded-full flex items-center justify-center"
+          className="w-8 h-8 rounded-full flex items-center justify-center"
           style={{ background: 'rgba(255,255,255,0.05)' }}
         >
           <span className="text-white/20 text-sm">?</span>
@@ -49,28 +49,29 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
       title="Double-click to inspect"
       data-type={card.type}
     >
-      {/* Illustration thumbnail */}
+      {/* Illustration thumbnail — centered in middle of card */}
       {card.illustration && (
-        <div className="absolute inset-0 flex items-center justify-center pt-[30%]">
+        <div className="absolute inset-0 flex items-center justify-center">
           <img
             src={card.illustration}
             alt=""
-            className="w-[80%] h-[60%] object-contain opacity-90"
+            className="w-[75%] h-[55%] object-contain"
+            style={{ marginTop: '10%' }}
             draggable={false}
           />
         </div>
       )}
 
-      {/* Top label */}
-      <div className="absolute top-0 left-0 right-0 p-1.5 z-10">
+      {/* Top: type + title */}
+      <div className="absolute top-0 left-0 right-0 p-2 z-10">
         <span
-          className="text-[7px] font-bold uppercase tracking-wider"
+          className="text-[7px] font-bold uppercase tracking-wider block mb-0.5"
           style={{ color: typeConfig.color }}
         >
           {typeConfig.label}
         </span>
         <p
-          className="text-[9px] font-bold leading-tight mt-0.5"
+          className="text-[9px] font-bold leading-tight"
           style={{ color: '#1D0E24', fontFamily: "'Outfit', sans-serif" }}
         >
           {card.title}
@@ -78,7 +79,7 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
       </div>
 
       {/* Bottom: ID + stars */}
-      <div className="absolute bottom-0 left-0 right-0 p-1.5 flex items-center justify-between z-10">
+      <div className="absolute bottom-0 left-0 right-0 p-2 flex items-center justify-between z-10">
         <span className="text-[7px] font-mono" style={{ color: 'rgba(29,14,36,0.3)' }}>{card.id}</span>
         <div className="flex gap-px">
           {Array.from({ length: rarityConfig.stars }).map((_, i) => (
