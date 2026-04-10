@@ -18,7 +18,7 @@ export function BinderFilters({
   const rarities: (Rarity | 'all')[] = ['all', ...Object.keys(RARITY_CONFIG) as Rarity[]];
 
   return (
-    <div className="flex flex-wrap gap-4 mb-6">
+    <div className="flex flex-col gap-3 mb-8">
       {/* Type filters */}
       <div className="flex gap-1.5 flex-wrap">
         {types.map(type => {
@@ -28,12 +28,18 @@ export function BinderFilters({
           return (
             <button
               key={type}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                isActive
-                  ? 'bg-white/20 text-white'
-                  : 'bg-white/5 text-white/50 hover:bg-white/10'
-              }`}
-              style={isActive && config ? { background: `${config.color}30`, color: config.color } : undefined}
+              className="px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
+              style={{
+                background: isActive
+                  ? config ? `${config.color}20` : 'rgba(255,255,255,0.1)'
+                  : 'rgba(255,255,255,0.02)',
+                color: isActive
+                  ? config ? config.glow : 'white'
+                  : 'rgba(255,255,255,0.35)',
+                border: `1px solid ${isActive
+                  ? config ? `${config.color}30` : 'rgba(255,255,255,0.15)'
+                  : 'rgba(255,255,255,0.05)'}`,
+              }}
               onClick={() => onTypeChange(type)}
             >
               {type === 'all' ? 'All Types' : CARD_TYPE_CONFIG[type].label}
@@ -44,19 +50,23 @@ export function BinderFilters({
 
       {/* Rarity filters */}
       <div className="flex gap-1.5 flex-wrap">
-        {rarities.map(rarity => (
-          <button
-            key={rarity}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-              selectedRarity === rarity
-                ? 'bg-white/20 text-white'
-                : 'bg-white/5 text-white/50 hover:bg-white/10'
-            }`}
-            onClick={() => onRarityChange(rarity)}
-          >
-            {rarity === 'all' ? 'All Rarities' : RARITY_CONFIG[rarity].label}
-          </button>
-        ))}
+        {rarities.map(rarity => {
+          const isActive = selectedRarity === rarity;
+          return (
+            <button
+              key={rarity}
+              className="px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200"
+              style={{
+                background: isActive ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.02)',
+                color: isActive ? 'white' : 'rgba(255,255,255,0.35)',
+                border: `1px solid ${isActive ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)'}`,
+              }}
+              onClick={() => onRarityChange(rarity)}
+            >
+              {rarity === 'all' ? 'All Rarities' : RARITY_CONFIG[rarity].label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

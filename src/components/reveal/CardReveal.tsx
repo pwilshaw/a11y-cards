@@ -21,33 +21,37 @@ export function CardReveal({ card, onDismiss }: CardRevealProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)' }}
       onClick={onDismiss}
     >
       <div
-        className="flex flex-col items-center gap-6"
+        className="flex flex-col items-center gap-8"
         onClick={e => e.stopPropagation()}
       >
         {/* Rarity announcement */}
         <div
           className={`text-center transition-all duration-700 ${
-            revealed ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+            revealed ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-6'
           }`}
         >
-          <p className="text-sm font-bold uppercase tracking-widest mb-1" style={{ color: typeConfig.color }}>
-            {typeConfig.label} Type
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2"
+            style={{ color: typeConfig.glow }}
+          >
+            {typeConfig.label}
           </p>
-          <p className="text-2xl font-bold text-white">
+          <p className="text-3xl font-black text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>
             {rarityConfig.label}!
           </p>
         </div>
 
         {/* Card with entrance animation */}
         <div
-          className={`transition-all duration-700 ${
+          className={`transition-all duration-700 ease-out ${
             revealed
               ? 'opacity-100 scale-100 rotate-0'
-              : 'opacity-0 scale-75 rotate-12'
+              : 'opacity-0 scale-75 rotate-6'
           }`}
         >
           <Card card={card} />
@@ -55,9 +59,14 @@ export function CardReveal({ card, onDismiss }: CardRevealProps) {
 
         {/* Dismiss button */}
         <button
-          className={`px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium transition-all duration-500 ${
+          className={`px-8 py-2.5 rounded-xl font-semibold text-sm transition-all duration-500 cursor-pointer ${
             revealed ? 'opacity-100' : 'opacity-0'
           }`}
+          style={{
+            background: `${typeConfig.color}20`,
+            color: typeConfig.glow,
+            border: `1px solid ${typeConfig.color}30`,
+          }}
           onClick={onDismiss}
         >
           Add to Collection

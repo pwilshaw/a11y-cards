@@ -8,35 +8,30 @@ interface QuizProgressProps {
 export function QuizProgress({ state }: QuizProgressProps) {
   const total = cards.length;
   const collected = state.collectedCardIds.length;
-  const percentage = Math.round((collected / total) * 100);
 
   return (
-    <div className="flex items-center gap-6 text-sm">
+    <div className="flex items-center gap-5 text-sm">
       {/* Streak */}
-      <div className="flex items-center gap-2">
-        <span className="text-orange-400 font-bold">
-          {state.currentStreak >= 3 ? 'x' + state.currentStreak : '#'}
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <span className="text-orange-400 text-xs">
+          {state.currentStreak >= 3 ? '🔥' : ''}
         </span>
-        <span className="text-white/70">
-          Streak: <span className="text-white font-bold">{state.currentStreak}</span>
-        </span>
+        <span className="text-white/40 text-xs">Streak</span>
+        <span className="text-white font-bold text-sm tabular-nums">{state.currentStreak}</span>
       </div>
 
       {/* Score */}
-      <div className="text-white/70">
-        Score: <span className="text-white font-bold">{state.totalCorrect}</span>/{state.totalAnswered}
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <span className="text-white/40 text-xs">Score</span>
+        <span className="text-white font-bold text-sm tabular-nums">{state.totalCorrect}</span>
+        <span className="text-white/20 text-xs">/ {state.totalAnswered}</span>
       </div>
 
-      {/* Collection progress */}
-      <div className="flex items-center gap-2">
-        <span className="text-white/70">Cards:</span>
-        <div className="w-24 h-2 rounded-full bg-white/10 overflow-hidden">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"
-            style={{ width: `${percentage}%` }}
-          />
-        </div>
-        <span className="text-white font-bold">{collected}/{total}</span>
+      {/* Cards collected */}
+      <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <span className="text-white/40 text-xs">Cards</span>
+        <span className="text-white font-bold text-sm tabular-nums">{collected}</span>
+        <span className="text-white/20 text-xs">/ {total}</span>
       </div>
     </div>
   );

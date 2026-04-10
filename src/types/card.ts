@@ -2,6 +2,8 @@ export type CardType = 'contrast' | 'vision' | 'motor' | 'cognition' | 'structur
 
 export type Rarity = 'common' | 'uncommon' | 'rare' | 'ultra-rare';
 
+export type GameMode = 'normal' | 'pro';
+
 export interface Card {
   id: string;
   type: CardType;
@@ -11,6 +13,7 @@ export interface Card {
   description: string;
   flavourText?: string;
   stat?: number;
+  illustration?: string;
 }
 
 export interface Question {
@@ -34,17 +37,17 @@ export interface GameState {
 }
 
 export const CARD_TYPE_CONFIG: Record<CardType, { label: string; color: string; glow: string }> = {
-  contrast: { label: 'Contrast', color: '#7B3FA0', glow: '#C084FC' },      // Purple
-  vision: { label: 'Vision', color: '#0B75B7', glow: '#82D3F7' },          // Blue (Figma primary)
-  motor: { label: 'Motor', color: '#C05621', glow: '#FB923C' },            // Orange
-  cognition: { label: 'Cognition', color: '#B7940B', glow: '#FCD34D' },    // Gold
-  structure: { label: 'Structure', color: '#0F766E', glow: '#5EEAD4' },    // Teal
-  philosophy: { label: 'Philosophy', color: '#BE185D', glow: '#F472B6' },  // Pink
+  contrast:   { label: 'Colour',        color: '#7B3FA0', glow: '#C084FC' },
+  vision:     { label: 'Visual',        color: '#0B75B7', glow: '#82D3F7' },
+  motor:      { label: 'Interaction',   color: '#C05621', glow: '#FB923C' },
+  cognition:  { label: 'KISS',          color: '#B7940B', glow: '#FCD34D' },
+  structure:  { label: 'Sequence',      color: '#0F766E', glow: '#5EEAD4' },
+  philosophy: { label: 'Fundamentals',  color: '#BE185D', glow: '#F472B6' },
 };
 
-export const RARITY_CONFIG: Record<Rarity, { label: string; stars: number }> = {
-  'common': { label: 'Common', stars: 1 },
-  'uncommon': { label: 'Uncommon', stars: 2 },
-  'rare': { label: 'Rare', stars: 3 },
-  'ultra-rare': { label: 'Ultra Rare', stars: 4 },
+export const RARITY_CONFIG: Record<Rarity, { label: string; stars: number; starColor: string }> = {
+  'common':     { label: 'Common',      stars: 1, starColor: '#FFF830' },   // Yellow
+  'uncommon':   { label: 'Rare',        stars: 2, starColor: '#FFB800' },   // Orange
+  'rare':       { label: 'Ultra Rare',  stars: 3, starColor: '#FF4F81' },   // Pink
+  'ultra-rare': { label: 'Legendary',   stars: 4, starColor: '#00AEEF' },   // Blue
 };

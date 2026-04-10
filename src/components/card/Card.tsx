@@ -18,9 +18,10 @@ interface CardProps {
   flipped?: boolean;
   interactive?: boolean;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function Card({ card, flipped: controlledFlipped, interactive = true, className = '' }: CardProps) {
+export function Card({ card, flipped: controlledFlipped, interactive = true, className = '', style }: CardProps) {
   const { cardRef, handlers } = useCardInteraction();
   const [internalFlipped, setInternalFlipped] = useState(false);
 
@@ -36,6 +37,7 @@ export function Card({ card, flipped: controlledFlipped, interactive = true, cla
     <div
       ref={cardRef}
       className={`card ${isFlipped ? 'card--flipped' : ''} ${className}`}
+      style={style}
       data-type={card.type}
       data-rarity={card.rarity}
       onClick={handleClick}

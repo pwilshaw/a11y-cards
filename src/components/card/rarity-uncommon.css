@@ -1,34 +1,35 @@
-/* ===== Uncommon: Regular Holographic ===== */
+/* ===== Uncommon: Regular Holo (rainbow scanlines) ===== */
+/* Adapted from pokemon-cards-css regular-holo */
 
 .card[data-rarity="uncommon"] .card__shine {
+
+  --scanlines-space: 1px;
+  --scanlines-light: #666;
+  --scanlines-dark: black;
+  --bars: 3%;
+  --bar-color: hsla(0, 0%, 70%, 1);
+  --bar-bg: hsla(0, 0%, 0%, 1);
+
   background-image:
-    repeating-linear-gradient(
-      110deg,
-      var(--violet) 0px,
-      var(--blue) 80px,
-      var(--cyan) 160px,
-      var(--green) 240px,
-      var(--yellow) 320px,
-      var(--orange) 400px,
-      var(--red) 480px,
-      var(--violet) 560px
+    repeating-linear-gradient( 110deg,
+      var(--violet), var(--blue), var(--green), var(--yellow), var(--red),
+      var(--violet), var(--blue), var(--green), var(--yellow), var(--red),
+      var(--violet), var(--blue), var(--green), var(--yellow), var(--red)
     ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.15) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 2px,
-      transparent 4px
+    repeating-linear-gradient( 90deg,
+      var(--scanlines-dark) calc(var(--scanlines-space) * 0), var(--scanlines-dark) calc(var(--scanlines-space) * 2),
+      var(--scanlines-light) calc(var(--scanlines-space) * 2), var(--scanlines-light) calc(var(--scanlines-space) * 4)
     );
-  background-size: 200% 200%, 100% 100%;
+
   background-position:
-    calc(((50% - var(--background-x)) * 2.5) + 50%)
-    calc(((50% - var(--background-y)) * 3) + 50%),
+    calc(((50% - var(--background-x)) * 2.6) + 50%) calc(((50% - var(--background-y)) * 3.5) + 50%),
     center center;
+
+  background-size: 400% 400%, cover;
   background-blend-mode: overlay;
-  mix-blend-mode: overlay;
-  filter: brightness(0.8) saturate(1.5);
-  opacity: calc(var(--card-opacity) * 0.55);
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+  mix-blend-mode: color-dodge;
+  opacity: var(--card-opacity);
 }
 
 .card[data-rarity="uncommon"] .card__shine::before {
@@ -36,14 +37,32 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background-image: repeating-linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.05) 0px,
-    rgba(0, 0, 0, 0.05) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: overlay;
+
+  background-image:
+    repeating-linear-gradient( 90deg,
+      var(--bar-bg) calc(var(--bars)*2),
+      var(--bar-color) calc(var(--bars)*3),
+      var(--bar-bg) calc(var(--bars)*3.5),
+      var(--bar-color) calc(var(--bars)*4),
+      var(--bar-bg) calc(var(--bars)*5),
+      var(--bar-bg) calc(var(--bars)*14)
+    ),
+    repeating-linear-gradient( 90deg,
+      var(--bar-bg) calc(var(--bars)*2),
+      var(--bar-color) calc(var(--bars)*3),
+      var(--bar-bg) calc(var(--bars)*3.5),
+      var(--bar-color) calc(var(--bars)*4),
+      var(--bar-bg) calc(var(--bars)*5),
+      var(--bar-bg) calc(var(--bars)*10)
+    );
+
+  background-position:
+    calc((((50% - var(--background-x)) * 1.65) + 50% ) + (var(--background-y) * 0.5)) var(--background-x),
+    calc((((50% - var(--background-x)) * -0.9) + 50%) - (var(--background-y) * 0.75) ) var(--background-y);
+  background-size: 200% 200%, 200% 200%;
+  background-blend-mode: screen;
+  filter: brightness(1.15) contrast(1.1);
+  mix-blend-mode: hard-light;
 }
 
 .card[data-rarity="uncommon"] .card__shine::after {
@@ -51,21 +70,40 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background-image: radial-gradient(
-    circle at var(--pointer-x) var(--pointer-y),
-    rgba(255, 255, 255, 0.3) 5%,
-    transparent 45%
-  );
-  mix-blend-mode: overlay;
+
+  background-image:
+    radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 90%, 0.8) 0%,
+      hsla(0, 0%, 78%, 0.1) 25%,
+      hsl(0, 0%, 0%) 90%
+    );
+
+  background-position: center center;
+  background-size: cover;
+  mix-blend-mode: luminosity;
+  filter: brightness(0.6) contrast(4);
 }
 
 .card[data-rarity="uncommon"] .card__glare {
-  background-image: radial-gradient(
-    circle at var(--pointer-x) var(--pointer-y),
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(200, 230, 255, 0.08) 30%,
-    transparent 70%
-  );
-  opacity: var(--card-opacity);
+  opacity: calc( var(--card-opacity) * .8 );
+  filter: brightness(0.8) contrast(1.5);
   mix-blend-mode: overlay;
+}
+
+.card[data-rarity="uncommon"] .card__glare::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  background-image:
+    radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsl(180, 100%, 95%) 5%,
+      hsla(0, 0%, 39%, 0.25) 55%,
+      hsla(0, 0%, 0%, 0.36) 110%
+    );
+  mix-blend-mode: overlay;
+  filter: brightness(.6) contrast(3);
 }

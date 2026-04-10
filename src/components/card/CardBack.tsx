@@ -2,6 +2,26 @@ import type { Card as CardData } from '../../types/card';
 import { CARD_TYPE_CONFIG, RARITY_CONFIG } from '../../types/card';
 import { cards } from '../../data/cards';
 
+function KawaiiStar({ color, size = 28 }: { color: string; size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 28 28" fill="none">
+      <path
+        d="M14 2l3.5 7.5L25 11l-5.5 5 1.5 7.5L14 19.5 7 23.5l1.5-7.5L3 11l7.5-1.5L14 2z"
+        fill={color}
+        stroke="#1D0E24"
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      {/* Kawaii face */}
+      <circle cx="11.5" cy="13" r="1" fill="#1D0E24" />
+      <circle cx="16.5" cy="13" r="1" fill="#1D0E24" />
+      <ellipse cx="10" cy="14.5" rx="1.5" ry="0.8" fill="#FF6B58" opacity="0.5" />
+      <ellipse cx="18" cy="14.5" rx="1.5" ry="0.8" fill="#FF6B58" opacity="0.5" />
+      <path d="M12.5 15.5 Q14 17 15.5 15.5" stroke="#1D0E24" strokeWidth="0.8" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function CardBack({ card }: { card: CardData }) {
   const typeConfig = CARD_TYPE_CONFIG[card.type];
   const rarityConfig = RARITY_CONFIG[card.rarity];
@@ -17,7 +37,7 @@ export function CardBack({ card }: { card: CardData }) {
         padding: '2% 11% 8%',
       }}
     >
-      {/* Top row: Class + Category — matching Figma exactly */}
+      {/* Top row: Class + Category */}
       <div
         style={{
           display: 'flex',
@@ -32,7 +52,7 @@ export function CardBack({ card }: { card: CardData }) {
         <span style={{ fontWeight: 700, color: '#333333' }}>{typeConfig.label}</span>
       </div>
 
-      {/* Title — 24px Black, #1D0E24 */}
+      {/* Title */}
       <h3
         style={{
           fontFamily: "'Outfit', sans-serif",
@@ -46,7 +66,7 @@ export function CardBack({ card }: { card: CardData }) {
         {card.title}
       </h3>
 
-      {/* Subtitle — 32px Black, larger and bolder */}
+      {/* Subtitle */}
       {card.subtitle && (
         <p
           style={{
@@ -62,7 +82,7 @@ export function CardBack({ card }: { card: CardData }) {
         </p>
       )}
 
-      {/* Description — 20px Regular */}
+      {/* Description */}
       <p
         style={{
           fontFamily: "'Outfit', sans-serif",
@@ -76,7 +96,7 @@ export function CardBack({ card }: { card: CardData }) {
         {card.description}
       </p>
 
-      {/* Bottom row: card number + rarity + star */}
+      {/* Bottom row: card number + rarity + kawaii stars */}
       <div
         style={{
           display: 'flex',
@@ -94,22 +114,12 @@ export function CardBack({ card }: { card: CardData }) {
           </div>
         </div>
 
-        {/* Kawaii star matching Figma */}
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path
-            d="M14 2l3.5 7.5L25 11l-5.5 5 1.5 7.5L14 19.5 7 23.5l1.5-7.5L3 11l7.5-1.5L14 2z"
-            fill="#FFF830"
-            stroke="#1D0E24"
-            strokeWidth="1.2"
-            strokeLinejoin="round"
-          />
-          {/* Kawaii face on star */}
-          <circle cx="11.5" cy="13" r="1" fill="#1D0E24" />
-          <circle cx="16.5" cy="13" r="1" fill="#1D0E24" />
-          <ellipse cx="10" cy="14.5" rx="1.5" ry="0.8" fill="#FF6B58" opacity="0.5" />
-          <ellipse cx="18" cy="14.5" rx="1.5" ry="0.8" fill="#FF6B58" opacity="0.5" />
-          <path d="M12.5 15.5 Q14 17 15.5 15.5" stroke="#1D0E24" strokeWidth="0.8" fill="none" strokeLinecap="round" />
-        </svg>
+        {/* Kawaii stars — count and colour match rarity */}
+        <div style={{ display: 'flex', gap: 2 }}>
+          {Array.from({ length: rarityConfig.stars }).map((_, i) => (
+            <KawaiiStar key={i} color={rarityConfig.starColor} size={24} />
+          ))}
+        </div>
       </div>
     </div>
   );

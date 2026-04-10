@@ -39,7 +39,11 @@
 
   /* Texture URLs */
   --glitter: url("/textures/glitter.png");
-  --grain: url("/textures/glitter.png");
+  --glittersize: 200px;
+  --grain: url("/textures/grain.webp");
+  --cosmos-bottom: url("/textures/cosmos-bottom.png");
+  --cosmos-middle: url("/textures/cosmos-middle-trans.png");
+  --cosmos-top: url("/textures/cosmos-top-trans.png");
 }
 
 * {
@@ -58,4 +62,20 @@ body {
 
 #root {
   min-height: 100vh;
+}
+
+/* Zoom-in animation for fullscreen card overlay */
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-in {
+  animation: zoom-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

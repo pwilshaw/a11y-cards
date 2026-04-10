@@ -11,6 +11,7 @@ export const cards: Card[] = [
     description: 'The foundational commitment: every user deserves equal access to our products, regardless of ability.',
     flavourText: '"Accessibility is not a feature — it\'s a social trend." — @poshaughnessy',
     stat: 95,
+    illustration: '/illustrations/phi-001.png',
   },
   {
     id: 'PHI-002',
@@ -21,6 +22,7 @@ export const cards: Card[] = [
     description: 'There is no neutral ground. Every design decision either includes people or leaves them behind.',
     flavourText: 'If you\'re not actively including people, then by default you\'re excluding them.',
     stat: 92,
+    illustration: '/illustrations/phi-002.png',
   },
   {
     id: 'PHI-003',
@@ -31,6 +33,7 @@ export const cards: Card[] = [
     description: "Accessibility isn't optional. There's 1 lawsuit filed every hour in the US alone.",
     flavourText: 'Source: info.usablenet.com',
     stat: 88,
+    illustration: '/illustrations/phi-003.png',
   },
   {
     id: 'PHI-004',
@@ -40,6 +43,7 @@ export const cards: Card[] = [
     subtitle: 'Mindset',
     description: 'Accessibility encompasses motor, cognitive, visual, auditory, and situational needs — far beyond the basics.',
     stat: 85,
+    illustration: '/illustrations/phi-004.png',
   },
   {
     id: 'PHI-005',
@@ -49,6 +53,7 @@ export const cards: Card[] = [
     subtitle: 'Mindset',
     description: 'Accessibility benefits everyone: users with temporary injuries, environmental limitations, or simply different preferences.',
     stat: 87,
+    illustration: '/illustrations/phi-005.png',
   },
   {
     id: 'PHI-006',
@@ -58,6 +63,7 @@ export const cards: Card[] = [
     subtitle: '#NoUserLeftBehind',
     description: 'Inclusive design means designing for the full range of human diversity — ability, language, culture, age, and more.',
     stat: 90,
+    illustration: '/illustrations/phi-006.png',
   },
   {
     id: 'PHI-007',
@@ -67,6 +73,7 @@ export const cards: Card[] = [
     subtitle: 'Global Impact',
     description: '15% of the world population — over 1 billion people — have some form of disability. That\'s not an edge case.',
     stat: 80,
+    illustration: '/illustrations/phi-007.png',
   },
   {
     id: 'PHI-008',
@@ -76,6 +83,7 @@ export const cards: Card[] = [
     subtitle: 'Design Principle',
     description: 'Make interactive elements look interactive. Users should understand what they can do without guessing.',
     stat: 75,
+    illustration: '/illustrations/phi-008.png',
   },
   {
     id: 'PHI-009',
@@ -85,6 +93,7 @@ export const cards: Card[] = [
     subtitle: 'Reality Check',
     description: 'Most users scan, not read. Structure your content so key information is immediately visible.',
     stat: 65,
+    illustration: '/illustrations/phi-009.png',
   },
 
   // ===== CONTRAST (Purple) =====
@@ -96,6 +105,7 @@ export const cards: Card[] = [
     subtitle: 'Colour Principles',
     description: 'Colour is a powerful design tool, but never the only tool. Always pair colour with text, icons, or patterns.',
     stat: 72,
+    illustration: '/illustrations/con-001.png',
   },
   {
     id: 'CON-002',
@@ -105,6 +115,7 @@ export const cards: Card[] = [
     subtitle: 'WCAG Stat',
     description: '1 in 6 people have some form of visual impairment. Design for them, and you design for everyone.',
     stat: 60,
+    illustration: '/illustrations/con-002.png',
   },
   {
     id: 'CON-003',
@@ -114,6 +125,7 @@ export const cards: Card[] = [
     subtitle: 'WCAG 1.4.3',
     description: 'All text must meet a minimum contrast ratio of 4.5:1 against its background. Large text: 3:1.',
     stat: 68,
+    illustration: '/illustrations/con-003.png',
   },
   {
     id: 'CON-004',
@@ -122,6 +134,7 @@ export const cards: Card[] = [
     title: "Don't convey meaning with colour alone",
     subtitle: 'WCAG 1.4.1',
     description: 'Never use colour as the only way to communicate information. Pair with labels, icons, or patterns.',
+    illustration: '/illustrations/con-004.png',
   },
   {
     id: 'CON-005',
@@ -130,6 +143,7 @@ export const cards: Card[] = [
     title: "Don't use coloured text for status",
     subtitle: 'Best Practice',
     description: 'Red for error, green for success? Add icons and text labels too — colour-blind users need them.',
+    illustration: '/illustrations/con-005.png',
   },
   {
     id: 'CON-006',
@@ -138,6 +152,7 @@ export const cards: Card[] = [
     title: 'Use explicit text and icons',
     subtitle: 'Do This',
     description: 'Pair every colour indicator with a clear text label and/or icon that conveys the same meaning.',
+    illustration: '/illustrations/con-006.png',
   },
   {
     id: 'CON-007',
@@ -146,6 +161,7 @@ export const cards: Card[] = [
     title: "Don't use abstract graph legends",
     subtitle: 'Data Viz',
     description: 'Colour-only graph legends are inaccessible. Use patterns, direct labels, or interactive tooltips.',
+    illustration: '/illustrations/con-007.png',
   },
   {
     id: 'CON-008',
@@ -155,6 +171,7 @@ export const cards: Card[] = [
     subtitle: 'Data Viz',
     description: 'Use differing patterns and direct labels placed next to the data they describe. Minimise legend lookups.',
     stat: 55,
+    illustration: '/illustrations/con-008.png',
   },
   {
     id: 'CON-009',
@@ -164,6 +181,7 @@ export const cards: Card[] = [
     subtitle: 'Theme Design',
     description: 'Light themes need careful contrast checking. Light greys on white backgrounds are a common failure point.',
     stat: 50,
+    illustration: '/illustrations/con-009.png',
   },
   {
     id: 'CON-010',
@@ -173,6 +191,7 @@ export const cards: Card[] = [
     subtitle: 'Theme Design',
     description: 'Dark themes can cause glare with pure white text. Use slightly warm off-whites for comfortable reading.',
     stat: 50,
+    illustration: '/illustrations/con-010.png',
   },
 
   // ===== VISION (Teal) =====
@@ -184,6 +203,7 @@ export const cards: Card[] = [
     subtitle: 'Reality Check',
     description: 'Only 35% of the population has 20/20 vision without correction. Design for the other 65%.',
     stat: 78,
+    illustration: '/illustrations/vis-001.png',
   },
   {
     id: 'VIS-002',
@@ -192,6 +212,7 @@ export const cards: Card[] = [
     title: "Don't write walls of text",
     subtitle: 'Readability',
     description: 'Large blocks of unbroken text are hard to read for everyone, especially users with dyslexia or low vision.',
+    illustration: '/illustrations/vis-002.png',
   },
   {
     id: 'VIS-003',
@@ -200,6 +221,7 @@ export const cards: Card[] = [
     title: 'Use large fonts and whitespace',
     subtitle: 'Typography',
     description: 'Generous font sizes and whitespace improve readability for all users. Minimum 16px for body text.',
+    illustration: '/illustrations/vis-003.png',
   },
   {
     id: 'VIS-004',
@@ -208,6 +230,7 @@ export const cards: Card[] = [
     title: "Don't use rainbow fonts",
     subtitle: 'Typography',
     description: 'Decorative, multi-coloured, or highly stylised fonts are extremely hard to read for most users.',
+    illustration: '/illustrations/vis-004.png',
   },
   {
     id: 'VIS-005',
@@ -216,6 +239,7 @@ export const cards: Card[] = [
     title: 'Use approved fonts',
     subtitle: 'Typography',
     description: 'Stick to tested, readable typefaces. Sans-serif fonts like Inter, Open Sans, and Atkinson Hyperlegible work well.',
+    illustration: '/illustrations/vis-005.png',
   },
 
   // ===== MOTOR (Orange) =====
@@ -227,6 +251,7 @@ export const cards: Card[] = [
     subtitle: 'Einstein Principle',
     description: '"Everything should be made as simple as possible, but not simpler." Reduce interaction complexity to the minimum needed.',
     stat: 82,
+    illustration: '/illustrations/mot-001.png',
   },
   {
     id: 'MOT-002',
@@ -235,6 +260,7 @@ export const cards: Card[] = [
     title: "Don't expect everyone to use a mouse",
     subtitle: 'Input Diversity',
     description: 'Many users navigate with keyboards, switches, voice control, or eye tracking. Support all input methods.',
+    illustration: '/illustrations/mot-002.png',
   },
   {
     id: 'MOT-003',
@@ -243,6 +269,7 @@ export const cards: Card[] = [
     title: 'Allow keyboard-only navigation',
     subtitle: 'WCAG 2.1.1',
     description: 'Every interactive element must be reachable and operable using only a keyboard. No exceptions.',
+    illustration: '/illustrations/mot-003.png',
   },
   {
     id: 'MOT-004',
@@ -252,6 +279,7 @@ export const cards: Card[] = [
     subtitle: 'WCAG 2.2.1',
     description: "Not everyone works at the same speed. Avoid time limits, or provide controls to extend or disable them.",
     stat: 62,
+    illustration: '/illustrations/mot-004.png',
   },
   {
     id: 'MOT-005',
@@ -260,6 +288,7 @@ export const cards: Card[] = [
     title: "Don't use mouse-only behaviour",
     subtitle: 'Input Method',
     description: 'Hover tooltips, drag-and-drop without alternatives, and right-click menus all exclude keyboard users.',
+    illustration: '/illustrations/mot-005.png',
   },
   {
     id: 'MOT-006',
@@ -268,6 +297,7 @@ export const cards: Card[] = [
     title: 'Use keyboard shortcuts',
     subtitle: 'Efficiency',
     description: 'Keyboard shortcuts speed up navigation for power users and are essential for switch/voice control users.',
+    illustration: '/illustrations/mot-006.png',
   },
 
   // ===== COGNITION (Yellow) =====
@@ -279,6 +309,7 @@ export const cards: Card[] = [
     subtitle: 'Psychology',
     description: 'Decision time increases logarithmically with the number of choices. Reduce options to reduce cognitive load.',
     stat: 76,
+    illustration: '/illustrations/cog-001.png',
   },
   {
     id: 'COG-002',
@@ -288,6 +319,7 @@ export const cards: Card[] = [
     subtitle: 'Feedback',
     description: 'Users should always know where they are, what happened, and what to do next — both visually and non-visually.',
     stat: 58,
+    illustration: '/illustrations/cog-002.png',
   },
   {
     id: 'COG-003',
@@ -296,6 +328,7 @@ export const cards: Card[] = [
     title: "Don't ask for non-essential info",
     subtitle: 'Form Design',
     description: "Every extra field is friction. Only ask for what you truly need. Mark optional fields, not required ones.",
+    illustration: '/illustrations/cog-003.png',
   },
   {
     id: 'COG-004',
@@ -304,6 +337,7 @@ export const cards: Card[] = [
     title: 'Make it super clear what to do',
     subtitle: 'Clarity',
     description: "Don't make users guess. Use explicit labels, clear CTAs, and step-by-step guidance.",
+    illustration: '/illustrations/cog-004.png',
   },
   {
     id: 'COG-005',
@@ -312,6 +346,7 @@ export const cards: Card[] = [
     title: "Don't make users question decisions",
     subtitle: 'Confidence',
     description: 'Provide confirmation, undo options, and clear feedback so users feel confident in their actions.',
+    illustration: '/illustrations/cog-005.png',
   },
   {
     id: 'COG-006',
@@ -321,6 +356,7 @@ export const cards: Card[] = [
     subtitle: 'Progressive Disclosure',
     description: 'Break multi-step processes into clear, linear stages. Show progress. Let users save and return.',
     stat: 64,
+    illustration: '/illustrations/cog-006.png',
   },
 
   // ===== STRUCTURE (Green) =====
@@ -332,6 +368,7 @@ export const cards: Card[] = [
     subtitle: 'Document Flow',
     description: 'Visual layout must match DOM order. Screen readers follow the code, not the pixels.',
     stat: 74,
+    illustration: '/illustrations/str-001.png',
   },
   {
     id: 'STR-002',
@@ -340,6 +377,7 @@ export const cards: Card[] = [
     title: 'Keep simple logical tab orders',
     subtitle: 'WCAG 2.4.3',
     description: 'Tab order should flow naturally: left to right, top to bottom. Never use positive tabindex values.',
+    illustration: '/illustrations/str-002.png',
   },
   {
     id: 'STR-003',
@@ -348,6 +386,7 @@ export const cards: Card[] = [
     title: "Don't go against semantics",
     subtitle: 'HTML Semantics',
     description: "A div with an onClick isn't a button. Use the right HTML element for the job — it's free accessibility.",
+    illustration: '/illustrations/str-003.png',
   },
   {
     id: 'STR-004',
@@ -356,6 +395,7 @@ export const cards: Card[] = [
     title: 'Use good semantic structure',
     subtitle: 'HTML Best Practice',
     description: 'Use heading levels (h1-h6) in order. Use nav, main, aside, footer. Landmarks help users navigate.',
+    illustration: '/illustrations/str-004.png',
   },
   {
     id: 'STR-005',
@@ -365,6 +405,7 @@ export const cards: Card[] = [
     subtitle: 'Image A11y',
     description: 'Decorative images should have empty alt text (alt=""). Only describe images that add information.',
     stat: 52,
+    illustration: '/illustrations/str-005.png',
   },
   {
     id: 'STR-006',
@@ -373,6 +414,7 @@ export const cards: Card[] = [
     title: 'Add empty alt for decorative images',
     subtitle: 'WCAG 1.1.1',
     description: 'If an image is purely decorative, use alt="" so screen readers skip it. Don\'t clutter the experience.',
+    illustration: '/illustrations/str-006.png',
   },
   {
     id: 'STR-007',
@@ -382,6 +424,7 @@ export const cards: Card[] = [
     subtitle: 'Image A11y',
     description: 'Good alt text describes the purpose, not appearance. "Submit button" not "blue rectangle with white text".',
     stat: 56,
+    illustration: '/illustrations/str-007.png',
   },
   {
     id: 'STR-008',
@@ -390,6 +433,7 @@ export const cards: Card[] = [
     title: "Don't use images with text",
     subtitle: 'WCAG 1.4.5',
     description: "Text in images can't be resized, translated, or read by screen readers. Use real text instead.",
+    illustration: '/illustrations/str-008.png',
   },
   {
     id: 'STR-009',
@@ -399,6 +443,7 @@ export const cards: Card[] = [
     subtitle: 'KISS Principle',
     description: 'Every layer of complexity is a potential accessibility barrier. Simplify ruthlessly.',
     stat: 60,
+    illustration: '/illustrations/str-009.png',
   },
   {
     id: 'STR-010',
@@ -408,5 +453,6 @@ export const cards: Card[] = [
     subtitle: 'Design Philosophy',
     description: 'The simplest solution that meets the need is usually the most accessible. Complexity is the enemy.',
     stat: 62,
+    illustration: '/illustrations/str-010.png',
   },
 ];

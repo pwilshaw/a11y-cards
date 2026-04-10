@@ -1,58 +1,86 @@
-import type { GameState } from '../../types/card';
+import type { GameState, GameMode } from '../../types/card';
 import { cards } from '../../data/cards';
 
-type View = 'quiz' | 'binder';
+type View = 'quiz' | 'binder' | 'presenter';
 
 interface HeaderProps {
   currentView: View;
   onViewChange: (view: View) => void;
   state: GameState;
+  mode: GameMode;
+  onModeChange: () => void;
 }
 
-export function Header({ currentView, onViewChange, state }: HeaderProps) {
+export function Header({ currentView, onViewChange, state, mode, onModeChange }: HeaderProps) {
   const collected = state.collectedCardIds.length;
   const total = cards.length;
   const percentage = Math.round((collected / total) * 100);
 
+  const tabs: { key: View; label: string }[] = [
+    { key: 'quiz', label: 'Quiz' },
+    { key: 'binder', label: 'Collection' },
+    { key: 'presenter', label: 'Present' },
+  ];
+
   return (
-    <header className="flex flex-col items-center gap-4 px-6 py-6 border-b border-white/10">
-      <div className="flex items-center gap-3">
-        <h1 className="text-2xl font-bold text-white tracking-tight">A11Y Cards</h1>
-        <span className="text-xs text-white/30 font-mono bg-white/5 px-2 py-0.5 rounded">
-          {collected}/{total}
-        </span>
-      </div>
+    <header className="relative border-b border-white/[0.06]">
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-      {/* Nav tabs */}
-      <nav className="flex gap-1 bg-white/5 rounded-lg p-1">
-        <button
-          className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
-            currentView === 'quiz'
-              ? 'bg-white/15 text-white'
-              : 'text-white/50 hover:text-white/80'
-          }`}
-          onClick={() => onViewChange('quiz')}
-        >
-          Quiz
-        </button>
-        <button
-          className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
-            currentView === 'binder'
-              ? 'bg-white/15 text-white'
-              : 'text-white/50 hover:text-white/80'
-          }`}
-          onClick={() => onViewChange('binder')}
-        >
-          Collection
-        </button>
-      </nav>
+      <div className="relative flex items-center justify-between px-6 py-4">
+        {/* Left: Logo + mode */}
+        <div className="flex items-center gap-3">
+          <h1
+            className="text-xl font-black text-white tracking-tight"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            A11Y Cards
+          </h1>
+          <button
+            onClick={onModeChange}
+            className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md transition-colors cursor-pointer"
+            style={{
+              background: mode === 'pro' ? 'rgba(190,24,93,0.15)' : 'rgba(255,255,255,0.06)',
+              color: mode === 'pro' ? '#F472B6' : 'rgba(255,255,255,0.35)',
+              border: `1px solid ${mode === 'pro' ? 'rgba(190,24,93,0.25)' : 'rgba(255,255,255,0.08)'}`,
+            }}
+            title="Change mode"
+          >
+            {mode === 'pro' ? 'Pro' : 'Normal'}
+          </button>
+        </div>
 
-      {/* Progress bar */}
-      <div className="w-48 h-1 rounded-full bg-white/10 overflow-hidden">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"
-          style={{ width: `${percentage}%` }}
-        />
+        {/* Center: Nav tabs */}
+        <nav className="flex gap-0.5 bg-white/[0.04] rounded-xl p-1 border border-white/[0.06]">
+          {tabs.map(tab => (
+            <button
+              key={tab.key}
+              className={`px-5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                currentView === tab.key
+                  ? 'bg-white/10 text-white shadow-sm'
+                  : 'text-white/40 hover:text-white/70'
+              }`}
+              onClick={() => onViewChange(tab.key)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* Right: Collection count + progress */}
+        <div className="flex items-center gap-3">
+          <div className="w-20 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all duration-700 ease-out"
+              style={{
+                width: `${percentage}%`,
+                background: 'linear-gradient(90deg, #7B3FA0, #BE185D, #F78E05)',
+              }}
+            />
+          </div>
+          <span className="text-xs font-mono text-white/30 tabular-nums">
+            {collected}/{total}
+          </span>
+        </div>
       </div>
     </header>
   );

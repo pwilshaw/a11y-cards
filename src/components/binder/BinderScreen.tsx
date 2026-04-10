@@ -24,15 +24,21 @@ export function BinderScreen({ state }: BinderScreenProps) {
 
   const collected = state.collectedCardIds.length;
   const total = cards.length;
+  const pct = Math.round((collected / total) * 100);
 
   return (
     <div className="max-w-4xl mx-auto">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-end justify-between mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-white">Collection</h2>
-          <p className="text-sm text-white/50">
-            {collected} of {total} cards collected ({Math.round((collected / total) * 100)}%)
+          <h2
+            className="text-2xl font-black text-white mb-1"
+            style={{ fontFamily: "'Outfit', sans-serif" }}
+          >
+            Collection
+          </h2>
+          <p className="text-sm text-white/35">
+            {collected} of {total} cards ({pct}%)
           </p>
         </div>
       </div>
@@ -46,19 +52,19 @@ export function BinderScreen({ state }: BinderScreenProps) {
       />
 
       {/* Card grid */}
-      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3">
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2.5">
         {filteredCards.map(card => (
           <BinderSlot
             key={card.id}
             card={card}
             collected={state.collectedCardIds.includes(card.id)}
-            onSelect={setInspectingCard}
+            onDoubleClick={setInspectingCard}
           />
         ))}
       </div>
 
       {filteredCards.length === 0 && (
-        <div className="text-center py-12 text-white/40">
+        <div className="text-center py-16 text-white/25 text-sm">
           No cards match your filters.
         </div>
       )}
@@ -66,10 +72,14 @@ export function BinderScreen({ state }: BinderScreenProps) {
       {/* Full card inspection overlay */}
       {inspectingCard && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center cursor-pointer"
+          style={{ background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)' }}
           onClick={() => setInspectingCard(null)}
         >
-          <div onClick={e => e.stopPropagation()}>
+          <div
+            className="animate-zoom-in"
+            onClick={e => e.stopPropagation()}
+          >
             <Card card={inspectingCard} />
           </div>
         </div>
