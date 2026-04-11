@@ -3,15 +3,22 @@ import { cards } from '../../data/cards';
 
 type View = 'quiz' | 'binder' | 'presenter';
 
+const MODE_LABELS: Record<GameMode, string> = {
+  easy: 'Easy',
+  normal: 'Normal',
+  pro: 'Pro',
+};
+
 interface HeaderProps {
   currentView: View;
   onViewChange: (view: View) => void;
   state: GameState;
   mode: GameMode;
   onModeChange: () => void;
+  onReset: () => void;
 }
 
-export function Header({ currentView, onViewChange, state, mode, onModeChange }: HeaderProps) {
+export function Header({ currentView, onViewChange, state, mode, onModeChange, onReset }: HeaderProps) {
   const collected = state.collectedCardIds.length;
   const total = cards.length;
   const percentage = Math.round((collected / total) * 100);
@@ -27,32 +34,45 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
       <div className="relative flex items-center justify-between" style={{ padding: '24px 48px' }}>
-        {/* Left: Logo + mode */}
-        <div className="flex items-center gap-4">
+        {/* Left: Logo + mode + reset */}
+        <div className="flex items-center" style={{ gap: 16 }}>
           <h1
             className="text-xl font-black text-white tracking-tight"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
-            A11Y Cards
+            Accessibility for Humans
           </h1>
           <button
             onClick={onModeChange}
-            aria-label={`Current mode: ${mode === 'pro' ? 'Accessibility Pro' : 'Normal'}. Click to change.`}
+            aria-label={`Current mode: ${MODE_LABELS[mode]}. Click to change.`}
             className="text-base font-bold uppercase tracking-widest rounded-lg transition-colors cursor-pointer"
             style={{
               padding: '12px 20px',
               minHeight: 44,
-              background: mode === 'pro' ? 'rgba(190,24,93,0.15)' : 'rgba(255,255,255,0.06)',
-              color: mode === 'pro' ? '#F472B6' : 'rgba(255,255,255,0.5)',
-              border: `1px solid ${mode === 'pro' ? 'rgba(190,24,93,0.25)' : 'rgba(255,255,255,0.1)'}`,
+              background: mode === 'pro' ? 'rgba(190,24,93,0.15)' : mode === 'easy' ? 'rgba(94,234,212,0.15)' : 'rgba(255,255,255,0.06)',
+              color: mode === 'pro' ? '#F472B6' : mode === 'easy' ? '#5EEAD4' : 'rgba(255,255,255,0.5)',
+              border: `1px solid ${mode === 'pro' ? 'rgba(190,24,93,0.25)' : mode === 'easy' ? 'rgba(94,234,212,0.25)' : 'rgba(255,255,255,0.1)'}`,
             }}
           >
-            {mode === 'pro' ? 'Pro' : 'Normal'}
+            {MODE_LABELS[mode]}
+          </button>
+          <button
+            onClick={() => { if (window.confirm('Reset all progress? Your card collection will be cleared.')) onReset(); }}
+            aria-label="Reset progress and start again"
+            className="text-base font-medium rounded-lg transition-colors cursor-pointer text-white/40 hover:text-white/70"
+            style={{
+              padding: '12px 20px',
+              minHeight: 44,
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.06)',
+            }}
+          >
+            Reset
           </button>
         </div>
 
         {/* Center: Nav tabs */}
-        <nav aria-label="Main navigation" className="flex gap-1 bg-white/[0.04] rounded-2xl p-2 border border-white/[0.06]">
+        <nav aria-label="Main navigation" className="flex bg-white/[0.04] rounded-2xl border border-white/[0.06]" style={{ gap: 4, padding: 8 }}>
           {tabs.map(tab => (
             <button
               key={tab.key}
@@ -71,7 +91,7 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
         </nav>
 
         {/* Right: Collection count + progress */}
-        <div className="flex items-center gap-4" aria-label={`${collected} of ${total} cards collected`}>
+        <div className="flex items-center" style={{ gap: 16 }} aria-label={`${collected} of ${total} cards collected`}>
           <div className="w-24 h-2 rounded-full bg-white/[0.06] overflow-hidden" role="progressbar" aria-valuenow={percentage} aria-valuemin={0} aria-valuemax={100}>
             <div
               className="h-full rounded-full transition-all duration-700 ease-out"

@@ -2,7 +2,7 @@ export type CardType = 'contrast' | 'vision' | 'motor' | 'cognition' | 'structur
 
 export type Rarity = 'common' | 'uncommon' | 'rare' | 'ultra-rare';
 
-export type GameMode = 'normal' | 'pro';
+export type GameMode = 'easy' | 'normal' | 'pro';
 
 export interface Card {
   id: string;
@@ -23,6 +23,7 @@ export interface Question {
   answers: string[];
   correctIndex: number;
   explanation: string;
+  hint: string;
   difficulty: 1 | 2 | 3;
 }
 

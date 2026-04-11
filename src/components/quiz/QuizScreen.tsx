@@ -15,13 +15,11 @@ interface QuizScreenProps {
 
 type QuizPhase = 'question' | 'correct' | 'wrong' | 'reveal';
 
-/** For pro mode: pick correct + hardest wrong answer, randomise order */
-function buildProAnswers(answers: string[], correctIndex: number) {
+/** For easy/normal mode: pick correct + 1 random wrong, randomise order */
+function buildTwoAnswers(answers: string[], correctIndex: number) {
   const correct = answers[correctIndex];
   const wrongs = answers.filter((_, i) => i !== correctIndex);
-  // Pick a random wrong answer (they're all reasonable distractors)
   const wrong = wrongs[Math.floor(Math.random() * wrongs.length)];
-  // Randomise position
   if (Math.random() > 0.5) {
     return { answers: [correct, wrong], correctIndex: 0 };
   }
@@ -40,13 +38,14 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
   const associatedCard = cards.find(c => c.id === currentQuestion.cardId);
   const typeConfig = associatedCard ? CARD_TYPE_CONFIG[associatedCard.type] : null;
 
-  // Build answer set based on mode — memoised per question
+  // Build answer set based on mode
   const { displayAnswers, displayCorrectIndex } = useMemo(() => {
     if (mode === 'pro') {
-      const pro = buildProAnswers(currentQuestion.answers, currentQuestion.correctIndex);
-      return { displayAnswers: pro.answers, displayCorrectIndex: pro.correctIndex };
+      return { displayAnswers: currentQuestion.answers, displayCorrectIndex: currentQuestion.correctIndex };
     }
-    return { displayAnswers: currentQuestion.answers, displayCorrectIndex: currentQuestion.correctIndex };
+    // Easy and Normal both use A/B
+    const two = buildTwoAnswers(currentQuestion.answers, currentQuestion.correctIndex);
+    return { displayAnswers: two.answers, displayCorrectIndex: two.correctIndex };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionIndex, mode]);
 
@@ -95,10 +94,10 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
     setPhase('question');
   }, [questionIndex]);
 
-  const labels = mode === 'pro' ? ['A', 'B'] : ['A', 'B', 'C', 'D'];
+  const labels = mode === 'pro' ? ['A', 'B', 'C', 'D'] : ['A', 'B'];
 
   return (
-    <div style={{ width: '100%', maxWidth: 540, margin: '0 auto' }}>
+    <div style={{ width: '100%', maxWidth: 600, margin: '0 auto' }}>
       {/* Category badge */}
       {typeConfig && (
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
@@ -114,6 +113,8 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
               background: `${typeConfig.color}15`,
               color: typeConfig.glow,
               border: `1px solid ${typeConfig.color}25`,
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
             {typeConfig.label}
@@ -125,7 +126,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
       <div
         style={{
           background: 'rgba(255,255,255,0.03)',
-          borderRadius: 20,
+          borderRadius: 24,
           padding: '48px 40px',
           border: '1px solid rgba(255,255,255,0.06)',
           marginBottom: 32,
@@ -137,7 +138,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
             fontSize: 22,
             fontWeight: 700,
             color: 'white',
-            marginBottom: 36,
+            marginBottom: 32,
             lineHeight: 1.55,
             textAlign: 'center',
             fontFamily: "'Outfit', sans-serif",
@@ -145,6 +146,24 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
         >
           {currentQuestion.question}
         </h2>
+
+        {/* Hint — Easy mode only */}
+        {mode === 'easy' && phase === 'question' && (
+          <div
+            style={{
+              padding: '16px 24px',
+              borderRadius: 16,
+              background: 'rgba(94,234,212,0.08)',
+              border: '1px solid rgba(94,234,212,0.15)',
+              marginBottom: 24,
+              fontSize: 16,
+              color: '#5EEAD4',
+              lineHeight: 1.5,
+            }}
+          >
+            <strong>Hint:</strong> {currentQuestion.hint}
+          </div>
+        )}
 
         <div style={{ display: 'grid', gap: 16 }}>
           {displayAnswers.map((answer, i) => {
@@ -173,6 +192,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
             return (
               <button
                 key={i}
+                aria-label={`Answer ${labels[i]}: ${answer}`}
                 style={{
                   width: '100%',
                   textAlign: 'left',
@@ -190,7 +210,6 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
                   alignItems: 'center',
                   gap: 16,
                 }}
-                aria-label={`Answer ${labels[i]}: ${answer}`}
                 onClick={() => handleAnswer(i)}
                 disabled={phase !== 'question'}
               >
@@ -232,7 +251,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
             border: `1px solid ${phase === 'correct' ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)'}`,
           }}
         >
-          <p style={{ fontWeight: 700, marginBottom: 8, color: 'white', fontSize: 17, fontFamily: "'Outfit', sans-serif" }}>
+          <p style={{ fontWeight: 700, marginBottom: 8, color: 'white', fontSize: 18, fontFamily: "'Outfit', sans-serif" }}>
             {phase === 'correct' ? 'Correct!' : 'Not quite!'}
           </p>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 16, lineHeight: 1.65 }}>

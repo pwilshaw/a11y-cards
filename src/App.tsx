@@ -14,9 +14,9 @@ function App() {
   const [currentView, setCurrentView] = useState<View>('quiz');
   const [mode, setMode] = useState<GameMode | null>(() => {
     const saved = localStorage.getItem('a11y-cards-mode');
-    return saved === 'normal' || saved === 'pro' ? saved : null;
+    return saved === 'easy' || saved === 'normal' || saved === 'pro' ? saved : null;
   });
-  const { state, collectCard, recordAnswer } = useGameState();
+  const { state, collectCard, recordAnswer, reset } = useGameState();
 
   const handleModeSelect = (m: GameMode) => {
     setMode(m);
@@ -39,11 +39,12 @@ function App() {
           setMode(null);
           localStorage.removeItem('a11y-cards-mode');
         }}
+        onReset={reset}
       />
 
       <main id="main-content" className="flex-1 flex flex-col items-center" style={{ padding: '48px 48px' }}>
         {currentView === 'quiz' && (
-          <div className="w-full max-w-2xl flex flex-col items-center gap-10">
+          <div className="w-full max-w-2xl flex flex-col items-center" style={{ gap: 40 }}>
             <QuizProgress state={state} />
             <QuizScreen
               state={state}
@@ -55,7 +56,7 @@ function App() {
         )}
 
         {currentView === 'binder' && (
-          <div className="w-full max-w-5xl">
+          <div className="w-full max-w-6xl">
             <BinderScreen state={state} />
           </div>
         )}
