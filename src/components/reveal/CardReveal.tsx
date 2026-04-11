@@ -53,7 +53,7 @@ export function CardReveal({ card, onDismiss }: CardRevealProps) {
           }`}
         >
           <p
-            className="text-[11px] font-bold uppercase tracking-[0.15em] mb-2"
+            className="text-base font-bold uppercase tracking-[0.15em] mb-2"
             style={{ color: typeConfig.glow }}
           >
             {typeConfig.label}

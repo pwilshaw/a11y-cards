@@ -28,14 +28,14 @@ export function BinderFilters({
           return (
             <button
               key={type}
-              className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
+              className="px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200"
               style={{
                 background: isActive
                   ? config ? `${config.color}20` : 'rgba(255,255,255,0.1)'
                   : 'rgba(255,255,255,0.03)',
                 color: isActive
                   ? config ? config.glow : 'white'
-                  : 'rgba(255,255,255,0.4)',
+                  : 'rgba(255,255,255,0.5)',
                 border: `1px solid ${isActive
                   ? config ? `${config.color}30` : 'rgba(255,255,255,0.15)'
                   : 'rgba(255,255,255,0.06)'}`,
@@ -55,10 +55,10 @@ export function BinderFilters({
           return (
             <button
               key={rarity}
-              className="px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
+              className="px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200"
               style={{
                 background: isActive ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.03)',
-                color: isActive ? 'white' : 'rgba(255,255,255,0.4)',
+                color: isActive ? 'white' : 'rgba(255,255,255,0.5)',
                 border: `1px solid ${isActive ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)'}`,
               }}
               onClick={() => onRarityChange(rarity)}

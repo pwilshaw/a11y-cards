@@ -106,7 +106,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
             style={{
               padding: '8px 20px',
               borderRadius: 999,
-              fontSize: 11,
+              fontSize: 16,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
@@ -133,7 +133,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
       >
         <h2
           style={{
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: 700,
             color: 'white',
             marginBottom: 36,
@@ -183,7 +183,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
                   opacity,
                   cursor: phase === 'question' ? 'pointer' : 'default',
                   transition: 'all 0.2s ease',
-                  fontSize: 15,
+                  fontSize: 16,
                   display: 'flex',
                   alignItems: 'center',
                   gap: 14,
@@ -202,7 +202,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: 12,
+                    fontSize: 16,
                     fontFamily: 'monospace',
                     color: labelColor,
                     flexShrink: 0,
@@ -233,11 +233,11 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
           <p style={{ fontWeight: 700, marginBottom: 8, color: 'white', fontSize: 17, fontFamily: "'Outfit', sans-serif" }}>
             {phase === 'correct' ? 'Correct!' : 'Not quite!'}
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 14, lineHeight: 1.65 }}>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 16, lineHeight: 1.65 }}>
             {currentQuestion.explanation}
           </p>
           {phase === 'correct' && earnedCard && (
-            <p style={{ fontSize: 13, marginTop: 12, fontWeight: 600, color: typeConfig?.glow }}>
+            <p style={{ fontSize: 16, marginTop: 12, fontWeight: 600, color: typeConfig?.glow }}>
               You earned a card!
             </p>
           )}
@@ -254,7 +254,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
               fontWeight: 600,
               cursor: 'pointer',
               border: `1px solid ${phase === 'correct' ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.08)'}`,
-              fontSize: 14,
+              fontSize: 16,
               transition: 'all 0.2s',
             }}
             onClick={handleNext}

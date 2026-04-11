@@ -20,17 +20,17 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
           borderColor: 'rgba(255,255,255,0.04)',
           opacity: 0.45,
         }}
+        aria-label={`Uncollected card: ${card.id}, ${rarityConfig.label}`}
       >
         <div
           className="w-8 h-8 rounded-full flex items-center justify-center"
           style={{ background: 'rgba(255,255,255,0.05)' }}
         >
-          <span className="text-white/20 text-sm">?</span>
+          <span className="text-white/30 text-base" aria-hidden="true">?</span>
         </div>
-        <span className="text-[9px] text-white/20 font-mono">{card.id}</span>
-        <div className="flex gap-0.5">
+        <div className="flex gap-0.5" aria-hidden="true">
           {Array.from({ length: rarityConfig.stars }).map((_, i) => (
-            <span key={i} className="text-[7px]" style={{ color: rarityConfig.starColor, opacity: 0.4 }}>&#9733;</span>
+            <span key={i} className="text-xs" style={{ color: rarityConfig.starColor, opacity: 0.4 }}>&#9733;</span>
           ))}
         </div>
       </div>
@@ -50,41 +50,24 @@ export function BinderSlot({ card, collected, onDoubleClick }: BinderSlotProps) 
       aria-label={`${card.title} — ${typeConfig.label}, ${rarityConfig.label}. Press Enter to inspect.`}
       data-type={card.type}
     >
-      {/* Illustration thumbnail — centered in middle of card */}
+      {/* Illustration thumbnail — fills the card */}
       {card.illustration && (
         <div className="absolute inset-0 flex items-center justify-center">
           <img
             src={card.illustration}
             alt=""
-            className="w-[75%] h-[55%] object-contain"
-            style={{ marginTop: '10%' }}
+            className="w-[80%] h-[65%] object-contain"
+            style={{ marginTop: '5%' }}
             draggable={false}
           />
         </div>
       )}
 
-      {/* Top: type + title */}
-      <div className="absolute top-0 left-0 right-0 p-2 z-10">
-        <span
-          className="text-[7px] font-bold uppercase tracking-wider block mb-0.5"
-          style={{ color: typeConfig.color }}
-        >
-          {typeConfig.label}
-        </span>
-        <p
-          className="text-[9px] font-bold leading-tight"
-          style={{ color: '#1D0E24', fontFamily: "'Outfit', sans-serif" }}
-        >
-          {card.title}
-        </p>
-      </div>
-
-      {/* Bottom: ID + stars */}
-      <div className="absolute bottom-0 left-0 right-0 p-2 flex items-center justify-between z-10">
-        <span className="text-[7px] font-mono" style={{ color: 'rgba(29,14,36,0.3)' }}>{card.id}</span>
+      {/* Stars at bottom — decorative, min 12px */}
+      <div className="absolute bottom-0 left-0 right-0 p-2 flex items-center justify-end z-10" aria-hidden="true">
         <div className="flex gap-px">
           {Array.from({ length: rarityConfig.stars }).map((_, i) => (
-            <span key={i} className="text-[8px]" style={{ color: rarityConfig.starColor }}>&#9733;</span>
+            <span key={i} className="text-xs" style={{ color: rarityConfig.starColor }}>&#9733;</span>
           ))}
         </div>
       </div>

@@ -35,7 +35,7 @@ export function ModeSelect({ onSelect }: ModeSelectProps) {
             </p>
             <div className="flex gap-2">
               {['A', 'B', 'C', 'D'].map(l => (
-                <span key={l} className="w-8 h-8 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center text-xs font-mono text-white/40">
+                <span key={l} className="w-8 h-8 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center text-base font-mono text-white/40">
                   {l}
                 </span>
               ))}
@@ -60,7 +60,7 @@ export function ModeSelect({ onSelect }: ModeSelectProps) {
             </p>
             <div className="flex gap-2">
               {['A', 'B'].map(l => (
-                <span key={l} className="w-8 h-8 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-xs font-mono text-pink-400/60">
+                <span key={l} className="w-8 h-8 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-base font-mono text-pink-400/60">
                   {l}
                 </span>
               ))}

@@ -38,7 +38,7 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
           <button
             onClick={onModeChange}
             aria-label={`Current mode: ${mode === 'pro' ? 'Accessibility Pro' : 'Normal'}. Click to change.`}
-            className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md transition-colors cursor-pointer"
+            className="text-base font-bold uppercase tracking-widest px-3 py-1.5 rounded-md transition-colors cursor-pointer"
             style={{
               background: mode === 'pro' ? 'rgba(190,24,93,0.15)' : 'rgba(255,255,255,0.06)',
               color: mode === 'pro' ? '#F472B6' : 'rgba(255,255,255,0.5)',
@@ -78,7 +78,7 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
               }}
             />
           </div>
-          <span className="text-xs font-mono text-white/50 tabular-nums">
+          <span className="text-base font-mono text-white/50 tabular-nums">
             {collected}/{total}
           </span>
         </div>
