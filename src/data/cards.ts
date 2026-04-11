@@ -30,7 +30,7 @@ export const cards: Card[] = [
     rarity: 'ultra-rare',
     title: "It's the law!",
     subtitle: 'Why Do Accessibility',
-    description: "Accessibility isn't optional. There's 1 lawsuit filed every hour in the US, and the European Accessibility Act (EAA) comes into force June 2025 — making it law across the EU too.",
+    description: "Accessibility isn't optional. There's 1 lawsuit filed every hour in the US, and the European Accessibility Act (EAA) is now law across the EU since June 2025.",
     flavourText: 'US: info.usablenet.com | EU: European Accessibility Act 2019/882',
     stat: 88,
     illustration: '/illustrations/phi-003.png',

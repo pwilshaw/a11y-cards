@@ -40,8 +40,8 @@ export const questions: Question[] = [
       'About 1 per month — covered by GDPR',
     ],
     correctIndex: 2,
-    explanation: "There's approximately 1 accessibility lawsuit filed every hour in the US. In Europe, the European Accessibility Act (EAA) comes into force June 2025, making digital accessibility a legal requirement across all EU member states.",
-    hint: 'The US has frequent lawsuits, and the EU introduced a major accessibility law in 2019 that takes effect in 2025.',
+    explanation: "There's approximately 1 accessibility lawsuit filed every hour in the US. In Europe, the European Accessibility Act (EAA) became law in June 2025, making digital accessibility a legal requirement across all EU member states.",
+    hint: 'The US has frequent lawsuits, and a major EU accessibility law came into effect in 2025.',
     difficulty: 2,
   },
   {
