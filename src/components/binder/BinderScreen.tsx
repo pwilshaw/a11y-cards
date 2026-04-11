@@ -79,7 +79,7 @@ export function BinderScreen({ state }: BinderScreenProps) {
       />
 
       {/* Card grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 mt-10">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4" style={{ marginTop: 32 }}>
         {filteredCards.map(card => (
           <BinderSlot
             key={card.id}

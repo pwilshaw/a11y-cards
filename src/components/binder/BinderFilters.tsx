@@ -18,7 +18,7 @@ export function BinderFilters({
   const rarities: (Rarity | 'all')[] = ['all', ...Object.keys(RARITY_CONFIG) as Rarity[]];
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col" style={{ gap: 16 }}>
       {/* Type filters */}
       <div className="flex gap-3 flex-wrap">
         {types.map(type => {
