@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import type { Card as CardData, GameState, GameMode } from '../../types/card';
 import { CARD_TYPE_CONFIG } from '../../types/card';
 import { cards } from '../../data/cards';
@@ -95,6 +95,26 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
   }, [questionIndex]);
 
   const labels = mode === 'pro' ? ['A', 'B', 'C', 'D'] : ['A', 'B'];
+
+  // Keyboard shortcuts: 1-4 or A-D to select answers, Enter for next
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (phase === 'question') {
+        const keyMap: Record<string, number> = { '1': 0, '2': 1, '3': 2, '4': 3, a: 0, b: 1, c: 2, d: 3 };
+        const idx = keyMap[e.key.toLowerCase()];
+        if (idx !== undefined && idx < displayAnswers.length) {
+          e.preventDefault();
+          handleAnswer(idx);
+        }
+      }
+      if ((phase === 'correct' || phase === 'wrong') && e.key === 'Enter') {
+        e.preventDefault();
+        handleNext();
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [phase, displayAnswers.length, handleAnswer, handleNext]);
 
   return (
     <div style={{ width: '100%', maxWidth: 600, margin: '0 auto' }}>

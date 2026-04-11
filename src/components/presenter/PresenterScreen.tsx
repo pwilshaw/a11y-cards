@@ -1,70 +1,110 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { CARD_TYPE_CONFIG, RARITY_CONFIG } from '../../types/card';
 import { buildDeck } from '../../data/presentationDeck';
 import { Card } from '../card/Card';
+import { useCardInteraction } from '../../hooks/useCardInteraction';
 
-function TitleCard({ title, color }: { title: string; color: string }) {
-  // Lighter shade for the fold/shadow
+function TitleCard({ title, color, illustration }: { title: string; color: string; illustration: string }) {
+  const { cardRef, handlers } = useCardInteraction();
   const lightColor = color + '90';
 
   return (
     <div
+      ref={cardRef}
+      className="card"
       style={{
-        width: 'var(--card-width, 280px)',
-        aspectRatio: '240 / 336',
-        borderRadius: 20,
-        background: color,
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '11%',
-        boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.3)',
-      }}
+        '--card-width': 'min(520px, 65vh)',
+      } as React.CSSProperties}
+      {...handlers}
     >
-      {/* Fold/shadow triangle */}
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: '15%',
-          width: '45%',
-          height: '85%',
-          background: lightColor,
-          clipPath: 'polygon(0 0, 100% 30%, 0 100%)',
-        }}
-      />
+      <div className="card__translater">
+        <div className="card__rotator">
+          <div className="card__inner">
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                borderRadius: 20,
+                background: color,
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '11%',
+                boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.3)',
+                border: `4px solid ${lightColor}`,
+              }}
+            >
+              {/* Fold/shadow triangle */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: '15%',
+                  width: '45%',
+                  height: '85%',
+                  background: lightColor,
+                  clipPath: 'polygon(0 0, 100% 30%, 0 100%)',
+                }}
+              />
 
-      {/* Section title */}
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <h2
-          style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontWeight: 900,
-            fontSize: 'clamp(1.2rem, 6vw, 2.4rem)',
-            lineHeight: 1.1,
-            color: 'white',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          <span style={{ opacity: 0.5, fontWeight: 700 }}>#</span>
-          {title}
-        </h2>
-      </div>
+              {/* Section title */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <h2
+                  style={{
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 900,
+                    fontSize: 'clamp(1.2rem, 6vw, 2.4rem)',
+                    lineHeight: 1.1,
+                    color: 'white',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <span style={{ opacity: 0.5, fontWeight: 700 }}>#</span>
+                  {title}
+                </h2>
+              </div>
 
-      {/* Bottom credit */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '5%',
-          left: '11%',
-          fontSize: 'clamp(0.5rem, 2.5cqi, 0.75rem)',
-          color: 'rgba(255,255,255,0.5)',
-          fontFamily: "'Outfit', sans-serif",
-          fontWeight: 500,
-        }}
-      >
-        @paulwilshaw
+              {/* Illustration — parallax via CSS variable */}
+              <div
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                <img
+                  className="card__illustration"
+                  src={illustration}
+                  alt=""
+                  draggable={false}
+                  style={{
+                    width: '85%',
+                    height: '85%',
+                    objectFit: 'contain',
+                    filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.3))',
+                  }}
+                />
+              </div>
+
+              {/* Bottom credit */}
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 2,
+                  fontSize: 16,
+                  color: 'rgba(255,255,255,0.5)',
+                  fontFamily: "'Outfit', sans-serif",
+                  fontWeight: 500,
+                }}
+              >
+                @paulwilshaw
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -74,6 +114,7 @@ export function PresenterScreen() {
   const deck = useMemo(() => buildDeck(), []);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const slide = deck[index];
 
   const goNext = useCallback(() => {
@@ -84,6 +125,11 @@ export function PresenterScreen() {
   const goPrev = useCallback(() => {
     setFlipped(false);
     setIndex(i => Math.max(i - 1, 0));
+  }, []);
+
+  // Focus container on mount for keyboard nav
+  useEffect(() => {
+    containerRef.current?.focus();
   }, []);
 
   useEffect(() => {
@@ -100,15 +146,25 @@ export function PresenterScreen() {
         e.preventDefault();
         if (slide.kind === 'card') setFlipped(f => !f);
       }
+      // Home / End to jump to start / end
+      if (e.key === 'Home') {
+        e.preventDefault();
+        setFlipped(false);
+        setIndex(0);
+      }
+      if (e.key === 'End') {
+        e.preventDefault();
+        setFlipped(false);
+        setIndex(deck.length - 1);
+      }
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [goNext, goPrev, slide.kind]);
+  }, [goNext, goPrev, slide.kind, deck.length]);
 
   const isFirst = index === 0;
   const isLast = index === deck.length - 1;
 
-  // Get contextual info for the top bar
   let topLabel = '';
   let topColor = '';
   let topGlow = '';
@@ -130,12 +186,20 @@ export function PresenterScreen() {
   }
 
   return (
-    <div className="w-full flex flex-col items-center gap-6" style={{ maxWidth: '100vw' }}>
+    <div
+      ref={containerRef}
+      tabIndex={-1}
+      className="w-full flex flex-col items-center"
+      style={{ maxWidth: '100vw', gap: 24, outline: 'none' }}
+      aria-label="Presentation mode. Use arrow keys to navigate, F to flip cards."
+      role="region"
+    >
       {/* Top bar */}
-      <div className="w-full max-w-3xl flex items-center justify-between px-2">
+      <div className="w-full max-w-3xl flex items-center justify-between" style={{ padding: '0 8px' }}>
         <span
-          className="px-5 py-3 rounded-xl text-base font-bold uppercase tracking-[0.12em]"
+          className="rounded-xl text-base font-bold uppercase tracking-[0.12em]"
           style={{
+            padding: '12px 20px',
             background: `${topColor}15`,
             color: topGlow,
             border: `1px solid ${topColor}25`,
@@ -144,11 +208,11 @@ export function PresenterScreen() {
           {slide.kind === 'title' ? 'Section' : topLabel}
         </span>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center" style={{ gap: 12 }}>
           <span className="text-base text-white/50 font-mono tabular-nums">
             {index + 1} / {deck.length}
           </span>
-          <div className="w-32 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+          <div className="w-32 h-2 rounded-full bg-white/[0.06] overflow-hidden" role="progressbar" aria-valuenow={index + 1} aria-valuemin={1} aria-valuemax={deck.length}>
             <div
               className="h-full rounded-full transition-all duration-300 ease-out"
               style={{
@@ -160,8 +224,9 @@ export function PresenterScreen() {
         </div>
 
         <span
-          className="px-5 py-3 rounded-xl text-base font-bold uppercase tracking-[0.12em]"
+          className="rounded-xl text-base font-bold uppercase tracking-[0.12em]"
           style={{
+            padding: '12px 20px',
             background: 'rgba(255,255,255,0.04)',
             color: 'rgba(255,255,255,0.4)',
             border: '1px solid rgba(255,255,255,0.06)',
@@ -172,7 +237,7 @@ export function PresenterScreen() {
       </div>
 
       {/* Slide + navigation */}
-      <div className="flex items-center gap-6 w-full justify-center flex-1">
+      <div className="flex items-center w-full justify-center flex-1" style={{ gap: 24 }}>
         {/* Prev */}
         <button
           onClick={goPrev}
@@ -186,7 +251,7 @@ export function PresenterScreen() {
             cursor: isFirst ? 'default' : 'pointer',
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M12 5L7 10L12 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
@@ -198,9 +263,7 @@ export function PresenterScreen() {
           onClick={() => { if (slide.kind === 'card') setFlipped(f => !f); }}
         >
           {slide.kind === 'title' ? (
-            <div style={{ '--card-width': 'min(520px, 65vh)' } as React.CSSProperties}>
-              <TitleCard title={slide.title} color={slide.color} />
-            </div>
+            <TitleCard title={slide.title} color={slide.color} illustration={slide.illustration} />
           ) : (
             <Card
               card={slide.card}
@@ -224,19 +287,22 @@ export function PresenterScreen() {
             cursor: isLast ? 'default' : 'pointer',
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M8 5L13 10L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
       </div>
 
       {/* Controls */}
-      <div className="flex flex-col items-center gap-3">
+      <div className="flex flex-col items-center" style={{ gap: 12 }}>
         {slide.kind === 'card' && (
           <button
             onClick={() => setFlipped(f => !f)}
-            className="px-8 py-3 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
+            aria-label={flipped ? 'Show card front' : 'Flip card to read details'}
+            className="rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
             style={{
+              padding: '14px 32px',
+              minHeight: 48,
               background: flipped ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.04)',
               color: flipped ? 'white' : 'rgba(255,255,255,0.5)',
               border: '1px solid rgba(255,255,255,0.08)',
@@ -246,12 +312,14 @@ export function PresenterScreen() {
           </button>
         )}
 
-        <p className="text-base text-white/50">
-          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">&larr;</kbd>{' '}
-          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">&rarr;</kbd>{' '}
+        <p className="text-base text-white/50" aria-hidden="true">
+          <kbd className="px-2 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">&larr;</kbd>{' '}
+          <kbd className="px-2 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">&rarr;</kbd>{' '}
           navigate{' · '}
-          <kbd className="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">F</kbd>{' '}
-          flip
+          <kbd className="px-2 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">F</kbd>{' '}
+          flip{' · '}
+          <kbd className="px-2 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">Home</kbd>{' '}
+          <kbd className="px-2 py-1 rounded-lg bg-white/[0.06] border border-white/[0.08] text-white/50 font-mono text-base">End</kbd>
         </p>
       </div>
     </div>
