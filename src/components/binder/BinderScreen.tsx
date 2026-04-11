@@ -56,7 +56,7 @@ export function BinderScreen({ state }: BinderScreenProps) {
   const pct = Math.round((collected / total) * 100);
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto px-6">
       {/* Header */}
       <div className="mb-8">
         <h2
@@ -79,7 +79,7 @@ export function BinderScreen({ state }: BinderScreenProps) {
       />
 
       {/* Card grid */}
-      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3 mt-8">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 mt-10">
         {filteredCards.map(card => (
           <BinderSlot
             key={card.id}
