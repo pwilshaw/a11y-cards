@@ -20,7 +20,7 @@ export function BinderFilters({
   return (
     <div className="flex flex-col gap-4">
       {/* Type filters */}
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-3 flex-wrap">
         {types.map(type => {
           const isActive = selectedType === type;
           const config = type !== 'all' ? CARD_TYPE_CONFIG[type] : null;
@@ -28,8 +28,10 @@ export function BinderFilters({
           return (
             <button
               key={type}
-              className="px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200"
+              className="rounded-xl text-base font-semibold transition-all duration-200"
               style={{
+                padding: '12px 24px',
+                minHeight: 44,
                 background: isActive
                   ? config ? `${config.color}20` : 'rgba(255,255,255,0.1)'
                   : 'rgba(255,255,255,0.03)',
@@ -49,14 +51,16 @@ export function BinderFilters({
       </div>
 
       {/* Rarity filters */}
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-3 flex-wrap">
         {rarities.map(rarity => {
           const isActive = selectedRarity === rarity;
           return (
             <button
               key={rarity}
-              className="px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200"
+              className="rounded-xl text-base font-semibold transition-all duration-200"
               style={{
+                padding: '12px 24px',
+                minHeight: 44,
                 background: isActive ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.03)',
                 color: isActive ? 'white' : 'rgba(255,255,255,0.5)',
                 border: `1px solid ${isActive ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.06)'}`,

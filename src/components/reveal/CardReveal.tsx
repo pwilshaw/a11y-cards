@@ -77,7 +77,7 @@ export function CardReveal({ card, onDismiss }: CardRevealProps) {
         {/* Dismiss button */}
         <button
           aria-label="Add this card to your collection and continue"
-          className={`px-8 py-2.5 rounded-xl font-semibold text-sm transition-all duration-500 cursor-pointer ${
+          className={`px-8 py-4 rounded-xl font-semibold text-base transition-all duration-500 cursor-pointer ${
             revealed ? 'opacity-100' : 'opacity-0'
           }`}
           style={{

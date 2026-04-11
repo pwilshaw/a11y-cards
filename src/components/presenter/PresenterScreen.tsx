@@ -134,7 +134,7 @@ export function PresenterScreen() {
       {/* Top bar */}
       <div className="w-full max-w-3xl flex items-center justify-between px-2">
         <span
-          className="px-3.5 py-1.5 rounded-lg text-base font-bold uppercase tracking-[0.12em]"
+          className="px-5 py-3 rounded-xl text-base font-bold uppercase tracking-[0.12em]"
           style={{
             background: `${topColor}15`,
             color: topGlow,
@@ -160,7 +160,7 @@ export function PresenterScreen() {
         </div>
 
         <span
-          className="px-3.5 py-1.5 rounded-lg text-base font-bold uppercase tracking-[0.12em]"
+          className="px-5 py-3 rounded-xl text-base font-bold uppercase tracking-[0.12em]"
           style={{
             background: 'rgba(255,255,255,0.04)',
             color: 'rgba(255,255,255,0.4)',
@@ -178,7 +178,7 @@ export function PresenterScreen() {
           onClick={goPrev}
           disabled={isFirst}
           aria-label="Previous slide"
-          className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0"
+          className="w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0"
           style={{
             background: isFirst ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.05)',
             border: `1px solid ${isFirst ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.1)'}`,
@@ -216,7 +216,7 @@ export function PresenterScreen() {
           onClick={goNext}
           disabled={isLast}
           aria-label="Next slide"
-          className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0"
+          className="w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0"
           style={{
             background: isLast ? 'rgba(255,255,255,0.02)' : 'rgba(255,255,255,0.05)',
             border: `1px solid ${isLast ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.1)'}`,
@@ -235,7 +235,7 @@ export function PresenterScreen() {
         {slide.kind === 'card' && (
           <button
             onClick={() => setFlipped(f => !f)}
-            className="px-5 py-2 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer"
+            className="px-8 py-3 rounded-xl text-base font-medium transition-all duration-200 cursor-pointer"
             style={{
               background: flipped ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.04)',
               color: flipped ? 'white' : 'rgba(255,255,255,0.5)',

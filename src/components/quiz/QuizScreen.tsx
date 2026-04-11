@@ -104,9 +104,10 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
           <span
             style={{
-              padding: '8px 20px',
+              padding: '12px 24px',
               borderRadius: 999,
               fontSize: 16,
+              minHeight: 44,
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
@@ -125,7 +126,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
         style={{
           background: 'rgba(255,255,255,0.03)',
           borderRadius: 20,
-          padding: '40px 36px',
+          padding: '48px 40px',
           border: '1px solid rgba(255,255,255,0.06)',
           marginBottom: 32,
           backdropFilter: 'blur(20px)',
@@ -145,7 +146,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
           {currentQuestion.question}
         </h2>
 
-        <div style={{ display: 'grid', gap: 12 }}>
+        <div style={{ display: 'grid', gap: 16 }}>
           {displayAnswers.map((answer, i) => {
             let bg = 'rgba(255,255,255,0.03)';
             let borderColor = 'rgba(255,255,255,0.06)';
@@ -176,7 +177,8 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
                   width: '100%',
                   textAlign: 'left',
                   padding: '16px 24px',
-                  borderRadius: 14,
+                  minHeight: 48,
+                  borderRadius: 16,
                   border: `1px solid ${borderColor}`,
                   background: bg,
                   color: textColor,
@@ -186,7 +188,7 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
                   fontSize: 16,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 14,
+                  gap: 16,
                 }}
                 aria-label={`Answer ${labels[i]}: ${answer}`}
                 onClick={() => handleAnswer(i)}
@@ -194,9 +196,9 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
               >
                 <span
                   style={{
-                    width: 28,
-                    height: 28,
-                    borderRadius: 8,
+                    width: 36,
+                    height: 36,
+                    borderRadius: 10,
                     background: 'rgba(255,255,255,0.04)',
                     border: `1px solid ${labelColor}`,
                     display: 'flex',
@@ -223,8 +225,8 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
           role="status"
           aria-live="polite"
           style={{
-            borderRadius: 16,
-            padding: '28px 32px',
+            borderRadius: 20,
+            padding: '32px 36px',
             marginBottom: 32,
             background: phase === 'correct' ? 'rgba(34,197,94,0.06)' : 'rgba(239,68,68,0.06)',
             border: `1px solid ${phase === 'correct' ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)'}`,
@@ -244,9 +246,10 @@ export function QuizScreen({ state, mode, onCorrectAnswer, onAnswer }: QuizScree
 
           <button
             style={{
-              marginTop: 20,
-              padding: '10px 24px',
-              borderRadius: 10,
+              marginTop: 24,
+              padding: '14px 28px',
+              minHeight: 48,
+              borderRadius: 12,
               background: phase === 'correct'
                 ? 'rgba(34,197,94,0.15)'
                 : 'rgba(255,255,255,0.06)',
