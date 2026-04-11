@@ -32,16 +32,16 @@ export const questions: Question[] = [
   },
   {
     id: 'Q-PHI-003', cardId: 'PHI-003',
-    question: 'How frequently are accessibility-related lawsuits filed in the US?',
+    question: 'How frequently are accessibility-related lawsuits filed in the US, and what new EU law makes accessibility mandatory?',
     answers: [
-      'About 1 per day',
-      'About 1 per week',
-      'About 1 per hour',
-      'About 1 per month',
+      'About 1 per day — and the EU has no accessibility law',
+      'About 1 per week — covered by the EU Digital Markets Act',
+      'About 1 per hour — and the European Accessibility Act makes it EU law too',
+      'About 1 per month — covered by GDPR',
     ],
     correctIndex: 2,
-    explanation: "There's approximately 1 accessibility lawsuit filed every hour in the US alone. It's the law.",
-    hint: "It's much more frequent than most people think.",
+    explanation: "There's approximately 1 accessibility lawsuit filed every hour in the US. In Europe, the European Accessibility Act (EAA) comes into force June 2025, making digital accessibility a legal requirement across all EU member states.",
+    hint: 'The US has frequent lawsuits, and the EU introduced a major accessibility law in 2019 that takes effect in 2025.',
     difficulty: 2,
   },
   {
