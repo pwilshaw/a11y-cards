@@ -43,7 +43,7 @@ export function CardBack({ card }: { card: CardData }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          fontSize: 'clamp(0.7rem, 4cqi, 1.8rem)',
+          fontSize: 'clamp(1rem, 4cqi, 1.8rem)',
           lineHeight: 1,
           padding: '4% 0',
         }}
@@ -87,7 +87,7 @@ export function CardBack({ card }: { card: CardData }) {
         style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 400,
-          fontSize: 'clamp(0.7rem, 5cqi, 1.9rem)',
+          fontSize: 'clamp(1rem, 5cqi, 1.9rem)',
           lineHeight: 1.45,
           color: '#1D0E24',
           flex: 1,
@@ -105,7 +105,7 @@ export function CardBack({ card }: { card: CardData }) {
           marginTop: '4%',
         }}
       >
-        <div style={{ fontSize: 'clamp(0.7rem, 4cqi, 1.8rem)', lineHeight: 1.5 }}>
+        <div style={{ fontSize: 'clamp(1rem, 4cqi, 1.8rem)', lineHeight: 1.5 }}>
           <div style={{ fontWeight: 400, color: '#1D0E24' }}>
             {cardIndex} of {totalCards}
           </div>

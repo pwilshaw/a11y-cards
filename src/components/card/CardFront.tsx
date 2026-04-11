@@ -12,7 +12,7 @@ export function CardFront({ card }: { card: CardData }) {
         style={{
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 900,
-          fontSize: 'clamp(1.1rem, 7cqi, 3rem)',
+          fontSize: 'clamp(1rem, 7cqi, 3rem)',
           lineHeight: 1.2,
           color: '#1D0E24',
           margin: 0,
