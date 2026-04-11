@@ -41,7 +41,7 @@ function App() {
         }}
       />
 
-      <main id="main-content" className="flex-1 flex flex-col items-center px-8 md:px-12 lg:px-16 py-12 md:py-16">
+      <main id="main-content" className="flex-1 flex flex-col items-center" style={{ padding: '48px 48px' }}>
         {currentView === 'quiz' && (
           <div className="w-full max-w-2xl flex flex-col items-center gap-10">
             <QuizProgress state={state} />

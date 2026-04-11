@@ -26,7 +26,7 @@ export function Header({ currentView, onViewChange, state, mode, onModeChange }:
     <header className="relative border-b border-white/[0.06]" role="banner">
       <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
 
-      <div className="relative flex items-center justify-between px-10 lg:px-16 py-6">
+      <div className="relative flex items-center justify-between" style={{ padding: '24px 48px' }}>
         {/* Left: Logo + mode */}
         <div className="flex items-center gap-4">
           <h1
