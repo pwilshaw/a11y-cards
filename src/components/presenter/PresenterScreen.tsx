@@ -198,7 +198,7 @@ export function PresenterScreen() {
           onClick={() => { if (slide.kind === 'card') setFlipped(f => !f); }}
         >
           {slide.kind === 'title' ? (
-            <div style={{ '--card-width': 'min(420px, 55vh)' } as React.CSSProperties}>
+            <div style={{ '--card-width': 'min(520px, 65vh)' } as React.CSSProperties}>
               <TitleCard title={slide.title} color={slide.color} />
             </div>
           ) : (
@@ -206,7 +206,7 @@ export function PresenterScreen() {
               card={slide.card}
               flipped={flipped}
               interactive={true}
-              style={{ '--card-width': 'min(420px, 55vh)' } as React.CSSProperties}
+              style={{ '--card-width': 'min(520px, 65vh)' } as React.CSSProperties}
             />
           )}
         </div>
