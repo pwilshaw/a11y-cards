@@ -45,7 +45,7 @@ export function CardFront({ card }: { card: CardData }) {
         }}
       />
 
-      {/* Layer 2: Mid pattern — moves with tilt (midground) */}
+      {/* Layer 2: Mid pattern — offset lower, moves with background */}
       <img
         className="card__pattern-mid"
         src={patterns.mid}
@@ -54,7 +54,7 @@ export function CardFront({ card }: { card: CardData }) {
         aria-hidden="true"
         style={{
           position: 'absolute',
-          top: '50%',
+          top: '60%',
           left: '50%',
           width: '160%',
           height: '160%',
