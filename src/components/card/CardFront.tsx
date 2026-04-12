@@ -1,13 +1,46 @@
-import type { Card as CardData } from '../../types/card';
+import type { Card as CardData, CardType } from '../../types/card';
 import { CARD_TYPE_CONFIG } from '../../types/card';
 import { TypeIcon } from './TypeIcon';
 
+/** Pattern texture per card type */
+const TYPE_PATTERNS: Record<CardType, string> = {
+  philosophy: '/textures/pattern-stars-pink.png',
+  contrast:   '/textures/pattern-crosses-violet.png',
+  vision:     '/textures/pattern-diamonds-green.png',
+  motor:      '/textures/pattern-stars-orange.png',
+  structure:  '/textures/pattern-asterisk-green.png',
+  cognition:  '/textures/pattern-diamonds-orange.png',
+};
+
+const FIESTA_PATTERN = '/textures/pattern-fiesta.png';
+
 export function CardFront({ card }: { card: CardData }) {
   const typeConfig = CARD_TYPE_CONFIG[card.type];
+  const isLegendary = card.rarity === 'ultra-rare';
+  const patternSrc = isLegendary ? FIESTA_PATTERN : TYPE_PATTERNS[card.type];
 
   return (
     <div className="card__front" style={{ padding: '11% 11% 8%', display: 'flex', flexDirection: 'column' }}>
-      {/* Title — top left, bold dark text matching Figma */}
+      {/* Background pattern — moves slower than illustration for parallax depth */}
+      <img
+        className="card__pattern"
+        src={patternSrc}
+        alt=""
+        draggable={false}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: '-10%',
+          width: '120%',
+          height: '120%',
+          objectFit: 'cover',
+          zIndex: 0,
+          pointerEvents: 'none',
+          opacity: isLegendary ? 0.9 : 0.7,
+        }}
+      />
+
+      {/* Title — top left, bold dark text */}
       <h3
         style={{
           fontFamily: "'Outfit', sans-serif",
@@ -23,7 +56,7 @@ export function CardFront({ card }: { card: CardData }) {
         {card.title}
       </h3>
 
-      {/* Illustration area — parallax layer that moves on tilt */}
+      {/* Illustration — parallax layer that moves on tilt */}
       <div
         className="card__illustration-wrapper"
         style={{
@@ -69,13 +102,6 @@ export function CardFront({ card }: { card: CardData }) {
           </div>
         )}
       </div>
-
-      {/* Scattered decorative elements matching Figma style */}
-      <div className="card__decoration" style={{ position: 'absolute', top: '15%', right: '12%', width: 8, height: 8, borderRadius: '50%', background: '#F78E05' }} />
-      <div className="card__decoration" style={{ position: 'absolute', top: '25%', right: '25%', width: 5, height: 5, borderRadius: '50%', background: '#FF4F81' }} />
-      <div className="card__decoration" style={{ position: 'absolute', bottom: '25%', left: '8%', width: 14, height: 8, borderRadius: 4, background: '#00AEEF', transform: 'rotate(-30deg)' }} />
-      <div className="card__decoration" style={{ position: 'absolute', bottom: '15%', right: '12%', width: 14, height: 8, borderRadius: 4, background: '#00AEEF', transform: 'rotate(20deg)' }} />
-      <div className="card__decoration" style={{ position: 'absolute', top: '45%', left: '10%', width: 10, height: 10, background: '#F78E05', transform: 'rotate(45deg)' }} />
     </div>
   );
 }
