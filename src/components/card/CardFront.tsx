@@ -30,10 +30,13 @@ export function CardFront({ card }: { card: CardData }) {
         aria-hidden="true"
         style={{
           position: 'absolute',
-          inset: '-10%',
+          top: '50%',
+          left: '50%',
           width: '120%',
           height: '120%',
-          objectFit: 'cover',
+          transform: 'translate(-50%, -50%)',
+          objectFit: 'contain',
+          objectPosition: 'center',
           zIndex: 0,
           pointerEvents: 'none',
           opacity: isLegendary ? 0.9 : 0.7,

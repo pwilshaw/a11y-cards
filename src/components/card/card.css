@@ -131,8 +131,8 @@
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform;
   transform: translate(
-    calc((var(--pointer-from-left, 0.5) - 0.5) * -8px),
-    calc((var(--pointer-from-top, 0.5) - 0.5) * -8px)
+    calc(-50% + (var(--pointer-from-left, 0.5) - 0.5) * -8px),
+    calc(-50% + (var(--pointer-from-top, 0.5) - 0.5) * -8px)
   );
 }
 
