@@ -140,7 +140,21 @@
   transition: none;
 }
 
-/* Illustration — moves FASTER (floats above card surface) */
+/* Mid pattern — moves at MEDIUM speed (between background and illustration) */
+.card__pattern-mid {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+  transform: translate(
+    calc(-50% + (var(--pointer-from-left, 0.5) - 0.5) * 12px),
+    calc(-50% + (var(--pointer-from-top, 0.5) - 0.5) * 12px)
+  );
+}
+
+.card.interacting .card__pattern-mid {
+  transition: none;
+}
+
+/* Illustration — moves FASTEST (floats above card surface) */
 .card__illustration {
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform;
@@ -182,6 +196,7 @@
   }
 
   .card__pattern,
+  .card__pattern-mid,
   .card__illustration,
   .card__decoration {
     transform: none !important;

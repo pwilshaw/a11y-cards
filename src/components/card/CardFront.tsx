@@ -2,29 +2,32 @@ import type { Card as CardData, CardType } from '../../types/card';
 import { CARD_TYPE_CONFIG } from '../../types/card';
 import { TypeIcon } from './TypeIcon';
 
-/** Pattern texture per card type */
-const TYPE_PATTERNS: Record<CardType, string> = {
-  philosophy: '/textures/pattern-stars-pink.png',
-  contrast:   '/textures/pattern-crosses-violet.png',
-  vision:     '/textures/pattern-diamonds-green.png',
-  motor:      '/textures/pattern-stars-orange.png',
-  structure:  '/textures/pattern-asterisk-green.png',
-  cognition:  '/textures/pattern-diamonds-orange.png',
+/** Pattern textures per card type — Default (back) and Level 1 (mid) */
+const TYPE_PATTERNS: Record<CardType, { back: string; mid: string }> = {
+  philosophy: { back: '/textures/pattern-stars-pink.png',      mid: '/textures/pattern-stars-pink-l1.png' },
+  contrast:   { back: '/textures/pattern-crosses-violet.png',  mid: '/textures/pattern-crosses-violet-l1.png' },
+  vision:     { back: '/textures/pattern-diamonds-green.png',  mid: '/textures/pattern-diamonds-green-l1.png' },
+  motor:      { back: '/textures/pattern-stars-orange.png',    mid: '/textures/pattern-stars-orange-l1.png' },
+  structure:  { back: '/textures/pattern-asterisk-green.png',  mid: '/textures/pattern-asterisk-green-l1.png' },
+  cognition:  { back: '/textures/pattern-diamonds-orange.png', mid: '/textures/pattern-diamonds-orange-l1.png' },
 };
 
-const FIESTA_PATTERN = '/textures/pattern-fiesta.png';
+const FIESTA = {
+  back: '/textures/pattern-fiesta.png',
+  mid: '/textures/pattern-fiesta-l1.png',
+};
 
 export function CardFront({ card }: { card: CardData }) {
   const typeConfig = CARD_TYPE_CONFIG[card.type];
   const isLegendary = card.rarity === 'ultra-rare';
-  const patternSrc = isLegendary ? FIESTA_PATTERN : TYPE_PATTERNS[card.type];
+  const patterns = isLegendary ? FIESTA : TYPE_PATTERNS[card.type];
 
   return (
     <div className="card__front" style={{ padding: '11% 11% 8%', display: 'flex', flexDirection: 'column' }}>
-      {/* Background pattern — moves slower than illustration for parallax depth */}
+      {/* Layer 1: Background pattern — moves slowest (deepest) */}
       <img
         className="card__pattern"
-        src={patternSrc}
+        src={patterns.back}
         alt=""
         draggable={false}
         aria-hidden="true"
@@ -39,11 +42,33 @@ export function CardFront({ card }: { card: CardData }) {
           objectPosition: 'center',
           zIndex: 0,
           pointerEvents: 'none',
-          opacity: isLegendary ? 0.9 : 0.7,
+          opacity: isLegendary ? 0.85 : 0.65,
         }}
       />
 
-      {/* Title — top left, bold dark text */}
+      {/* Layer 2: Mid pattern — moves at medium speed */}
+      <img
+        className="card__pattern-mid"
+        src={patterns.mid}
+        alt=""
+        draggable={false}
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '115%',
+          height: '115%',
+          transform: 'translate(-50%, -50%)',
+          objectFit: 'contain',
+          objectPosition: 'center',
+          zIndex: 0,
+          pointerEvents: 'none',
+          opacity: isLegendary ? 0.9 : 0.75,
+        }}
+      />
+
+      {/* Title — top left */}
       <h3
         style={{
           fontFamily: "'Outfit', sans-serif",
@@ -59,7 +84,7 @@ export function CardFront({ card }: { card: CardData }) {
         {card.title}
       </h3>
 
-      {/* Illustration — parallax layer that moves on tilt */}
+      {/* Layer 3: Illustration — moves fastest (floats above) */}
       <div
         className="card__illustration-wrapper"
         style={{
