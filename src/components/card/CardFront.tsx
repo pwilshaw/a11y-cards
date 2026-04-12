@@ -24,7 +24,7 @@ export function CardFront({ card }: { card: CardData }) {
 
   return (
     <div className="card__front" style={{ padding: '11% 11% 8%', display: 'flex', flexDirection: 'column' }}>
-      {/* Layer 1: Background pattern — moves slowest (deepest) */}
+      {/* Layer 1: Background pattern — moves opposite (deepest) */}
       <img
         className="card__pattern"
         src={patterns.back}
@@ -35,18 +35,17 @@ export function CardFront({ card }: { card: CardData }) {
           position: 'absolute',
           top: '50%',
           left: '50%',
-          width: '120%',
-          height: '120%',
-          transform: 'translate(-50%, -50%)',
+          width: '180%',
+          height: '180%',
           objectFit: 'contain',
           objectPosition: 'center',
           zIndex: 0,
           pointerEvents: 'none',
-          opacity: isLegendary ? 0.85 : 0.65,
+          opacity: isLegendary ? 0.85 : 0.7,
         }}
       />
 
-      {/* Layer 2: Mid pattern — moves at medium speed */}
+      {/* Layer 2: Mid pattern — moves with tilt (midground) */}
       <img
         className="card__pattern-mid"
         src={patterns.mid}
@@ -57,14 +56,13 @@ export function CardFront({ card }: { card: CardData }) {
           position: 'absolute',
           top: '50%',
           left: '50%',
-          width: '115%',
-          height: '115%',
-          transform: 'translate(-50%, -50%)',
+          width: '160%',
+          height: '160%',
           objectFit: 'contain',
           objectPosition: 'center',
           zIndex: 0,
           pointerEvents: 'none',
-          opacity: isLegendary ? 0.9 : 0.75,
+          opacity: isLegendary ? 0.9 : 0.8,
         }}
       />
 
