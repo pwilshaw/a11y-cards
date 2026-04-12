@@ -7,9 +7,9 @@ export function useCardInteraction() {
   const interactingRef = useRef(false);
   const rafRef = useRef<number>(0);
 
-  const springRotate = useRef(new SpringGroup(['x', 'y'], 0.066, 0.25));
-  const springGlare = useRef(new SpringGroup(['x', 'y', 'o'], 0.066, 0.25));
-  const springBackground = useRef(new SpringGroup(['x', 'y'], 0.066, 0.25));
+  const springRotate = useRef(new SpringGroup(['x', 'y'], 0.08, 0.3));
+  const springGlare = useRef(new SpringGroup(['x', 'y', 'o'], 0.08, 0.3));
+  const springBackground = useRef(new SpringGroup(['x', 'y'], 0.08, 0.3));
 
   const writeStyles = useCallback(() => {
     const el = cardRef.current;
@@ -69,8 +69,8 @@ export function useCardInteraction() {
     const cy = py - 0.5;
 
     springRotate.current.set({
-      x: -(cy * 30),
-      y: cx * 30,
+      x: -(cy * 40),
+      y: cx * 40,
     });
 
     springGlare.current.set({
