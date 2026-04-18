@@ -1423,6 +1423,314 @@ export const questions: Question[] = [
     difficulty: 1,
   },
 
+  // ===== PRACTICAL WCAG GOTCHAS (3rd questions) =====
+
+  // Touch target size
+  {
+    id: 'Q-MOT-005c', cardId: 'MOT-005',
+    question: 'Your mobile app has 24x24px icon buttons. Users with motor difficulties report accidentally tapping the wrong one. What is the minimum touch target size?',
+    answers: [
+      '32x32px',
+      '36x36px',
+      '44x44px',
+      '48x48px',
+    ],
+    correctIndex: 2,
+    explanation: 'WCAG 2.5.5 requires a minimum 44x44px touch target. Smaller targets are difficult for users with tremors, large fingers, or motor impairments.',
+    hint: 'The minimum is larger than most default icon sizes.',
+    difficulty: 2,
+  },
+
+  // Font size minimum
+  {
+    id: 'Q-VIS-003c', cardId: 'VIS-003',
+    question: 'A developer sets body text to 14px and says "users can zoom if they need to." Why is this not acceptable?',
+    answers: [
+      'Not all browsers support zoom',
+      'The minimum accessible body text size is 16px — relying on user zoom shifts the burden to the user',
+      '14px is fine on high-DPI screens',
+      'Zoom only works on desktop, not mobile',
+    ],
+    correctIndex: 1,
+    explanation: '16px is the baseline. Designing below it and expecting users to compensate is not accessible design.',
+    hint: 'Whose responsibility is it — the designer or the user?',
+    difficulty: 1,
+  },
+
+  // Screen reader emoji repetition
+  {
+    id: 'Q-STR-006c', cardId: 'STR-006',
+    question: 'Your marketing page has "⭐⭐⭐⭐⭐" for a 5-star rating. A screen reader user hears "star star star star star." What is the fix?',
+    answers: [
+      'Use fewer stars',
+      'Wrap the stars in an element with a single aria-label like "5 out of 5 stars" and hide the individual emoji',
+      'Replace the emoji with an image',
+      'Add spaces between the stars',
+    ],
+    correctIndex: 1,
+    explanation: 'Repeated emoji are read out individually, creating a poor experience. Use a single descriptive label and hide the visual repetition from screen readers.',
+    hint: 'What does a screen reader do with 5 identical emoji in a row?',
+    difficulty: 2,
+  },
+
+  // Focus indicator visibility
+  {
+    id: 'Q-MOT-003c', cardId: 'MOT-003',
+    question: 'Your designer removes the browser\'s default focus outline because "it looks ugly." What accessibility requirement does this break?',
+    answers: [
+      'Focus outlines are optional styling choices',
+      'Keyboard users MUST be able to see which element has focus — removing the indicator without a replacement violates WCAG',
+      'Focus outlines only matter for screen readers',
+      'You can remove them on desktop but not mobile',
+    ],
+    correctIndex: 1,
+    explanation: 'Focus indicators are essential for keyboard navigation. You can restyle them, but never remove them without providing a visible alternative.',
+    hint: 'How does a keyboard user know where they are on the page?',
+    difficulty: 1,
+  },
+
+  // "Click here" link text
+  {
+    id: 'Q-STR-004c', cardId: 'STR-004',
+    question: 'Your page has 6 links that all say "click here" or "read more." A screen reader user navigates by listing all links. What do they hear?',
+    answers: [
+      'The full sentence around each link for context',
+      'A list of identical "click here" and "read more" links with no way to tell them apart',
+      'The URL of each link',
+      'Nothing — screen readers skip generic link text',
+    ],
+    correctIndex: 1,
+    explanation: 'Screen reader users often navigate by pulling up a list of all links. Generic text like "click here" gives zero context. Use descriptive link text.',
+    hint: 'Imagine hearing a list of 6 links. Would "click here" x6 be useful?',
+    difficulty: 1,
+  },
+
+  // Motion sensitivity
+  {
+    id: 'Q-COG-001c', cardId: 'COG-001',
+    question: 'Your onboarding has parallax scrolling, auto-playing animations, and sliding transitions. A user with a vestibular disorder reports nausea. What should you check?',
+    answers: [
+      'Whether the animations are too slow',
+      'Whether your app respects the prefers-reduced-motion setting and offers a way to disable animations',
+      'Whether the user has updated their browser',
+      'Whether the animations use hardware acceleration',
+    ],
+    correctIndex: 1,
+    explanation: 'Users with vestibular disorders can experience nausea, dizziness, or migraines from motion. Always respect prefers-reduced-motion and offer controls.',
+    hint: 'There is a system setting users can enable — does your app listen to it?',
+    difficulty: 2,
+  },
+
+  // Thumb reach zones
+  {
+    id: 'Q-MOT-002c', cardId: 'MOT-002',
+    question: 'On your mobile app, the primary action button is in the top-right corner. Users report it is hard to reach. Why?',
+    answers: [
+      'The button is too small',
+      'Most users hold phones one-handed — the top corners are the hardest area to reach with a thumb',
+      'The button colour does not stand out',
+      'Users expect primary actions on the left',
+    ],
+    correctIndex: 1,
+    explanation: 'The thumb-friendly zone is the bottom-centre of the screen. Top corners require stretching and are the least reachable area for one-handed use.',
+    hint: 'Hold your phone in one hand. Where can your thumb easily reach?',
+    difficulty: 1,
+  },
+
+  // Auto-playing media
+  {
+    id: 'Q-COG-004c', cardId: 'COG-004',
+    question: 'Your landing page has a video that auto-plays with sound. What accessibility issues does this create?',
+    answers: [
+      'It uses too much bandwidth',
+      'It is disorienting for screen reader users, distressing for users with cognitive disabilities, and violates WCAG auto-play guidelines',
+      'It only annoys users on mobile',
+      'It is fine as long as there is a mute button',
+    ],
+    correctIndex: 1,
+    explanation: 'Auto-playing audio interferes with screen readers, unexpected motion can trigger vestibular issues, and it violates user control principles.',
+    hint: 'Think about who is affected: screen reader users, users with anxiety, and users with vestibular disorders.',
+    difficulty: 1,
+  },
+
+  // Colour contrast for non-text (icons, borders)
+  {
+    id: 'Q-CON-003c', cardId: 'CON-003',
+    question: 'Your form uses thin light-grey borders to indicate input fields. Some users cannot see where to type. What WCAG rule applies?',
+    answers: [
+      'Only text has contrast requirements',
+      'Non-text elements like borders, icons, and controls also need a minimum 3:1 contrast ratio against their background',
+      'Borders do not need contrast if there is a label',
+      'Only the placeholder text needs contrast',
+    ],
+    correctIndex: 1,
+    explanation: 'WCAG 1.4.11 requires 3:1 contrast for non-text UI components — including form borders, icons, and focus indicators.',
+    hint: 'Contrast requirements apply to more than just text.',
+    difficulty: 2,
+  },
+
+  // Error identification
+  {
+    id: 'Q-COG-002c', cardId: 'COG-002',
+    question: 'A user submits a form with 3 errors. Your page shows a red banner saying "There were errors" but does not say which fields or what is wrong. What is missing?',
+    answers: [
+      'A count of how many errors there are',
+      'Specific identification of each error: which field, what is wrong, and how to fix it',
+      'A link to the help page',
+      'An error sound effect',
+    ],
+    correctIndex: 1,
+    explanation: 'WCAG requires errors to be identified specifically. Users need to know which field failed, what the problem is, and how to correct it.',
+    hint: '"There were errors" is not enough. What does the user need to actually fix the problem?',
+    difficulty: 1,
+  },
+
+  // Heading used for styling
+  {
+    id: 'Q-STR-003c', cardId: 'STR-003',
+    question: 'A developer uses an H3 tag to make text look big and bold, even though it is not a real heading in the content structure. What is the problem?',
+    answers: [
+      'H3 is an outdated tag',
+      'Screen readers use headings to build a page outline — fake headings create a misleading structure that confuses navigation',
+      'H3 renders differently across browsers',
+      'Only H1 and H2 are valid heading levels',
+    ],
+    correctIndex: 1,
+    explanation: 'Headings are structural, not visual. Using them for styling creates a broken document outline that misleads screen reader users.',
+    hint: 'What does a screen reader think an H3 tag means?',
+    difficulty: 1,
+  },
+
+  // ===== NON-TECH ROLES (sales, marketing, finance, HR) =====
+
+  // Business impact of inaccessibility
+  {
+    id: 'Q-PHI-003c', cardId: 'PHI-003',
+    question: 'Your sales team is pitching to a large enterprise client. The client asks if your product is WCAG compliant. You are not. What is the business risk?',
+    answers: [
+      'The client might ask for a discount',
+      'You could lose the deal entirely — many enterprises and governments require accessibility compliance for procurement',
+      'The client will not notice',
+      'You can promise to add it later',
+    ],
+    correctIndex: 1,
+    explanation: 'Enterprise and public sector procurement increasingly requires WCAG compliance. Non-compliance can disqualify you from major deals.',
+    hint: 'Think about procurement checklists and RFPs.',
+    difficulty: 2,
+  },
+
+  // Marketing content accessibility
+  {
+    id: 'Q-VIS-002c', cardId: 'VIS-002',
+    question: 'Your marketing team publishes a campaign landing page with a long block of text and no structure. Why might this hurt conversion rates?',
+    answers: [
+      'Search engines prefer short pages',
+      'Users scan — if they cannot quickly find the value proposition, they leave before converting',
+      'Long text is fine as long as the font is large',
+      'It only matters on mobile',
+    ],
+    correctIndex: 1,
+    explanation: 'Unstructured text walls hurt conversion for everyone. Clear headings, bullets, and visual hierarchy help all users — including those with cognitive differences.',
+    hint: 'How do most people read a landing page?',
+    difficulty: 1,
+  },
+
+  // HR and recruitment
+  {
+    id: 'Q-PHI-006c', cardId: 'PHI-006',
+    question: 'Your HR team\'s online job application form is inaccessible. What is the consequence beyond just bad UX?',
+    answers: [
+      'It might load slowly',
+      'You are excluding qualified candidates with disabilities — potentially violating employment discrimination law',
+      'Candidates will call HR instead',
+      'It only matters if you advertise accessible roles',
+    ],
+    correctIndex: 1,
+    explanation: 'Inaccessible recruitment processes can violate equal opportunity laws and exclude talented candidates from your talent pool.',
+    hint: 'Think about employment law, not just UX.',
+    difficulty: 2,
+  },
+
+  // Finance and reporting
+  {
+    id: 'Q-CON-007c', cardId: 'CON-007',
+    question: 'Your finance team shares a quarterly report with colour-coded charts. A board member with colour blindness says they cannot read the data. What is the fix?',
+    answers: [
+      'Send them a text summary instead',
+      'Use patterns, direct labels, and distinct shapes alongside colour so all board members can read the data',
+      'Print it in higher quality',
+      'Use a different colour palette',
+    ],
+    correctIndex: 1,
+    explanation: 'Colour-only charts exclude colour-blind readers. Business reports need the same accessibility standards as customer-facing products.',
+    hint: 'Accessibility applies to internal documents too.',
+    difficulty: 1,
+  },
+
+  // Email marketing
+  {
+    id: 'Q-STR-008c', cardId: 'STR-008',
+    question: 'Your marketing team designs email campaigns as a single large image with text baked in. What do recipients using a screen reader experience?',
+    answers: [
+      'They see the image normally',
+      'They hear nothing useful — the entire email content is invisible to screen readers unless alt text is added',
+      'Screen readers can extract text from images',
+      'It only matters if images are blocked',
+    ],
+    correctIndex: 1,
+    explanation: 'Image-only emails are invisible to screen readers AND when images are blocked (common in corporate email). Use real HTML text with images for decoration.',
+    hint: 'What happens when a corporate email client blocks images by default?',
+    difficulty: 1,
+  },
+
+  // Customer support
+  {
+    id: 'Q-COG-005c', cardId: 'COG-005',
+    question: 'A customer accidentally cancels their subscription. Your system has no undo and no confirmation step. They call support. What should the product have done?',
+    answers: [
+      'Required them to call support before cancelling',
+      'Shown a confirmation step, offered a grace period, and made reactivation self-service',
+      'Hidden the cancel button',
+      'Required a written letter to cancel',
+    ],
+    correctIndex: 1,
+    explanation: 'Destructive actions need guardrails. A confirmation step and easy recovery reduce support load and improve customer trust.',
+    hint: 'This is both an accessibility issue and a customer retention issue.',
+    difficulty: 1,
+  },
+
+  // Social media content
+  {
+    id: 'Q-PHI-009c', cardId: 'PHI-009',
+    question: 'Your social media team posts an infographic with critical data but no text alternative. Who is excluded?',
+    answers: [
+      'Only screen reader users',
+      'Screen reader users, users with slow connections who cannot load the image, and anyone who needs to translate or search the content',
+      'No one — everyone can see images on social media',
+      'Only users on feature phones',
+    ],
+    correctIndex: 1,
+    explanation: 'Infographics without text alternatives exclude multiple groups. Always provide alt text or a text summary with the same information.',
+    hint: 'Think beyond screen readers — who else cannot access an image?',
+    difficulty: 1,
+  },
+
+  // Presentation decks
+  {
+    id: 'Q-VIS-004c', cardId: 'VIS-004',
+    question: 'A sales rep builds a client deck using a decorative script font throughout. The client\'s CEO, who has dyslexia, struggles to read it. What went wrong?',
+    answers: [
+      'The deck should have been sent as a PDF',
+      'Decorative fonts are hard to read for many people — presentations should use clear, readable fonts',
+      'The font size was probably too small',
+      'The CEO should have requested a plain text version',
+    ],
+    correctIndex: 1,
+    explanation: 'Decorative fonts hurt readability for everyone and create real barriers for people with dyslexia. Use readable fonts in all business communications.',
+    hint: 'This is not just a tech problem — it applies to sales decks, reports, and internal docs.',
+    difficulty: 1,
+  },
+
   // STR-009b
   {
     id: 'Q-STR-009b', cardId: 'STR-009',
