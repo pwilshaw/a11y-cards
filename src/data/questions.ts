@@ -2,8 +2,10 @@ import type { Question } from '../types/card';
 
 export const questions: Question[] = [
   // ===== FUNDAMENTALS =====
+
+  // PHI-001: #NoUserLeftBehind
   {
-    id: 'Q-PHI-001', cardId: 'PHI-001',
+    id: 'Q-PHI-001a', cardId: 'PHI-001',
     question: 'Your team argues that accessibility is a nice-to-have for a future sprint. What is the strongest counter-argument?',
     answers: [
       'It will look good in the annual report',
@@ -17,7 +19,23 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-PHI-002', cardId: 'PHI-002',
+    id: 'Q-PHI-001b', cardId: 'PHI-001',
+    question: 'A product launches with no accessibility considerations. Who is most likely to be affected?',
+    answers: [
+      'Only users with permanent visual impairments',
+      'Anyone who uses assistive technology, has a situational limitation, or a temporary injury',
+      'Only users in regions with accessibility laws',
+      'No one — they can request accommodations',
+    ],
+    correctIndex: 1,
+    explanation: 'Inaccessible products exclude a wide range of people — not just those with permanent disabilities.',
+    hint: 'The affected group is much wider than most teams assume.',
+    difficulty: 1,
+  },
+
+  // PHI-002: Including = excluding
+  {
+    id: 'Q-PHI-002a', cardId: 'PHI-002',
     question: 'A designer says "we haven\'t excluded anyone — we just haven\'t thought about accessibility yet." Why is that wrong?',
     answers: [
       'They should have started sooner for budget reasons',
@@ -31,7 +49,23 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-PHI-003', cardId: 'PHI-003',
+    id: 'Q-PHI-002b', cardId: 'PHI-002',
+    question: 'Your team shipped a feature without considering accessibility. No one has complained. Does that mean it is fine?',
+    answers: [
+      'Yes — if users had problems they would report them',
+      'No — excluded users often leave silently rather than filing complaints',
+      'Yes — complaints are the best measure of accessibility',
+      'No — but only because of legal risk',
+    ],
+    correctIndex: 1,
+    explanation: 'Users who cannot access your product do not complain — they leave. Silence is not evidence of inclusion.',
+    hint: 'What does an excluded user actually do?',
+    difficulty: 2,
+  },
+
+  // PHI-003: It's the law
+  {
+    id: 'Q-PHI-003a', cardId: 'PHI-003',
     question: 'A stakeholder asks why accessibility should be prioritised this quarter. What legal fact would make the strongest case?',
     answers: [
       'There are occasional fines for inaccessible websites',
@@ -45,7 +79,23 @@ export const questions: Question[] = [
     difficulty: 2,
   },
   {
-    id: 'Q-PHI-004', cardId: 'PHI-004',
+    id: 'Q-PHI-003b', cardId: 'PHI-003',
+    question: 'Your European client says "accessibility laws don\'t apply to us yet." Are they correct?',
+    answers: [
+      'Yes — EU accessibility rules are still in draft',
+      'No — the European Accessibility Act became enforceable in June 2025',
+      'Yes — it only applies to government websites',
+      'No — but enforcement does not start until 2030',
+    ],
+    correctIndex: 1,
+    explanation: 'The EAA (Directive 2019/882) became enforceable across all EU member states in June 2025.',
+    hint: 'When did the European Accessibility Act take effect?',
+    difficulty: 2,
+  },
+
+  // PHI-004: Not just contrast and screen readers
+  {
+    id: 'Q-PHI-004a', cardId: 'PHI-004',
     question: 'Your team has fixed all colour contrast issues and tested with a screen reader. Is the product now accessible?',
     answers: [
       'Yes — contrast and screen readers are the two pillars of accessibility',
@@ -59,7 +109,23 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-PHI-005', cardId: 'PHI-005',
+    id: 'Q-PHI-004b', cardId: 'PHI-004',
+    question: 'A QA tester says "I ran the contrast checker and it passed — we are accessible." What is missing from this approach?',
+    answers: [
+      'They should also check the fonts',
+      'Automated tools only catch a fraction of issues — manual testing for keyboard, cognitive, and motor needs is essential',
+      'They need to run the check in dark mode too',
+      'Nothing — automated tools are comprehensive',
+    ],
+    correctIndex: 1,
+    explanation: 'Automated tools catch roughly 30% of accessibility issues. The rest require human testing across multiple needs.',
+    hint: 'How much can a tool really catch?',
+    difficulty: 2,
+  },
+
+  // PHI-005: Not just disability
+  {
+    id: 'Q-PHI-005a', cardId: 'PHI-005',
     question: 'A colleague says "we don\'t have any disabled users so accessibility isn\'t relevant." What is wrong with this statement?',
     answers: [
       'They should survey users to confirm',
@@ -73,7 +139,23 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-PHI-006', cardId: 'PHI-006',
+    id: 'Q-PHI-005b', cardId: 'PHI-005',
+    question: 'Give an example of a "situational" limitation that accessibility improvements would help with.',
+    answers: [
+      'A user who prefers dark mode',
+      'A user trying to read their phone screen in direct sunlight',
+      'A user with a large monitor',
+      'A user on a fast Wi-Fi connection',
+    ],
+    correctIndex: 1,
+    explanation: 'Bright sunlight, noisy environments, holding a baby, broken glasses — situational limitations affect everyone at some point.',
+    hint: 'Think about temporary circumstances that affect how you use a device.',
+    difficulty: 1,
+  },
+
+  // PHI-006: Including everyone
+  {
+    id: 'Q-PHI-006a', cardId: 'PHI-006',
     question: 'What is the difference between "accessible design" and "inclusive design"?',
     answers: [
       'They mean the same thing',
@@ -87,7 +169,23 @@ export const questions: Question[] = [
     difficulty: 2,
   },
   {
-    id: 'Q-PHI-007', cardId: 'PHI-007',
+    id: 'Q-PHI-006b', cardId: 'PHI-006',
+    question: 'Your product works perfectly for English-speaking, right-handed, young adults with fast internet. What design approach have you missed?',
+    answers: [
+      'Responsive design',
+      'Inclusive design — considering the full range of language, culture, age, ability, and context',
+      'Performance optimisation',
+      'Brand consistency across markets',
+    ],
+    correctIndex: 1,
+    explanation: 'Inclusive design means designing for the widest range of human diversity, not just the "average" user.',
+    hint: 'You have optimised for one narrow group. Who is left out?',
+    difficulty: 2,
+  },
+
+  // PHI-007: 15% of world population
+  {
+    id: 'Q-PHI-007a', cardId: 'PHI-007',
     question: 'Your PM says the addressable market for accessibility features is too small to justify the investment. How do you respond?',
     answers: [
       'Agree — focus on the majority first',
@@ -101,7 +199,23 @@ export const questions: Question[] = [
     difficulty: 2,
   },
   {
-    id: 'Q-PHI-008', cardId: 'PHI-008',
+    id: 'Q-PHI-007b', cardId: 'PHI-007',
+    question: 'You are building a business case for accessibility investment. Which statement about market size is accurate?',
+    answers: [
+      'Disability affects roughly 2-3% of the global population',
+      'About 1 in 7 people worldwide has some form of disability',
+      'Disability primarily affects elderly users in developed countries',
+      'The number is too small to measure reliably',
+    ],
+    correctIndex: 1,
+    explanation: 'About 1 in 7 (15%) of the world population lives with some form of disability — over a billion people.',
+    hint: 'Think in billions, not percentages.',
+    difficulty: 2,
+  },
+
+  // PHI-008: Affordance
+  {
+    id: 'Q-PHI-008a', cardId: 'PHI-008',
     question: 'A user stares at a button but cannot tell if it is clickable. What design principle has been violated?',
     answers: [
       'Brand consistency',
@@ -115,7 +229,23 @@ export const questions: Question[] = [
     difficulty: 2,
   },
   {
-    id: 'Q-PHI-009', cardId: 'PHI-009',
+    id: 'Q-PHI-008b', cardId: 'PHI-008',
+    question: 'Your flat-design links look identical to body text. Users are not clicking them. What needs to change?',
+    answers: [
+      'Make the links a different font size',
+      'Add visual cues (underline, colour, cursor change) so links look interactive',
+      'Add tooltips explaining they are clickable',
+      'Move the links to a separate navigation section',
+    ],
+    correctIndex: 1,
+    explanation: 'If interactive elements do not look interactive, users will miss them. Affordance requires clear visual cues.',
+    hint: 'How does a user know something is clickable just by looking at it?',
+    difficulty: 1,
+  },
+
+  // PHI-009: Only 20% read
+  {
+    id: 'Q-PHI-009a', cardId: 'PHI-009',
     question: 'You have written detailed product copy but users are missing key information. What is the most likely cause?',
     answers: [
       'The font is too small',
@@ -128,10 +258,26 @@ export const questions: Question[] = [
     hint: 'Think about how people actually consume web content.',
     difficulty: 2,
   },
+  {
+    id: 'Q-PHI-009b', cardId: 'PHI-009',
+    question: 'Your analytics show users spend an average of 8 seconds on your feature explanation page. What content strategy should you adopt?',
+    answers: [
+      'Make the page longer with more detail to increase time on page',
+      'Put the most important information first — users scan, and most will not read past the opening',
+      'Add an auto-playing video to hold attention',
+      'Remove the text and use only images',
+    ],
+    correctIndex: 1,
+    explanation: 'Most users scan. Front-load the key message. Use headings, bullets, and progressive disclosure for the detail.',
+    hint: 'If they only read the first sentence, would they get the point?',
+    difficulty: 2,
+  },
 
   // ===== COLOUR =====
+
+  // CON-001: Using colour
   {
-    id: 'Q-CON-001', cardId: 'CON-001',
+    id: 'Q-CON-001a', cardId: 'CON-001',
     question: 'Your dashboard uses green for "healthy" and red for "critical" with no other indicator. What should you add?',
     answers: [
       'Brighter colours so they stand out more',
@@ -145,21 +291,48 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-CON-002', cardId: 'CON-002',
-    question: 'You are designing a product used by 600 people. Roughly how many of them likely have some form of visual impairment?',
+    id: 'Q-CON-001b', cardId: 'CON-001',
+    question: 'A designer proposes a heatmap where intensity is the only way to distinguish values. What is the accessibility risk?',
     answers: [
-      'About 5',
-      'About 30',
-      'About 100',
-      'About 200',
+      'Heatmaps are too complex for mobile',
+      'Users with colour vision deficiency or low vision cannot interpret colour-only encoding',
+      'Heatmaps use too much GPU rendering',
+      'The colours might not match the brand palette',
     ],
+    correctIndex: 1,
+    explanation: 'Colour should always be paired with another channel — labels, patterns, or size — to convey meaning.',
+    hint: 'What happens if the user cannot perceive colour differences?',
+    difficulty: 2,
+  },
+
+  // CON-002: 1 in 6 visual impairment
+  {
+    id: 'Q-CON-002a', cardId: 'CON-002',
+    question: 'You are designing a product used by 600 people. Roughly how many of them likely have some form of visual impairment?',
+    answers: [ 'About 5', 'About 30', 'About 100', 'About 200' ],
     correctIndex: 2,
     explanation: '1 in 6 people have visual impairment — that is 100 out of 600. Design for them and you design better for everyone.',
     hint: 'The ratio is higher than most teams estimate.',
     difficulty: 2,
   },
   {
-    id: 'Q-CON-003', cardId: 'CON-003',
+    id: 'Q-CON-002b', cardId: 'CON-002',
+    question: 'Your team says visual impairment is "rare" and not worth testing for. What data challenges this?',
+    answers: [
+      'About 1 in 100 people are affected',
+      'About 1 in 6 people have some form of visual impairment',
+      'It only affects users over 60',
+      'It only matters for medical applications',
+    ],
+    correctIndex: 1,
+    explanation: 'Visual impairment is far more common than most teams realise — it spans a wide spectrum from mild to severe.',
+    hint: 'The number is surprisingly high.',
+    difficulty: 1,
+  },
+
+  // CON-003: AA 4.5:1
+  {
+    id: 'Q-CON-003a', cardId: 'CON-003',
     question: 'Your designer sends a mockup with #999 grey text on a #FFF white background. What will you flag?',
     answers: [
       'The font choice is wrong',
@@ -168,26 +341,53 @@ export const questions: Question[] = [
       'The text should be centred',
     ],
     correctIndex: 1,
-    explanation: '#999 on white has a contrast ratio of ~2.85:1, well below the 4.5:1 AA minimum. The text will be hard to read for many users.',
+    explanation: '#999 on white has a contrast ratio of ~2.85:1, well below the 4.5:1 AA minimum.',
     hint: 'Check the numbers — light grey on white is a classic fail.',
     difficulty: 2,
   },
   {
-    id: 'Q-CON-004', cardId: 'CON-004',
-    question: 'Your form highlights invalid fields with a red border only. What percentage of male users might miss this?',
+    id: 'Q-CON-003b', cardId: 'CON-003',
+    question: 'A developer asks "does our large heading text need the same contrast ratio as body text?" What is the answer?',
     answers: [
-      'Less than 1%',
-      'About 3%',
-      'About 8%',
-      'About 20%',
+      'Yes — all text has the same requirement',
+      'No — large text has a lower minimum of 3:1, while normal text requires 4.5:1',
+      'No — headings have no contrast requirement',
+      'Yes — but only if the heading is a link',
     ],
+    correctIndex: 1,
+    explanation: 'WCAG AA allows 3:1 for large text (18pt+) but requires 4.5:1 for normal-sized text.',
+    hint: 'There are two thresholds — one is more lenient for bigger text.',
+    difficulty: 2,
+  },
+
+  // CON-004: Don't convey with colour alone
+  {
+    id: 'Q-CON-004a', cardId: 'CON-004',
+    question: 'Your form highlights invalid fields with a red border only. What percentage of male users might miss this?',
+    answers: [ 'Less than 1%', 'About 3%', 'About 8%', 'About 20%' ],
     correctIndex: 2,
-    explanation: 'About 8% of men are colour-blind. A red-only indicator means roughly 1 in 12 male users may not notice the error state.',
+    explanation: 'About 8% of men are colour-blind. A red-only indicator means roughly 1 in 12 male users may not notice the error.',
     hint: 'Colour blindness is more common in men than most people think.',
     difficulty: 1,
   },
   {
-    id: 'Q-CON-005', cardId: 'CON-005',
+    id: 'Q-CON-004b', cardId: 'CON-004',
+    question: 'Your map uses only colour to distinguish regions. A user reports they cannot tell which is which. What is the fix?',
+    answers: [
+      'Use brighter, more distinct colours',
+      'Add patterns, labels, or borders to distinguish regions in addition to colour',
+      'Add a colour legend with larger swatches',
+      'Let users choose their own colour palette',
+    ],
+    correctIndex: 1,
+    explanation: 'Colour alone is not enough. Add a second visual channel — patterns, labels, textures, or borders.',
+    hint: 'What would work if the map were printed in black and white?',
+    difficulty: 1,
+  },
+
+  // CON-005: Don't use coloured text for status
+  {
+    id: 'Q-CON-005a', cardId: 'CON-005',
     question: 'Your toast notification shows "Success" in green text and "Error" in red text with no icons. What is the accessibility issue?',
     answers: [
       'Toast notifications should not use colour at all',
@@ -201,7 +401,23 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-CON-006', cardId: 'CON-006',
+    id: 'Q-CON-005b', cardId: 'CON-005',
+    question: 'Your status badges use green for "Active", amber for "Pending", and red for "Expired". A user reports they all look the same. What should you do?',
+    answers: [
+      'Use more saturated colours',
+      'Add text labels or icons to each badge so meaning does not depend on colour alone',
+      'Make the badges larger',
+      'Use different shapes instead of colours',
+    ],
+    correctIndex: 1,
+    explanation: 'Text labels (Active, Pending, Expired) or icons give every user the information regardless of colour perception.',
+    hint: 'The fix should work even if you remove all colour from the page.',
+    difficulty: 1,
+  },
+
+  // CON-006: Use explicit text and icons
+  {
+    id: 'Q-CON-006a', cardId: 'CON-006',
     question: 'A data table uses background colours to show row status. What accessible alternative should you add?',
     answers: [
       'A separate colour legend below the table',
@@ -214,8 +430,10 @@ export const questions: Question[] = [
     hint: 'The solution should work even if all colour is removed.',
     difficulty: 1,
   },
+
+  // CON-007: Don't use abstract graph legends
   {
-    id: 'Q-CON-007', cardId: 'CON-007',
+    id: 'Q-CON-007a', cardId: 'CON-007',
     question: 'Your pie chart uses 6 similar hues differentiated only by a colour legend. If you printed it in greyscale, what would happen?',
     answers: [
       'Nothing — the segments are still clear',
@@ -224,41 +442,47 @@ export const questions: Question[] = [
       'The legend would still work fine',
     ],
     correctIndex: 1,
-    explanation: 'Colour-only differentiation fails in greyscale, for colour-blind users, and on poor displays. Use patterns and direct labels instead.',
+    explanation: 'Colour-only differentiation fails in greyscale, for colour-blind users, and on poor displays. Use patterns and direct labels.',
     hint: 'Try the greyscale test on your next chart.',
     difficulty: 1,
   },
+
+  // CON-008: Place labels next to data
   {
-    id: 'Q-CON-008', cardId: 'CON-008',
-    question: 'Your bar chart has a colour legend at the bottom of the page. Users keep scrolling up and down to understand the data. What should you do?',
+    id: 'Q-CON-008a', cardId: 'CON-008',
+    question: 'Your bar chart has a colour legend at the bottom. Users keep scrolling up and down to understand the data. What should you do?',
     answers: [
-      'Make the legend sticky so it scrolls with the page',
+      'Make the legend sticky',
       'Place labels directly on or next to each bar with distinct patterns',
       'Use brighter colours so they are more memorable',
       'Add a downloadable key as a PDF',
     ],
     correctIndex: 1,
-    explanation: 'Direct labels next to data eliminate the need for legend lookups and work for all users regardless of colour perception.',
+    explanation: 'Direct labels next to data eliminate the need for legend lookups and work for all users.',
     hint: 'Reduce the distance between the data and its meaning.',
     difficulty: 2,
   },
+
+  // CON-009: Light theme colours
   {
-    id: 'Q-CON-009', cardId: 'CON-009',
+    id: 'Q-CON-009a', cardId: 'CON-009',
     question: 'Users complain they cannot read placeholder text in your light-theme form inputs. What is the likely cause?',
     answers: [
       'The font is too small',
       'Light grey placeholder text on a white input background fails contrast requirements',
       'Placeholder text should not be used at all',
-      'Users need to click the input to see the placeholder',
+      'Users need to click the input first',
     ],
     correctIndex: 1,
-    explanation: 'Light grey on white is the most common contrast failure in light themes. Placeholders need adequate contrast too.',
+    explanation: 'Light grey on white is the most common contrast failure in light themes.',
     hint: 'What colour is the text, and what colour is the background?',
     difficulty: 2,
   },
+
+  // CON-010: Dark theme colours
   {
-    id: 'Q-CON-010', cardId: 'CON-010',
-    question: 'Users report eye strain when using your app in dark mode at night. You are using #FFF white text. What should you change?',
+    id: 'Q-CON-010a', cardId: 'CON-010',
+    question: 'Users report eye strain in your dark mode app at night. You are using #FFF white text. What should you change?',
     answers: [
       'Switch to a light theme at night',
       'Replace pure white with a warm off-white like #E8E6E3',
@@ -272,8 +496,10 @@ export const questions: Question[] = [
   },
 
   // ===== VISUAL =====
+
+  // VIS-001: 35% have 20/20
   {
-    id: 'Q-VIS-001', cardId: 'VIS-001',
+    id: 'Q-VIS-001a', cardId: 'VIS-001',
     question: 'Your team designs for users with "normal" vision. Why is this a flawed assumption?',
     answers: [
       'All users have different monitor sizes',
@@ -283,11 +509,27 @@ export const questions: Question[] = [
     ],
     correctIndex: 1,
     explanation: 'Only 35% of people have 20/20 vision without correction. Designing only for perfect vision excludes the majority.',
-    hint: 'What percentage of people actually have perfect vision? It is lower than you think.',
+    hint: 'What percentage actually has perfect vision? Lower than you think.',
     difficulty: 2,
   },
   {
-    id: 'Q-VIS-002', cardId: 'VIS-002',
+    id: 'Q-VIS-001b', cardId: 'VIS-001',
+    question: 'You are testing your app with your team — all young, tech-savvy adults. Why is this a biased accessibility sample?',
+    answers: [
+      'They are too familiar with the product',
+      'They likely have better than average vision — most of the population needs correction',
+      'They work on large monitors',
+      'They are not real users',
+    ],
+    correctIndex: 1,
+    explanation: 'Your team is not representative. The majority of the population does not have perfect uncorrected vision.',
+    hint: 'Look around your team. Now think about the wider population.',
+    difficulty: 2,
+  },
+
+  // VIS-002: Walls of text
+  {
+    id: 'Q-VIS-002a', cardId: 'VIS-002',
     question: 'A content writer submits a 2,000-word page with no headings, bullet points, or visual breaks. What is the accessibility concern?',
     answers: [
       'It will rank poorly in search engines',
@@ -296,12 +538,14 @@ export const questions: Question[] = [
       'Users will not scroll that far',
     ],
     correctIndex: 1,
-    explanation: 'Walls of text create barriers for users with dyslexia, cognitive differences, or low vision. Break content into scannable chunks.',
+    explanation: 'Walls of text create barriers for users with dyslexia, cognitive differences, or low vision.',
     hint: 'Who will struggle most with an unbroken wall of text?',
     difficulty: 1,
   },
+
+  // VIS-003: Large fonts + whitespace
   {
-    id: 'Q-VIS-003', cardId: 'VIS-003',
+    id: 'Q-VIS-003a', cardId: 'VIS-003',
     question: 'Your marketing site uses 12px body text because it "looks clean." Why should you push back?',
     answers: [
       '12px renders differently on Mac and Windows',
@@ -310,43 +554,49 @@ export const questions: Question[] = [
       'Only users over 50 need larger text',
     ],
     correctIndex: 1,
-    explanation: '16px is the recommended minimum for body text. Smaller text excludes users with low vision and makes everyone strain.',
+    explanation: '16px is the recommended minimum for body text. Smaller text excludes users with low vision.',
     hint: 'There is a widely agreed minimum — and 12px is below it.',
     difficulty: 1,
   },
+
+  // VIS-004: Rainbow fonts
   {
-    id: 'Q-VIS-004', cardId: 'VIS-004',
+    id: 'Q-VIS-004a', cardId: 'VIS-004',
     question: 'A brand team wants to use a handwritten script font for all body copy. What is your accessibility concern?',
     answers: [
       'It will not render on mobile browsers',
-      'Decorative fonts are extremely hard to read for most users, especially those with dyslexia',
+      'Decorative fonts are extremely hard to read, especially for users with dyslexia',
       'It will increase page weight',
       'It will clash with the icon style',
     ],
     correctIndex: 1,
-    explanation: 'Decorative, script, and multi-coloured fonts dramatically reduce readability. Use them sparingly for display only, never for body text.',
+    explanation: 'Decorative, script, and multi-coloured fonts dramatically reduce readability for most users.',
     hint: 'Think about who will struggle to read it.',
     difficulty: 1,
   },
+
+  // VIS-005: Approved fonts
   {
-    id: 'Q-VIS-005', cardId: 'VIS-005',
+    id: 'Q-VIS-005a', cardId: 'VIS-005',
     question: 'You need to choose a body font that works well for users with low vision. Which approach is best?',
     answers: [
       'Pick whatever matches the brand closest',
-      'Use a font specifically designed for legibility, like Atkinson Hyperlegible or Inter',
+      'Use a font designed for legibility, like Atkinson Hyperlegible or Inter',
       'Any sans-serif font is equally accessible',
       'Use the browser default font',
     ],
     correctIndex: 1,
-    explanation: 'Fonts like Atkinson Hyperlegible (by the Braille Institute) are specifically designed to maximise character distinction for low-vision readers.',
+    explanation: 'Fonts like Atkinson Hyperlegible are specifically designed to maximise character distinction for low-vision readers.',
     hint: 'Some fonts are specifically engineered for this purpose.',
     difficulty: 2,
   },
 
   // ===== INTERACTION =====
+
+  // MOT-001: Simple as possible
   {
-    id: 'Q-MOT-001', cardId: 'MOT-001',
-    question: 'Your feature has 15 settings, 8 toggles, and 3 nested menus. Users report feeling overwhelmed. What principle should guide the redesign?',
+    id: 'Q-MOT-001a', cardId: 'MOT-001',
+    question: 'Your feature has 15 settings, 8 toggles, and 3 nested menus. Users feel overwhelmed. What principle guides the redesign?',
     answers: [
       'Add a search bar so users can find settings',
       'Simplify to the minimum needed — remove what is not essential',
@@ -354,12 +604,14 @@ export const questions: Question[] = [
       'Group settings by colour',
     ],
     correctIndex: 1,
-    explanation: '"Everything should be made as simple as possible, but not simpler." Reduce complexity to what users actually need.',
+    explanation: 'Reduce complexity to what users actually need. Do not oversimplify — but do not add what is not essential.',
     hint: 'Less is more — but not less than necessary.',
     difficulty: 2,
   },
+
+  // MOT-002: Not everyone uses a mouse
   {
-    id: 'Q-MOT-002', cardId: 'MOT-002',
+    id: 'Q-MOT-002a', cardId: 'MOT-002',
     question: 'You are about to ship a feature that works perfectly with a mouse. What have you potentially missed?',
     answers: [
       'Touch screen support',
@@ -373,22 +625,40 @@ export const questions: Question[] = [
     difficulty: 1,
   },
   {
-    id: 'Q-MOT-003', cardId: 'MOT-003',
+    id: 'Q-MOT-002b', cardId: 'MOT-002',
+    question: 'A user with tremors finds it impossible to click small targets accurately. What input methods should your product also support?',
+    answers: [
+      'Only a trackball mouse',
+      'Keyboard navigation, voice control, and switch devices',
+      'A stylus',
+      'Eye tracking only',
+    ],
+    correctIndex: 1,
+    explanation: 'Supporting multiple input methods (keyboard, voice, switches) ensures users with motor difficulties can navigate your product.',
+    hint: 'There are several alternative input methods — not just one.',
+    difficulty: 1,
+  },
+
+  // MOT-003: Keyboard-only navigation
+  {
+    id: 'Q-MOT-003a', cardId: 'MOT-003',
     question: 'During testing, you try to complete a purchase using only your keyboard. You get stuck on the date picker. What does this reveal?',
     answers: [
       'Date pickers are inherently inaccessible',
-      'That interactive element is not keyboard-accessible — which means some users cannot complete the purchase',
+      'That element is not keyboard-accessible — which means some users cannot complete the purchase',
       'Keyboard testing is not realistic',
       'You should add a skip link to bypass it',
     ],
     correctIndex: 1,
-    explanation: 'Every interactive element must work with a keyboard. If you get stuck, so will users who rely on keyboard navigation.',
+    explanation: 'Every interactive element must work with a keyboard. If you get stuck, so will users who depend on it.',
     hint: 'If you cannot reach it with Tab and activate it with Enter, it is broken.',
     difficulty: 1,
   },
+
+  // MOT-004: Time-sensitive
   {
-    id: 'Q-MOT-004', cardId: 'MOT-004',
-    question: 'Your session timeout logs users out after 2 minutes of inactivity. A user with motor difficulties reports losing their work. What should you do?',
+    id: 'Q-MOT-004a', cardId: 'MOT-004',
+    question: 'Your session timeout logs users out after 2 minutes. A user with motor difficulties reports losing their work. What should you do?',
     answers: [
       'Warn them 30 seconds before timeout',
       'Let users extend or disable the time limit, and auto-save their progress',
@@ -396,43 +666,49 @@ export const questions: Question[] = [
       'Add a "keep me logged in" checkbox',
     ],
     correctIndex: 1,
-    explanation: 'Not everyone works at the same speed. Provide controls to extend or disable time limits and save progress automatically.',
+    explanation: 'Give users control over time limits and auto-save their progress.',
     hint: 'The fix is about giving users control, not just adding more time.',
     difficulty: 2,
   },
+
+  // MOT-005: Mouse-only behaviour
   {
-    id: 'Q-MOT-005', cardId: 'MOT-005',
-    question: 'Your dropdown menu opens on hover and closes immediately when the mouse leaves. What users does this exclude?',
+    id: 'Q-MOT-005a', cardId: 'MOT-005',
+    question: 'Your dropdown menu opens on hover and closes when the mouse leaves. What users does this exclude?',
     answers: [
       'Mobile users only',
       'Keyboard users, switch users, and anyone with motor difficulties who cannot hold a steady hover',
-      'Users with slow internet connections',
+      'Users with slow internet',
       'Users on small screens',
     ],
     correctIndex: 1,
-    explanation: 'Hover-only interactions exclude keyboard users entirely and are difficult for users with tremors or motor impairments.',
+    explanation: 'Hover-only interactions exclude keyboard users entirely and are difficult for users with tremors.',
     hint: 'What happens if you cannot use a mouse at all?',
     difficulty: 1,
   },
+
+  // MOT-006: Keyboard shortcuts
   {
-    id: 'Q-MOT-006', cardId: 'MOT-006',
-    question: 'A voice control user says "click submit" but nothing happens because your submit element is a styled div. Why?',
+    id: 'Q-MOT-006a', cardId: 'MOT-006',
+    question: 'A voice control user says "click submit" but nothing happens because the submit element is a styled div. Why?',
     answers: [
       'Voice control does not work with forms',
-      'Voice control and switch devices rely on proper element types — a div is not recognised as a button',
+      'Voice control relies on proper element types — a div is not recognised as a button',
       'The user needs to say "click div" instead',
-      'Voice control only works with links, not buttons',
+      'Voice control only works with links',
     ],
     correctIndex: 1,
-    explanation: 'Keyboard shortcuts and voice control depend on proper semantic elements. A div pretending to be a button is invisible to assistive technology.',
+    explanation: 'Voice control and switch devices depend on proper semantic elements. A div pretending to be a button is invisible to assistive technology.',
     hint: 'Voice control looks for real buttons, not visual look-alikes.',
     difficulty: 2,
   },
 
   // ===== KISS =====
+
+  // COG-001: Hick's Law
   {
-    id: 'Q-COG-001', cardId: 'COG-001',
-    question: 'Your navigation has 24 items in a single level. Users report difficulty finding what they need. What psychological principle explains this?',
+    id: 'Q-COG-001a', cardId: 'COG-001',
+    question: 'Your navigation has 24 items in a single level. Users report difficulty finding what they need. What principle explains this?',
     answers: [
       'Users have short attention spans',
       'Decision time increases with the number of choices — too many options cause paralysis',
@@ -440,12 +716,28 @@ export const questions: Question[] = [
       'Navigation should always be hidden behind a hamburger menu',
     ],
     correctIndex: 1,
-    explanation: "Hick's Law: more choices = slower decisions. Reduce, group, and prioritise options to help users act confidently.",
+    explanation: "Hick's Law: more choices = slower decisions. Reduce, group, and prioritise options.",
     hint: 'There is a well-known law about the relationship between choices and decision speed.',
     difficulty: 2,
   },
   {
-    id: 'Q-COG-002', cardId: 'COG-002',
+    id: 'Q-COG-001b', cardId: 'COG-001',
+    question: 'Your pricing page shows 7 plans with 40+ feature rows. Conversion is low. What is the most likely cognitive barrier?',
+    answers: [
+      'The prices are too high',
+      'Too many options and too much information is overwhelming users, slowing their decision',
+      'Users want a free trial before choosing',
+      'The page loads too slowly',
+    ],
+    correctIndex: 1,
+    explanation: "Choice overload leads to decision paralysis. Simplify the comparison to help users act confidently.",
+    hint: 'What happens to decision speed when you add more options?',
+    difficulty: 2,
+  },
+
+  // COG-002: Clear states
+  {
+    id: 'Q-COG-002a', cardId: 'COG-002',
     question: 'A user submits a form and the page refreshes with no feedback. They are not sure if it worked. What is missing?',
     answers: [
       'A loading spinner',
@@ -454,54 +746,62 @@ export const questions: Question[] = [
       'A redirect to the homepage',
     ],
     correctIndex: 1,
-    explanation: 'Users should always know where they are, what just happened, and what comes next. Clear feedback prevents confusion and anxiety.',
+    explanation: 'Users should always know where they are, what just happened, and what comes next.',
     hint: 'The user needs to know: did it work? What now?',
     difficulty: 1,
   },
+
+  // COG-003: Non-essential info
   {
-    id: 'Q-COG-003', cardId: 'COG-003',
-    question: 'Your registration form asks for name, email, phone, date of birth, address, company, job title, and interests. Conversion is low. What is the most likely fix?',
+    id: 'Q-COG-003a', cardId: 'COG-003',
+    question: 'Your registration form asks for 8 fields. Conversion is low. What is the most likely fix?',
     answers: [
-      'Add a progress bar to show completion',
+      'Add a progress bar',
       'Remove every field that is not essential for registration — collect the rest later',
       'Make the form wider so it looks shorter',
       'Add placeholder text to every field',
     ],
     correctIndex: 1,
-    explanation: 'Every extra field is friction. Only ask for what you truly need at this step. You can progressively collect more information later.',
+    explanation: 'Every extra field is friction. Only ask for what you truly need at this step.',
     hint: 'How many of those fields does the user NEED to provide right now?',
     difficulty: 1,
   },
+
+  // COG-004: Make it clear what to do
   {
-    id: 'Q-COG-004', cardId: 'COG-004',
+    id: 'Q-COG-004a', cardId: 'COG-004',
     question: 'Users land on your pricing page but do not click any CTA. Heatmaps show they scroll up and down repeatedly. What is the problem?',
     answers: [
-      'The page needs more animations to draw attention',
+      'The page needs more animations',
       'The action they should take is not obvious — they cannot figure out what to do',
       'The pricing is too high',
-      'They are comparing plans, which is expected behaviour',
+      'They are comparing plans, which is expected',
     ],
     correctIndex: 1,
     explanation: 'If users scroll back and forth, they are lost. Clear labels, obvious CTAs, and visual hierarchy make the next step unmistakable.',
     hint: 'The page is not making the next step obvious.',
     difficulty: 1,
   },
+
+  // COG-005: Don't question decisions
   {
-    id: 'Q-COG-005', cardId: 'COG-005',
-    question: 'A user updates their profile but sees no confirmation. They make the same change three times, worried it did not save. What should you add?',
+    id: 'Q-COG-005a', cardId: 'COG-005',
+    question: 'A user updates their profile but sees no confirmation. They make the change three times. What should you add?',
     answers: [
       'An auto-save indicator with clear "Saved" confirmation',
       'A popup asking them to confirm every change',
       'A changelog of all edits',
-      'A "Save" button that turns grey after clicking',
+      'A save button that turns grey after clicking',
     ],
     correctIndex: 0,
-    explanation: 'Clear, immediate feedback ("Saved", undo options, confirmation states) prevents users from second-guessing their actions.',
+    explanation: 'Clear, immediate feedback prevents users from second-guessing their actions.',
     hint: 'The user needs to feel confident that their action worked.',
     difficulty: 1,
   },
+
+  // COG-006: Split up complex tasks
   {
-    id: 'Q-COG-006', cardId: 'COG-006',
+    id: 'Q-COG-006a', cardId: 'COG-006',
     question: 'Your onboarding flow has 8 steps on a single page. Users drop off at step 4. How should you restructure it?',
     answers: [
       'Add motivational messages between steps',
@@ -510,14 +810,30 @@ export const questions: Question[] = [
       'Add a skip button for the whole flow',
     ],
     correctIndex: 1,
-    explanation: 'Complex tasks should be broken into clear, linear stages with progress indication. Let users save their progress and come back.',
+    explanation: 'Complex tasks should be broken into clear, linear stages with progress indication.',
     hint: 'Show people where they are and how far they have to go.',
+    difficulty: 1,
+  },
+  {
+    id: 'Q-COG-006b', cardId: 'COG-006',
+    question: 'A user gets halfway through a long form, accidentally closes the tab, and loses everything. What should your product have done?',
+    answers: [
+      'Warned them before closing',
+      'Auto-saved their progress so they can return and continue where they left off',
+      'Made the form shorter so it takes less time',
+      'Added a timer showing estimated completion time',
+    ],
+    correctIndex: 1,
+    explanation: 'Complex tasks need auto-save and the ability to return. Users should never lose progress.',
+    hint: 'Think about what happens when real life interrupts a long task.',
     difficulty: 1,
   },
 
   // ===== SEQUENCE =====
+
+  // STR-001: Logical order
   {
-    id: 'Q-STR-001', cardId: 'STR-001',
+    id: 'Q-STR-001a', cardId: 'STR-001',
     question: 'Your CSS grid reorders elements visually, but a screen reader user reports the content makes no sense. What went wrong?',
     answers: [
       'Screen readers do not support CSS Grid',
@@ -526,12 +842,14 @@ export const questions: Question[] = [
       'The grid needs more columns',
     ],
     correctIndex: 1,
-    explanation: 'Screen readers follow the document source order. If CSS reorders elements visually, the reading experience becomes incoherent.',
+    explanation: 'Screen readers follow source order. If CSS reorders elements visually, the reading experience becomes incoherent.',
     hint: 'What order does a screen reader follow — visual or source?',
     difficulty: 2,
   },
+
+  // STR-002: Tab orders
   {
-    id: 'Q-STR-002', cardId: 'STR-002',
+    id: 'Q-STR-002a', cardId: 'STR-002',
     question: 'A keyboard user presses Tab and focus jumps from the header to the footer, skipping the main content. What is broken?',
     answers: [
       'The footer has higher priority',
@@ -540,12 +858,14 @@ export const questions: Question[] = [
       'Tab navigation does not work on all browsers',
     ],
     correctIndex: 1,
-    explanation: 'Tab order should flow naturally: left to right, top to bottom, matching the visual layout. Unpredictable focus is disorienting.',
+    explanation: 'Tab order should flow naturally: left to right, top to bottom, matching the visual layout.',
     hint: 'Focus should follow the same path your eyes would.',
     difficulty: 1,
   },
+
+  // STR-003: Semantics
   {
-    id: 'Q-STR-003', cardId: 'STR-003',
+    id: 'Q-STR-003a', cardId: 'STR-003',
     question: 'Your developer built a clickable card using a styled container instead of a proper interactive element. A voice control user cannot activate it. Why?',
     answers: [
       'Voice control does not support cards',
@@ -554,97 +874,111 @@ export const questions: Question[] = [
       'Cards should never be interactive',
     ],
     correctIndex: 1,
-    explanation: 'Using the correct semantic element gives you keyboard access, focus management, and screen reader support for free. Styled containers have none of this.',
+    explanation: 'Using the correct semantic element gives you keyboard, focus, and screen reader support for free.',
     hint: 'Assistive technology looks for the element type, not the visual style.',
     difficulty: 1,
   },
+
+  // STR-004: Semantic structure
   {
-    id: 'Q-STR-004', cardId: 'STR-004',
+    id: 'Q-STR-004a', cardId: 'STR-004',
     question: 'A screen reader user says navigating your page is like "reading a book with no chapters." What are you missing?',
     answers: [
       'A table of contents at the top',
-      'Clear page landmarks — navigation, main content, and footer sections that screen readers can jump between',
+      'Clear page landmarks — navigation, main content, and footer that screen readers can jump between',
       'More headings with bold text',
       'A site search feature',
     ],
     correctIndex: 1,
-    explanation: 'Semantic landmarks (nav, main, aside, footer) act as chapter markers that screen readers can jump between, giving the page structure.',
+    explanation: 'Semantic landmarks act as chapter markers that screen readers can jump between.',
     hint: 'Think of landmarks as the chapters of your page.',
     difficulty: 1,
   },
+
+  // STR-005: Don't alt text everything
   {
-    id: 'Q-STR-005', cardId: 'STR-005',
-    question: 'Your page has 40 images. A screen reader user reports the experience is exhausting because every image is announced. What is wrong?',
+    id: 'Q-STR-005a', cardId: 'STR-005',
+    question: 'Your page has 40 images. A screen reader user says the experience is exhausting. What is wrong?',
     answers: [
       'You have too many images',
-      'Decorative images should be marked so screen readers skip them — only meaningful images need descriptions',
+      'Decorative images should be hidden from screen readers — only meaningful images need descriptions',
       'Screen readers should be configured to ignore images',
       'You should remove all image descriptions',
     ],
     correctIndex: 1,
-    explanation: 'Decorative images (icons, backgrounds, dividers) should be hidden from screen readers. Only describe images that convey information.',
-    hint: 'Not every image carries meaning. Some are just visual decoration.',
+    explanation: 'Decorative images should be hidden. Only describe images that convey information.',
+    hint: 'Not every image carries meaning. Some are just decoration.',
     difficulty: 2,
   },
+
+  // STR-006: Empty alt for decorative
   {
-    id: 'Q-STR-006', cardId: 'STR-006',
+    id: 'Q-STR-006a', cardId: 'STR-006',
     question: 'A screen reader announces: "image, blue wavy line divider dot png." What has the developer done wrong?',
     answers: [
       'The image filename is too long',
-      'A decorative divider image has a description when it should have been marked as decorative',
-      'The image format should be SVG, not PNG',
+      'A decorative divider has a description when it should have been marked as decorative',
+      'The format should be SVG, not PNG',
       'Screen readers should not read image descriptions',
     ],
     correctIndex: 1,
-    explanation: 'Decorative images should be hidden from screen readers. Announcing them clutters the experience with noise.',
-    hint: 'Does a decorative divider add any meaning for a blind user?',
+    explanation: 'Decorative images should be hidden from screen readers. Announcing them clutters the experience.',
+    hint: 'Does a decorative divider add meaning for a blind user?',
     difficulty: 1,
   },
+
+  // STR-007: Alt text adds value
   {
-    id: 'Q-STR-007', cardId: 'STR-007',
-    question: 'An image description reads: "A blue rectangle with rounded corners, white text in Helvetica Bold, drop shadow on the right side." Is this good alt text?',
+    id: 'Q-STR-007a', cardId: 'STR-007',
+    question: 'An image description reads: "A blue rectangle with rounded corners, white text in Helvetica Bold." Is this good alt text?',
     answers: [
       'Yes — it is very detailed',
       'No — it describes appearance instead of purpose. "Submit your application" would be better',
-      'Yes — screen reader users need to know the visual style',
-      'No — it should also include the hex colour values',
+      'Yes — screen reader users need visual style information',
+      'No — it should also include hex colour values',
     ],
     correctIndex: 1,
-    explanation: 'Alt text should describe what the image communicates, not what it looks like. Purpose over appearance.',
+    explanation: 'Alt text should describe what the image communicates, not what it looks like.',
     hint: 'If you replaced the image with text, what would the text say?',
     difficulty: 2,
   },
+
+  // STR-008: Images with text
   {
-    id: 'Q-STR-008', cardId: 'STR-008',
-    question: 'Your marketing team sends a hero banner that is a single image containing the headline, subtext, and CTA button. What are the accessibility problems?',
+    id: 'Q-STR-008a', cardId: 'STR-008',
+    question: 'Your marketing team sends a hero banner that is a single image containing headline, subtext, and CTA. What are the problems?',
     answers: [
       'The file size will be too large',
       'The text cannot be resized, translated, selected, or read by screen readers',
-      'The image will look blurry on retina screens',
+      'The image will look blurry on retina',
       'Search engines cannot read text in images',
     ],
     correctIndex: 1,
-    explanation: 'Text baked into images cannot be resized, translated, copied, or read aloud by assistive technology. Always use real text.',
-    hint: 'Think about what a user cannot do with text that is trapped inside an image.',
+    explanation: 'Text in images cannot be resized, translated, copied, or read aloud. Always use real text.',
+    hint: 'What can a user NOT do with text trapped inside an image?',
     difficulty: 1,
   },
+
+  // STR-009: Unnecessary complexity
   {
-    id: 'Q-STR-009', cardId: 'STR-009',
-    question: 'Your modal has a nested dropdown, which opens a secondary panel, which contains tabs with accordion sections inside. Users are confused. Why?',
+    id: 'Q-STR-009a', cardId: 'STR-009',
+    question: 'Your modal has a nested dropdown, which opens a secondary panel, with tabs containing accordion sections. Users are confused. Why?',
     answers: [
       'Modals should not contain other components',
       'Every layer of nesting is a potential accessibility barrier — this is too complex',
       'The animation between layers is too slow',
-      'Users need better onboarding to understand the pattern',
+      'Users need better onboarding for the pattern',
     ],
     correctIndex: 1,
-    explanation: 'Each layer of complexity creates potential barriers for keyboard users, screen readers, and users with cognitive difficulties. Simplify ruthlessly.',
-    hint: 'How many layers deep is the user from the original page? Each one is a risk.',
+    explanation: 'Each layer of complexity creates potential barriers for keyboard users, screen readers, and cognitive needs.',
+    hint: 'How many layers deep is the user? Each one is a risk.',
     difficulty: 2,
   },
+
+  // STR-010: Keep it simple
   {
-    id: 'Q-STR-010', cardId: 'STR-010',
-    question: 'Your team is debating between two solutions: a clever animated widget and a plain form that does the same thing. Which is more accessible?',
+    id: 'Q-STR-010a', cardId: 'STR-010',
+    question: 'Your team debates between a clever animated widget and a plain form that does the same thing. Which is more accessible?',
     answers: [
       'The widget — it is more engaging',
       'The plain form — the simplest solution that meets the need is usually the most accessible',
@@ -652,8 +986,22 @@ export const questions: Question[] = [
       'The widget, as long as it has a fallback',
     ],
     correctIndex: 1,
-    explanation: 'Simplicity wins. The simplest solution that meets the user need is almost always the most accessible, testable, and maintainable.',
+    explanation: 'Simplicity wins. The simplest solution is almost always the most accessible and maintainable.',
     hint: 'When in doubt, keep it simple.',
+    difficulty: 1,
+  },
+  {
+    id: 'Q-STR-010b', cardId: 'STR-010',
+    question: 'A junior developer proposes a custom-built interactive component. A senior suggests using a native browser element instead. Who is right and why?',
+    answers: [
+      'The junior — custom components offer more control',
+      'The senior — native elements have built-in accessibility that custom components must recreate from scratch',
+      'It depends on the browser support requirements',
+      'Neither — they should use a third-party library',
+    ],
+    correctIndex: 1,
+    explanation: 'Native elements come with free keyboard support, focus management, and screen reader compatibility. Custom components must rebuild all of that.',
+    hint: 'What do native elements give you for free?',
     difficulty: 1,
   },
 ];
