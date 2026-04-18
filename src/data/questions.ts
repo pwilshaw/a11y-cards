@@ -1004,4 +1004,438 @@ export const questions: Question[] = [
     hint: 'What do native elements give you for free?',
     difficulty: 1,
   },
+
+  // ===== SECOND QUESTIONS FOR REMAINING CARDS =====
+
+  // CON-006b
+  {
+    id: 'Q-CON-006b', cardId: 'CON-006',
+    question: 'Your error messages use a red exclamation icon but no text. A screen reader user has no idea what went wrong. What should you add?',
+    answers: [
+      'A tooltip on the icon',
+      'An explicit text description alongside the icon explaining the error',
+      'A louder alert sound',
+      'A bigger icon',
+    ],
+    correctIndex: 1,
+    explanation: 'Icons alone are not accessible. Always pair them with visible text that conveys the same meaning.',
+    hint: 'What does a screen reader announce when it encounters an icon with no text?',
+    difficulty: 1,
+  },
+
+  // CON-007b
+  {
+    id: 'Q-CON-007b', cardId: 'CON-007',
+    question: 'Your analytics dashboard uses colour-coded line charts. A colour-blind colleague says two lines look identical. What is the best fix?',
+    answers: [
+      'Use thicker lines',
+      'Use different line styles (solid, dashed, dotted) and add direct labels to each line',
+      'Add a legend with larger colour swatches',
+      'Reduce the number of lines to two',
+    ],
+    correctIndex: 1,
+    explanation: 'Different line styles and direct labels work regardless of colour perception. A legend alone is not enough.',
+    hint: 'What visual differences work even without colour?',
+    difficulty: 2,
+  },
+
+  // CON-008b
+  {
+    id: 'Q-CON-008b', cardId: 'CON-008',
+    question: 'A user with low vision is trying to read your chart but cannot match the tiny legend squares to the data. What layout change helps most?',
+    answers: [
+      'Make the legend squares larger',
+      'Remove the legend entirely and label each data element directly where it appears',
+      'Use a magnifier tool',
+      'Move the legend above the chart',
+    ],
+    correctIndex: 1,
+    explanation: 'Placing labels directly next to data removes the cognitive burden of matching legend entries to visual elements.',
+    hint: 'Eliminate the need to cross-reference entirely.',
+    difficulty: 2,
+  },
+
+  // CON-009b
+  {
+    id: 'Q-CON-009b', cardId: 'CON-009',
+    question: 'Your designer uses #CCCCCC for disabled button text on a #F5F5F5 background. What is the problem?',
+    answers: [
+      'Disabled buttons should not have text',
+      'The contrast is too low — disabled states still need to be perceivable, even if not interactive',
+      'Disabled buttons should use the brand colour',
+      '#CCCCCC is not a valid hex code',
+    ],
+    correctIndex: 1,
+    explanation: 'Even disabled elements need enough contrast to be perceived. Users need to know the button exists, even if they cannot click it.',
+    hint: 'Can users even see it is there?',
+    difficulty: 2,
+  },
+
+  // CON-010b
+  {
+    id: 'Q-CON-010b', cardId: 'CON-010',
+    question: 'Your dark theme has a pure black (#000) background with pure white (#FFF) text. Some users report the text seems to "vibrate." Why?',
+    answers: [
+      'Their monitors are miscalibrated',
+      'The extreme contrast between pure black and pure white causes halation — a glow effect that reduces readability',
+      'They need to update their browser',
+      'This only happens on OLED screens',
+    ],
+    correctIndex: 1,
+    explanation: 'Maximum contrast (#000 on #FFF or vice versa) can cause halation. Use dark greys and warm off-whites for better readability.',
+    hint: 'Sometimes too MUCH contrast is also a problem.',
+    difficulty: 2,
+  },
+
+  // VIS-002b
+  {
+    id: 'Q-VIS-002b', cardId: 'VIS-002',
+    question: 'A user with ADHD tells you they lose their place repeatedly on your content page. What structural change would help?',
+    answers: [
+      'Add background music to help them focus',
+      'Break content into short sections with clear headings, whitespace, and bullet points',
+      'Add a reading progress bar',
+      'Reduce the font size so more fits on screen',
+    ],
+    correctIndex: 1,
+    explanation: 'Clear structure, short paragraphs, and visual breaks help users with ADHD and cognitive differences maintain focus.',
+    hint: 'What makes it easy to find your place again after losing focus?',
+    difficulty: 1,
+  },
+
+  // VIS-003b
+  {
+    id: 'Q-VIS-003b', cardId: 'VIS-003',
+    question: 'A developer argues that 14px text is "fine on desktop." What are they overlooking?',
+    answers: [
+      'Desktop monitors are too big for 14px',
+      'Users may be zoomed out or viewing from a distance, and 16px is the accessibility baseline for body text',
+      '14px looks different on Mac and Windows',
+      '14px is only a problem on mobile',
+    ],
+    correctIndex: 1,
+    explanation: '16px is the baseline. Users sit at varying distances, may have the page zoomed out, or may have uncorrected vision.',
+    hint: 'Not everyone sits at the same distance from their screen.',
+    difficulty: 1,
+  },
+
+  // VIS-004b
+  {
+    id: 'Q-VIS-004b', cardId: 'VIS-004',
+    question: 'A client insists on using a decorative font for navigation labels. How do you explain the risk?',
+    answers: [
+      'Decorative fonts are not web-safe',
+      'Users need to read navigation quickly — decorative fonts slow reading speed and exclude users with dyslexia',
+      'Search engines cannot index decorative fonts',
+      'Decorative fonts increase page load time',
+    ],
+    correctIndex: 1,
+    explanation: 'Navigation text must be instantly scannable. Decorative fonts reduce reading speed for all users and create real barriers for users with dyslexia.',
+    hint: 'What is the primary job of navigation text? Speed and clarity.',
+    difficulty: 1,
+  },
+
+  // VIS-005b
+  {
+    id: 'Q-VIS-005b', cardId: 'VIS-005',
+    question: 'Two fonts have the same size and weight, but one is significantly easier to read for low-vision users. What makes the difference?',
+    answers: [
+      'The line height',
+      'Character distinction — fonts designed for accessibility make similar letters (like I, l, 1) visually distinct',
+      'The letter spacing',
+      'The font file format',
+    ],
+    correctIndex: 1,
+    explanation: 'Accessible fonts like Atkinson Hyperlegible are designed so similar characters (I/l/1, O/0, rn/m) are clearly distinguishable.',
+    hint: 'Think about which letters are easy to confuse.',
+    difficulty: 2,
+  },
+
+  // MOT-001b
+  {
+    id: 'Q-MOT-001b', cardId: 'MOT-001',
+    question: 'A product manager wants to add 5 new options to an already complex settings page. What should you recommend?',
+    answers: [
+      'Add tabs to organise the settings',
+      'First question whether each option is essential — remove or hide anything users rarely need',
+      'Add a search function for settings',
+      'Move the new options to a separate "Advanced" page',
+    ],
+    correctIndex: 1,
+    explanation: 'Before adding complexity, challenge whether each option is truly needed. The simplest interface that works is the most accessible.',
+    hint: 'Adding more organisation does not fix having too many options.',
+    difficulty: 2,
+  },
+
+  // MOT-003b
+  {
+    id: 'Q-MOT-003b', cardId: 'MOT-003',
+    question: 'Your custom image carousel can only be controlled by swiping or clicking arrows. What accessibility requirement does this fail?',
+    answers: [
+      'Images must have alt text',
+      'Every interactive element must be operable via keyboard — the carousel needs arrow key and Tab support',
+      'Carousels must auto-rotate',
+      'Carousels are not allowed under WCAG',
+    ],
+    correctIndex: 1,
+    explanation: 'All interactive elements must work with a keyboard. A swipe/click-only carousel excludes keyboard and switch users entirely.',
+    hint: 'What input method is missing?',
+    difficulty: 1,
+  },
+
+  // MOT-004b
+  {
+    id: 'Q-MOT-004b', cardId: 'MOT-004',
+    question: 'Your e-commerce site clears the shopping cart after 10 minutes of inactivity. A user with a cognitive disability takes longer to decide. What should change?',
+    answers: [
+      'Show a countdown timer so they know how long they have',
+      'Persist the cart contents and let the user control when items are removed',
+      'Send an email reminder when the cart is about to expire',
+      'Add a "hurry" message to encourage faster checkout',
+    ],
+    correctIndex: 1,
+    explanation: 'Arbitrary time limits exclude users who need more time. Persist state and give users control.',
+    hint: 'The solution is about removing the time pressure entirely.',
+    difficulty: 2,
+  },
+
+  // MOT-005b
+  {
+    id: 'Q-MOT-005b', cardId: 'MOT-005',
+    question: 'Your drag-and-drop task board has no keyboard alternative. A user with repetitive strain injury cannot rearrange tasks. What should you add?',
+    answers: [
+      'A mouse sensitivity adjustment',
+      'Keyboard controls (arrow keys or a "Move to" menu) as an alternative to drag-and-drop',
+      'Voice commands to drag items',
+      'Larger drag handles',
+    ],
+    correctIndex: 1,
+    explanation: 'Every mouse-based interaction needs a keyboard alternative. "Move to" menus or arrow key reordering both work.',
+    hint: 'What would let someone reorder items without touching a mouse?',
+    difficulty: 1,
+  },
+
+  // MOT-006b
+  {
+    id: 'Q-MOT-006b', cardId: 'MOT-006',
+    question: 'A switch device user can only press one button. How do keyboard shortcuts help them?',
+    answers: [
+      'They do not — switch users cannot use shortcuts',
+      'Switch software maps single-button presses to keyboard shortcuts, so well-defined shortcuts enable full navigation',
+      'Shortcuts are only useful for power users',
+      'Switch users should use voice control instead',
+    ],
+    correctIndex: 1,
+    explanation: 'Switch devices map physical presses to keyboard events. Well-defined shortcuts let switch users navigate efficiently.',
+    hint: 'How does a switch device communicate with your app?',
+    difficulty: 2,
+  },
+
+  // COG-002b
+  {
+    id: 'Q-COG-002b', cardId: 'COG-002',
+    question: 'A user clicks "Save" and the button briefly flashes but nothing else changes. They click it 4 more times. What is the UX failure?',
+    answers: [
+      'The button animation is too fast',
+      'There is no clear state change — the user cannot tell whether the save succeeded, failed, or is still in progress',
+      'The button should be disabled after clicking',
+      'They need a confirmation dialog',
+    ],
+    correctIndex: 1,
+    explanation: 'Every action needs a clear outcome. Users must always know: what happened, and what comes next.',
+    hint: 'What three things should a user always know?',
+    difficulty: 1,
+  },
+
+  // COG-003b
+  {
+    id: 'Q-COG-003b', cardId: 'COG-003',
+    question: 'Your checkout form asks for a phone number to "improve security." Users abandon at this step. What should you do?',
+    answers: [
+      'Explain why the phone number is needed',
+      'Remove the field — if it is not essential, it should not be there',
+      'Make it optional but still show it',
+      'Move it to a later step',
+    ],
+    correctIndex: 1,
+    explanation: 'Every field users do not understand or trust adds friction. If you do not truly need it, remove it.',
+    hint: 'Do you actually need this information to complete the transaction?',
+    difficulty: 1,
+  },
+
+  // COG-004b
+  {
+    id: 'Q-COG-004b', cardId: 'COG-004',
+    question: 'Your landing page has three buttons: "Learn More", "Get Started", and "See Plans" — all above the fold. Users click none of them. Why?',
+    answers: [
+      'The buttons are too small',
+      'Three competing CTAs create confusion — users do not know which one is the right next step',
+      'They need more information before clicking',
+      'The button colours are wrong',
+    ],
+    correctIndex: 1,
+    explanation: 'Multiple equal CTAs split attention. One clear primary action is always better than three competing ones.',
+    hint: 'How many things can you ask someone to do at once?',
+    difficulty: 1,
+  },
+
+  // COG-005b
+  {
+    id: 'Q-COG-005b', cardId: 'COG-005',
+    question: 'A user accidentally deletes a project with months of work. There was no confirmation dialog. What design pattern was missing?',
+    answers: [
+      'A password prompt before destructive actions',
+      'A confirmation step and an undo option for destructive actions',
+      'Auto-save should have prevented this',
+      'Destructive actions should require admin approval',
+    ],
+    correctIndex: 1,
+    explanation: 'Destructive actions need guardrails: confirmation dialogs, undo periods, or soft-delete with recovery options.',
+    hint: 'What would Gmail or Google Docs do here?',
+    difficulty: 1,
+  },
+
+  // STR-001b
+  {
+    id: 'Q-STR-001b', cardId: 'STR-001',
+    question: 'Your mobile layout stacks elements differently from desktop using CSS order. A keyboard user on desktop reports Tab focus jumps around randomly. Why?',
+    answers: [
+      'CSS order is not supported on desktop',
+      'CSS visual reordering does not change the underlying focus order — keyboard navigation follows the source',
+      'The user needs to update their browser',
+      'Tab order is random on all websites',
+    ],
+    correctIndex: 1,
+    explanation: 'CSS order changes visual position but not DOM order. Keyboard focus follows the source, creating a mismatch.',
+    hint: 'What does the keyboard follow — the visual layout or the code?',
+    difficulty: 2,
+  },
+
+  // STR-002b
+  {
+    id: 'Q-STR-002b', cardId: 'STR-002',
+    question: 'A developer uses tabindex="5" on an important button to make it "come first" in the tab order. Why is this a bad idea?',
+    answers: [
+      'Tabindex values above 0 are not supported',
+      'Positive tabindex creates unpredictable tab order — it pulls the element out of the natural flow and confuses all other tab stops',
+      'It only works in Chrome',
+      'Tabindex should only be used on links',
+    ],
+    correctIndex: 1,
+    explanation: 'Positive tabindex values break the natural flow for all elements on the page. Use 0 (natural order) or -1 (programmatic only).',
+    hint: 'What happens to every OTHER element when you give one a high tabindex?',
+    difficulty: 2,
+  },
+
+  // STR-003b
+  {
+    id: 'Q-STR-003b', cardId: 'STR-003',
+    question: 'A screen reader announces a clickable element as "group" instead of "button." Users do not know they can interact with it. What is the fix?',
+    answers: [
+      'Add an aria-label saying "click me"',
+      'Use the correct semantic element (a real button) instead of a styled container',
+      'Add a cursor:pointer CSS rule',
+      'Add a click sound effect',
+    ],
+    correctIndex: 1,
+    explanation: 'Screen readers announce element roles. A div is announced as "group" — only a real button is announced as "button."',
+    hint: 'What does a screen reader announce — the CSS style or the element type?',
+    difficulty: 1,
+  },
+
+  // STR-004b
+  {
+    id: 'Q-STR-004b', cardId: 'STR-004',
+    question: 'Your page has 15 headings but they go H1, H3, H2, H4, H2, H1. A screen reader user reports the structure is confusing. Why?',
+    answers: [
+      'You should only use H1 and H2',
+      'Heading levels should follow a logical hierarchy (H1 → H2 → H3) — skipping or misordering levels breaks the document outline',
+      'Screen readers ignore heading levels',
+      'H3 and H4 are deprecated',
+    ],
+    correctIndex: 1,
+    explanation: 'Heading levels communicate document structure. Skipping or misordering them is like numbering book chapters 1, 3, 2, 4.',
+    hint: 'What do heading levels communicate to assistive technology?',
+    difficulty: 1,
+  },
+
+  // STR-005b
+  {
+    id: 'Q-STR-005b', cardId: 'STR-005',
+    question: 'A developer adds "image of a grey horizontal line" as alt text to a decorative separator. What should they have done instead?',
+    answers: [
+      'Written a shorter description',
+      'Used empty alt text (alt="") so screen readers skip the decorative element entirely',
+      'Used the word "separator" as alt text',
+      'Removed the alt attribute entirely',
+    ],
+    correctIndex: 1,
+    explanation: 'Decorative images should have empty alt text. Removing the alt attribute entirely is worse — screen readers will read the filename.',
+    hint: 'There is a difference between alt="" and no alt attribute.',
+    difficulty: 2,
+  },
+
+  // STR-006b
+  {
+    id: 'Q-STR-006b', cardId: 'STR-006',
+    question: 'Your page has 20 decorative icons next to menu items. A screen reader reads each one as "image bullet point." How do you fix this?',
+    answers: [
+      'Remove all the icons',
+      'Mark each decorative icon with empty alt text so screen readers skip them',
+      'Add descriptions like "menu icon" to each one',
+      'Replace them with emoji',
+    ],
+    correctIndex: 1,
+    explanation: 'Decorative icons should be hidden from screen readers. The menu text alone conveys the meaning.',
+    hint: 'Do the icons add meaning beyond what the text already says?',
+    difficulty: 1,
+  },
+
+  // STR-007b
+  {
+    id: 'Q-STR-007b', cardId: 'STR-007',
+    question: 'A product photo shows a laptop with your software running. The alt text reads "laptop computer on desk." Is this useful?',
+    answers: [
+      'Yes — it describes the image accurately',
+      'No — the alt text should describe the purpose: what the software shows or what the user should understand from the image',
+      'Yes — but it should also mention the brand of laptop',
+      'No — product photos should never have alt text',
+    ],
+    correctIndex: 1,
+    explanation: 'Alt text should convey what the image communicates in context, not just describe objects. "Dashboard showing real-time analytics" is more useful than "laptop on desk."',
+    hint: 'Why is this image on the page? What should the user take away from it?',
+    difficulty: 2,
+  },
+
+  // STR-008b
+  {
+    id: 'Q-STR-008b', cardId: 'STR-008',
+    question: 'A user zooms their browser to 200%. Your text-based heading scales perfectly, but the promotional banner with text baked into an image stays the same size. What does this demonstrate?',
+    answers: [
+      'Images should use responsive sizing',
+      'Text in images does not scale with browser zoom — only real HTML text respects user zoom settings',
+      'The user should use a different browser',
+      'Images need srcset attributes for zoom',
+    ],
+    correctIndex: 1,
+    explanation: 'Real text scales with zoom, translation tools, and user stylesheets. Image text is frozen at its original size.',
+    hint: 'What happens to real text vs image text when a user zooms?',
+    difficulty: 1,
+  },
+
+  // STR-009b
+  {
+    id: 'Q-STR-009b', cardId: 'STR-009',
+    question: 'Your team keeps adding features to a page. Each feature works individually but together the page has become confusing. What principle should guide the next discussion?',
+    answers: [
+      'Add a tutorial overlay to explain everything',
+      'Every addition increases complexity and potential barriers — audit what can be simplified or removed',
+      'Reorganise features into tabs',
+      'Add a "simplified view" toggle',
+    ],
+    correctIndex: 1,
+    explanation: 'Complexity accumulates. Regular simplification audits prevent pages from becoming accessibility barriers.',
+    hint: 'The problem is not any single feature — it is the total complexity.',
+    difficulty: 2,
+  },
 ];
