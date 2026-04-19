@@ -1731,6 +1731,200 @@ export const questions: Question[] = [
     difficulty: 1,
   },
 
+  // ===== ROLE-SPECIFIC SCENARIOS =====
+
+  // SALES: Demo accessibility
+  {
+    id: 'Q-PHI-001c', cardId: 'PHI-001',
+    question: 'During a sales demo, a prospect asks "can a blind user use your product?" and you do not know the answer. What is the business risk?',
+    answers: [
+      'None — they probably will not follow up on it',
+      'You risk losing the deal and damaging trust — enterprises increasingly require accessibility evidence at procurement stage',
+      'You can promise to add it before they sign',
+      'Blind users are not part of their workforce',
+    ],
+    correctIndex: 1,
+    explanation: 'Accessibility questions in sales calls are increasingly common. Not having an answer signals immaturity and can disqualify you from procurement.',
+    hint: 'What does it signal when a vendor cannot answer basic accessibility questions?',
+    difficulty: 2,
+  },
+
+  // SALES: Proposal / RFP
+  {
+    id: 'Q-PHI-007c', cardId: 'PHI-007',
+    question: 'A government RFP requires a VPAT (accessibility conformance report). Your product does not have one. What happens?',
+    answers: [
+      'You submit without it and explain later',
+      'Your proposal is automatically disqualified — no VPAT means no bid in most public sector procurement',
+      'You create one quickly based on assumptions',
+      'Government contracts do not actually enforce this',
+    ],
+    correctIndex: 1,
+    explanation: 'Public sector and many enterprise procurement processes require a VPAT. Without one, you cannot even bid.',
+    hint: 'What is a VPAT and why does procurement care about it?',
+    difficulty: 2,
+  },
+
+  // HR: Onboarding portal
+  {
+    id: 'Q-COG-006c', cardId: 'COG-006',
+    question: 'A new hire with a learning disability cannot complete your 20-step digital onboarding portal in one session. They give up. What should HR request from the product team?',
+    answers: [
+      'A PDF version of the onboarding instead',
+      'The ability to save progress, return later, and complete steps at their own pace',
+      'A shorter onboarding with fewer steps',
+      'A phone-based onboarding alternative',
+    ],
+    correctIndex: 1,
+    explanation: 'Long processes must support save-and-resume. Not everyone can complete complex flows in one sitting.',
+    hint: 'What feature would help someone who needs multiple sessions?',
+    difficulty: 1,
+  },
+
+  // HR: Internal training
+  {
+    id: 'Q-PHI-005c', cardId: 'PHI-005',
+    question: 'HR launches mandatory compliance training as video-only content with no captions or transcript. Which employees are excluded?',
+    answers: [
+      'Only deaf employees',
+      'Deaf and hard-of-hearing employees, non-native speakers, anyone in a noisy environment, and anyone who processes text better than audio',
+      'No one — videos are universally accessible',
+      'Only employees working remotely',
+    ],
+    correctIndex: 1,
+    explanation: 'Video without captions excludes deaf users, but also non-native speakers, people in open offices, and those who learn better by reading.',
+    hint: 'Captions help far more people than just those who are deaf.',
+    difficulty: 1,
+  },
+
+  // FINANCE: Internal dashboards
+  {
+    id: 'Q-CON-001c', cardId: 'CON-001',
+    question: 'Your finance team builds an internal dashboard where P&L status is shown only by cell colour (green=profit, red=loss). The CFO is colour-blind. What should change?',
+    answers: [
+      'Use brighter colours',
+      'Add explicit text or icons (▲ Profit / ▼ Loss) alongside the colour so the data is clear without colour perception',
+      'Give the CFO a different report format',
+      'Use blue and orange instead of red and green',
+    ],
+    correctIndex: 1,
+    explanation: 'Colour-only encoding excludes colour-blind users — even senior ones. Internal tools need the same accessibility standards as external ones.',
+    hint: 'Accessibility is not just for customers — it is for your own colleagues too.',
+    difficulty: 1,
+  },
+
+  // FINANCE: Investor deck
+  {
+    id: 'Q-PHI-008c', cardId: 'PHI-008',
+    question: 'Your investor presentation has unlabelled icons for key metrics. An investor asks "what does this icon mean?" during your pitch. What design principle was missed?',
+    answers: [
+      'The icons were too small',
+      'Affordance — every visual element should clearly communicate its meaning without requiring explanation',
+      'Investors should receive a glossary beforehand',
+      'Icons should only be used in tech products',
+    ],
+    correctIndex: 1,
+    explanation: 'If someone has to ask what something means, it has failed its job. Labels, tooltips, and clear visual cues prevent confusion in any context.',
+    hint: 'This applies to business docs and presentations, not just software.',
+    difficulty: 1,
+  },
+
+  // SUPPORT: Knowledge base
+  {
+    id: 'Q-VIS-002d', cardId: 'VIS-002',
+    question: 'Your support team writes help articles as long paragraphs with no headings. Customers say they cannot find answers. What should change?',
+    answers: [
+      'Add a search bar',
+      'Structure articles with clear headings, short paragraphs, and step-by-step formatting so users can scan for their answer',
+      'Make the articles shorter by removing detail',
+      'Add a chatbot instead',
+    ],
+    correctIndex: 1,
+    explanation: 'Support content must be scannable. Users arrive stressed and need to find their answer fast — walls of text drive them to call instead.',
+    hint: 'How does a frustrated user read a help article?',
+    difficulty: 1,
+  },
+
+  // SUPPORT: Chat widget
+  {
+    id: 'Q-MOT-003d', cardId: 'MOT-003',
+    question: 'Your support chat widget can only be opened by clicking a small floating button. A keyboard-only user cannot reach it. What is the impact?',
+    answers: [
+      'They can email instead',
+      'They are locked out of real-time support — the chat widget must be keyboard-accessible like any other interactive element',
+      'Chat is optional so it does not matter',
+      'They can use a mouse emulator',
+    ],
+    correctIndex: 1,
+    explanation: 'Every interactive element — including third-party widgets — must be keyboard-accessible. An unreachable support widget blocks users who need help most.',
+    hint: 'If a user needs help but cannot reach the help button, what happens?',
+    difficulty: 1,
+  },
+
+  // MARKETING: Event registration
+  {
+    id: 'Q-COG-003c', cardId: 'COG-003',
+    question: 'Your marketing team\'s event registration form asks for job title, company size, annual revenue, and dietary requirements — for a free webinar. Registrations are low. Why?',
+    answers: [
+      'The webinar topic is not compelling enough',
+      'Users abandon forms that ask for unnecessary information — for a webinar you only need name and email',
+      'The form needs a progress bar',
+      'Users prefer to register on the day',
+    ],
+    correctIndex: 1,
+    explanation: 'Every field you add reduces completion rates. Only ask for what is truly needed for this specific event.',
+    hint: 'How many of those fields are needed to let someone watch a webinar?',
+    difficulty: 1,
+  },
+
+  // MARKETING: PDF reports
+  {
+    id: 'Q-STR-007c', cardId: 'STR-007',
+    question: 'Your marketing team publishes a gated PDF whitepaper. The PDF has no heading structure, no alt text on charts, and no reading order. Who is excluded?',
+    answers: [
+      'Only screen reader users',
+      'Screen reader users, users who zoom, users who reflow text on mobile, and search engines that index PDF content',
+      'No one — PDFs are inherently accessible',
+      'Only users on old devices',
+    ],
+    correctIndex: 1,
+    explanation: 'Inaccessible PDFs exclude many users. Structure, alt text, and reading order matter in documents just as much as on web pages.',
+    hint: 'PDFs have the same accessibility requirements as web pages.',
+    difficulty: 2,
+  },
+
+  // LEADERSHIP: Budget justification
+  {
+    id: 'Q-PHI-004c', cardId: 'PHI-004',
+    question: 'A CEO asks "how much will accessibility cost us?" What is the most accurate framing?',
+    answers: [
+      'It is a one-time cost that can be estimated upfront',
+      'Accessibility is not a separate cost — it is a quality standard built into design and development, like security or performance',
+      'It costs roughly 10% of the total project budget',
+      'It only costs money if you need to retrofit',
+    ],
+    correctIndex: 1,
+    explanation: 'When built in from the start, accessibility is not an extra cost — it is part of building quality products, like testing or security.',
+    hint: 'How do you budget for "quality"?',
+    difficulty: 2,
+  },
+
+  // LEADERSHIP: Risk register
+  {
+    id: 'Q-PHI-002c', cardId: 'PHI-002',
+    question: 'Your company\'s risk register lists "data breach" and "downtime" but not "inaccessible products." Should it be there?',
+    answers: [
+      'No — accessibility is a design concern, not a business risk',
+      'Yes — inaccessibility creates legal, reputational, and revenue risks that belong on any risk register',
+      'Only if you serve government clients',
+      'Only after you receive a complaint',
+    ],
+    correctIndex: 1,
+    explanation: 'Inaccessibility carries legal risk (lawsuits, EAA compliance), reputational risk (public complaints), and revenue risk (lost customers and deals).',
+    hint: 'Think about legal, reputation, and revenue.',
+    difficulty: 2,
+  },
+
   // STR-009b
   {
     id: 'Q-STR-009b', cardId: 'STR-009',
